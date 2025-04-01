@@ -1,0 +1,81 @@
+--- CREATE NEW VITE REACT APPLICATION
+
+npm create vite@latest
+Enter project name
+select React
+select JavaScript
+cd into new directory
+npm i 
+npm run dev to start
+
+--- AMPLIFY COMMANDS
+
+***** INITIALIZE *****
+
+npm install aws-amplify @aws-amplify/ui-react
+amplify init
+continue gen1
+enter project name
+pick "no" on config question, to fill in own answers
+	Distribution Directory Path: enter "dist"
+	Start Command: enter "npm.cmd run-script dev
+
+***** When things (Amplify Products) get added.... *****
+
+amplify push
+
+***** PUBLISHING *****
+
+amplify push
+amplify hosting add
+choose hosting with amplify console
+choose manual deployment
+amplify publish - RUN ANY TIME YOU WANT TO DEPLOY NEW CHANGES SOLO DOLO
+
+Site is now live!
+
+***** DYNAMODB *****
+https://docs.amplify.aws/react/build-a-backend/data/connect-to-existing-data-sources/connect-external-ddb-table/ <-- These are the amplify docs for this process
+
+amplify add storage
+select NoSQL Database
+* use a string-set OR a list for the ingredients and the instructions
+* make the userID the partition key
+* make the recipeID the sort key
+* make the category the GSI key
+add lambda trigger? No (yes will auto create a function. I did this initially
+ but am not sure if it is desireable
+amplify push
+
+
+***** COGINITO *****
+AWS documentation here for Cognito installation:
+https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/create-a-react-app-by-using-aws-amplify-and-add-authentication-with-amazon-cognito.html
+
+amplify add auth
+select default configuration
+select email (or whatever)
+select No, I am done
+
+
+***** API GATEWAY & LAMBDA  *****
+
+====== Lambda ======
+
+amplify add function
+- Choose Lambda Function
+- Add Name
+- Choose NodeJS
+- Choose Serverless ExpressJS function
+- Do you want to configure advanced settings? N
+- Do you want to edit function now? N
+
+
+====== API Gateway ======
+
+amplify add api
+- Choose REST 
+- Choose Use a Lambda function already added in the current Amplify project (make sure
+  that your Lambda function is already set up)
+- Restrict API access? N (for the purposes of this class)
+- Add another path? N

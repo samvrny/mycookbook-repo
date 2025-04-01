@@ -1,0 +1,24 @@
+{
+  "resourceName": "mcbsand",
+  "tableName": "mcbsand",
+  "partitionKey": {
+    "fieldName": "userId",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "recipeId",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "category",
+      "partitionKey": {
+        "fieldName": "category",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": [
+    "mcbsandTrigger4300e443"
+  ]
+}
