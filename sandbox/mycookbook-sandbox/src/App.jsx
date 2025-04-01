@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Imports for Auth with cognito....
 
+import { Amplify } from 'aws-amplify';
+import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
+import awsconfig from './aws-exports';
+
+Amplify.configure(awsconfig);
+
+function App({ signOut }) {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <header>
+        This is an application
+      </header>
+
+      <h1>Thankyou for doing verification</h1>
+
+      <section>Holy Moly</section>
+      
+      <button onClick={signOut}>Sign out</button>
+    </div>
+  );
 }
 
-export default App
+//Alright well.... the authenticator works. Ish... (:) SO now... lol this is 
+//going to be a little bit more complicated than I thought it was going to be,
+//and require some serious time and devotion.
+export default withAuthenticator(App);

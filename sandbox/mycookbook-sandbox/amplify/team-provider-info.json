@@ -10,6 +10,11 @@
       "StackName": "amplify-mycookbooksandbox-dev-5cfa8",
       "StackId": "arn:aws:cloudformation:us-east-2:209479286992:stack/amplify-mycookbooksandbox-dev-5cfa8/7a737410-0f37-11f0-aede-02237a030929",
       "AmplifyAppId": "d19x9ruj02v080"
+    },
+    "categories": {
+      "auth": {
+        "mycookbooksandbox262f4245": {}
+      }
     }
   }
 }
