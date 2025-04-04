@@ -16,6 +16,13 @@
         "fieldName": "category",
         "fieldType": "string"
       }
+    },
+    {
+      "name": "name",
+      "partitionKey": {
+        "fieldName": "name",
+        "fieldType": "string"
+      }
     }
   ],
   "triggerFunctions": [

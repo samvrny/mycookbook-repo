@@ -44,7 +44,7 @@ select NoSQL Database
 * make the recipeID the sort key
 * make the category the GSI key
 add lambda trigger? No (yes will auto create a function. I did this initially
- but am not sure if it is desireable
+ but am not sure if it is desirable
 amplify push
 
 
@@ -77,5 +77,5 @@ amplify add api
 - Choose REST 
 - Choose Use a Lambda function already added in the current Amplify project (make sure
   that your Lambda function is already set up)
-- Restrict API access? N (for the purposes of this class)
+- Restrict API access? N (for the purposes of this class) <-- going to need to experiment with this. 
 - Add another path? N

@@ -1,4 +1,20 @@
 {
+  "api": {
+    "getRecipeAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getRecipes"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "mycookbooksandbox262f4245": {
       "customAuth": false,
@@ -28,6 +44,11 @@
     }
   },
   "function": {
+    "getRecipes": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "mcbsandTrigger4300e443": {
       "build": true,
       "dependsOn": [

@@ -19,7 +19,8 @@
         "mcbsandTrigger4300e443": {
           "deploymentBucketName": "amplify-mycookbooksandbox-dev-5cfa8-deployment",
           "s3Key": "amplify-builds/mcbsandTrigger4300e443-49427256426e7357577a-build.zip"
-        }
+        },
+        "getRecipes": {}
       },
       "storage": {
         "mcbsand": {}
