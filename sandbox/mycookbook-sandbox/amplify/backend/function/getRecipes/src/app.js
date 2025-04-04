@@ -20,6 +20,12 @@ const app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
 
+//THIS BLOCK ADDED with GPT HELP
+const AWS = require('aws-sdk');
+const dynamodb = new AWS.DynamoDB.DocumentClient();
+const TABLE_NAME = 'mcbsand-dev'; // <-- replace with your actual table name
+
+
 // Enable CORS for all methods
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
@@ -28,6 +34,36 @@ app.use(function(req, res, next) {
 });
 
 
+// MOCKING OUT THE GET NOW!!!
+app.get('/recipe', async function(req, res) {
+  const userId = req.query.userId;
+  const recipeId = req.query.recipeId;
+
+  if (!userId || !recipeId) {
+    return res.status(400).json({ error: 'Missing userId or recipeId in query string' });
+  }
+
+  const params = {
+    TableName: TABLE_NAME,
+    Key: {
+      userId,
+      recipeId
+    }
+  };
+
+  try {
+    const result = await dynamodb.get(params).promise();
+
+    if (!result.Item) {
+      return res.status(404).json({ error: 'Recipe not found' });
+    }
+
+    res.json(result.Item);
+  } catch (error) {
+    console.error('Error fetching recipe:', error);
+    res.status(500).json({ error: 'Could not fetch recipe' });
+  }
+});
 /**********************
  * Example get method *
  **********************/
