@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getRecipes",
+            "recipeAPI2",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getRecipes",
+                  "recipeAPI2",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "mycookbooksandboxLambdaRole7fa92530",
+            "mycookbooksandboxLambdaRole64042173",
             {
               "Fn::Join": [
                 "",
                 [
-                  "mycookbooksandboxLambdaRole7fa92530",
+                  "mycookbooksandboxLambdaRole64042173",
                   "-",
                   {
                     "Ref": "env"

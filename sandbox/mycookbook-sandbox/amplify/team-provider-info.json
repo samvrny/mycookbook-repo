@@ -12,15 +12,19 @@
       "AmplifyAppId": "d19x9ruj02v080"
     },
     "categories": {
-      "auth": {
-        "mycookbooksandbox262f4245": {}
-      },
       "function": {
         "mcbsandTrigger4300e443": {
           "deploymentBucketName": "amplify-mycookbooksandbox-dev-5cfa8-deployment",
           "s3Key": "amplify-builds/mcbsandTrigger4300e443-49427256426e7357577a-build.zip"
         },
-        "getRecipes": {}
+        "getRecipes": {
+          "deploymentBucketName": "amplify-mycookbooksandbox-dev-5cfa8-deployment",
+          "s3Key": "amplify-builds/getRecipes-7a715838384e78794362-build.zip"
+        },
+        "recipeAPI2": {
+          "deploymentBucketName": "amplify-mycookbooksandbox-dev-5cfa8-deployment",
+          "s3Key": "amplify-builds/recipeAPI2-4b6b6673716b45446f36-build.zip"
+        }
       },
       "storage": {
         "mcbsand": {}
@@ -30,6 +34,10 @@
           "appId": "d19x9ruj02v080",
           "type": "manual"
         }
+      },
+      "api": {
+        "getRecipeAPI": {},
+        "recipeAPI2": {}
       }
     }
   }

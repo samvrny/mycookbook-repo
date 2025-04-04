@@ -13,36 +13,23 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
-    }
-  },
-  "auth": {
-    "mycookbooksandbox262f4245": {
-      "customAuth": false,
-      "dependsOn": [],
-      "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
-        },
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
-      },
+    },
+    "recipeAPI2": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "recipeAPI2"
+        }
+      ],
       "providerPlugin": "awscloudformation",
-      "service": "Cognito"
+      "service": "API Gateway"
     }
   },
+  "auth": {},
   "function": {
     "getRecipes": {
       "build": true,
@@ -64,6 +51,11 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "recipeAPI2": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -74,6 +66,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_getRecipes_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getRecipes"
+        }
+      ]
+    },
+    "AMPLIFY_function_getRecipes_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getRecipes"
+        }
+      ]
+    },
     "AMPLIFY_function_mcbsandTrigger4300e443_deploymentBucketName": {
       "usedBy": [
         {
@@ -87,6 +95,22 @@
         {
           "category": "function",
           "resourceName": "mcbsandTrigger4300e443"
+        }
+      ]
+    },
+    "AMPLIFY_function_recipeAPI2_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "recipeAPI2"
+        }
+      ]
+    },
+    "AMPLIFY_function_recipeAPI2_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "recipeAPI2"
         }
       ]
     },

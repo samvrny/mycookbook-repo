@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/recipeTwo": {
+      "name": "/recipeTwo",
+      "lambdaFunction": "recipeAPI2",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -6,9 +6,7 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
-/**
- * THIS FUNCTION IS FOR QUERYING RECIPES!!!!
- */
+
 
 
 const express = require('express')
@@ -20,27 +18,20 @@ const app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
 
+// Enable CORS for all methods
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "*")
+  next()
+});
+
+
 //THIS BLOCK ADDED with GPT HELP
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const TABLE_NAME = 'mcbsand-dev'; // <-- replace with your actual table name
 
-
-// Enable CORS for all methods
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "*")
-
-  if (req.method === "OPTIONS") {
-    return res.status(200).end(); // Handle CORS preflight request
-  }
-
-  next()
-});
-
-
-// MOCKING OUT THE GET NOW!!!
-app.get('/recipe', async function(req, res) {
+app.get('/recipeTwo', async function(req, res) {
   const userId = req.query.userID;
   const recipeId = req.query.recipeID;
 
@@ -77,6 +68,8 @@ app.get('/recipe', async function(req, res) {
     res.status(500).json({ error: 'Could not fetch recipe' });
   }
 });
+
+
 /**********************
  * Example get method *
  **********************/
