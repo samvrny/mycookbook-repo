@@ -39,12 +39,13 @@ https://docs.amplify.aws/react/build-a-backend/data/connect-to-existing-data-sou
 
 amplify add storage
 select NoSQL Database
+A new database will need to be created for every single one...
 * use a string-set OR a list for the ingredients and the instructions
 * make the userID the partition key
 * make the recipeID the sort key
 * make the category the GSI key
-add lambda trigger? No (yes will auto create a function. I did this initially
- but am not sure if it is desirable
+
+add lambda trigger? No
 amplify push
 
 
@@ -66,7 +67,7 @@ amplify add function
 - Choose Lambda Function
 - Add Name
 - Choose NodeJS
-- Choose Serverless ExpressJS function
+- Choose Serverless ExpressJS function OR CRUD function for DynamoDB?
 - Do you want to configure advanced settings? N
 - Do you want to edit function now? N
 
@@ -79,3 +80,4 @@ amplify add api
   that your Lambda function is already set up)
 - Restrict API access? N (for the purposes of this class) <-- going to need to experiment with this. 
 - Add another path? N
+

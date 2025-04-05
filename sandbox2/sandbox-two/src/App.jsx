@@ -1,14 +1,5 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
-import { get } from 'aws-amplify/api' //THIS WAS ADDED FOR THE GET
-
-// Imports for Auth with cognito....
-// import { Amplify } from 'aws-amplify';
-// import awsconfig from './aws-exports';
-
-// Amplify.configure(awsconfig);
+import { get } from 'aws-amplify/api'
 
 function App() {
 
@@ -41,7 +32,7 @@ function App() {
     // })
 
     const requestRecipes = get({
-      apiName: 'recipeAPI2',
+      apiName: 'sandboxtwoAPI',
       path: '/item'
     })
 
@@ -54,9 +45,10 @@ function App() {
   }
 
   return (
+    <>
     <div className='App'>
       <header>
-        This is an application
+        Welcome to the Sandbox 2 Environment
       </header>
 
       <h1>MyCookbook Sandbox</h1>
@@ -67,10 +59,8 @@ function App() {
         <input type="submit" defaultValue="Get Recipe" />
       </form>
     </div>
-  );
+    </>
+  )
 }
 
-//Alright well.... the authenticator works. Ish... (:) SO now... lol this is 
-//going to be a little bit more complicated than I thought it was going to be,
-//and require some serious time and devotion.
-export default App;
+export default App

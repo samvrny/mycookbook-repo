@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sandboxtwo-dev-b6b90-authRole",
+      "UnauthRoleArn": "arn:aws:iam::209479286992:role/amplify-sandboxtwo-dev-b6b90-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::209479286992:role/amplify-sandboxtwo-dev-b6b90-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-sandboxtwo-dev-b6b90-deployment",
+      "UnauthRoleName": "amplify-sandboxtwo-dev-b6b90-unauthRole",
+      "StackName": "amplify-sandboxtwo-dev-b6b90",
+      "StackId": "arn:aws:cloudformation:us-east-2:209479286992:stack/amplify-sandboxtwo-dev-b6b90/49e1c380-11c4-11f0-8f5c-0adad3d91119",
+      "AmplifyAppId": "dqn9v1x8c3kmd"
+    },
+    "categories": {
+      "storage": {
+        "sandboxtwo": {}
+      },
+      "function": {
+        "sandboxtwofunction": {
+          "deploymentBucketName": "amplify-sandboxtwo-dev-b6b90-deployment",
+          "s3Key": "amplify-builds/sandboxtwofunction-4139364e484568704866-build.zip"
+        }
+      },
+      "api": {
+        "sandboxtwoAPI": {}
+      }
+    }
+  }
+}

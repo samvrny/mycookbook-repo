@@ -1,0 +1,22 @@
+{
+  "resourceName": "sandboxtwo",
+  "tableName": "sandboxtwo",
+  "partitionKey": {
+    "fieldName": "userID",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "recipeID",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "category",
+      "partitionKey": {
+        "fieldName": "category",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}

@@ -1,0 +1,63 @@
+{
+  "api": {
+    "sandboxtwoAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "sandboxtwofunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "sandboxtwofunction": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "sandboxtwo"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_sandboxtwofunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sandboxtwofunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_sandboxtwofunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sandboxtwofunction"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "sandboxtwo": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}
