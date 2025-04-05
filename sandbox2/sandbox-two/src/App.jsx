@@ -1,6 +1,12 @@
 import './App.css'
 import { get } from 'aws-amplify/api'
 
+//THESE IMPORTS AND THE CONFIG ARE ABSOLUTELY NECESSARY!!!!!! ... Or not. Mother fucker.
+// import { Amplify } from 'aws-amplify';
+// import awsconfig from './aws-exports';
+
+// Amplify.configure(awsconfig);
+
 function App() {
 
   function preventReload(event) {

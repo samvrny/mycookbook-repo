@@ -22,7 +22,14 @@
         }
       },
       "api": {
-        "sandboxtwoAPI": {}
+        "sandboxtwoAPI": {},
+        "secondAPI": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dqn9v1x8c3kmd",
+          "type": "manual"
+        }
       }
     }
   }
