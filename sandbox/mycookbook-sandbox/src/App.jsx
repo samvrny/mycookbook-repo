@@ -22,22 +22,27 @@ function App() {
 
   async function fetchRecipes() {
 
-    let userID = 1
-    let recipeID = 1
+    // let userID = 1
+    // let recipeID = 1
 
     // const session = await Auth.currentSession();
     // const token = session.getIdToken().getJwtToken();
 
+    // const requestRecipes = get({
+    //   apiName: 'recipeAPI2',
+    //   path: '/recipeTwo',
+    //   options: {
+    //     queryParams: {
+    //       userID,
+    //       recipeID
+    //     }
+    //     // headers: { Authorization: token }
+    //   }
+    // })
+
     const requestRecipes = get({
       apiName: 'recipeAPI2',
-      path: '/recipeTwo',
-      options: {
-        queryParams: {
-          userID,
-          recipeID
-        }
-        // headers: { Authorization: token }
-      }
+      path: '/item'
     })
 
     const response = await requestRecipes.response
