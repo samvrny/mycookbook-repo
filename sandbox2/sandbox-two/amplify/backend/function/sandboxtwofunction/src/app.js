@@ -55,6 +55,14 @@ const convertUrlType = (param, type) => {
   }
 }
 
+//====================
+app.get("/test", function(req, res) {
+  // Add your code here
+  res.json({success: 'get call succeed!', url: req.url});
+});
+//====================
+
+
 /************************************
 * HTTP Get method to list objects *
 ************************************/

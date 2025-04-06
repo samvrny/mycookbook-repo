@@ -2,10 +2,13 @@ import './App.css'
 import { get } from 'aws-amplify/api'
 
 //THESE IMPORTS AND THE CONFIG ARE ABSOLUTELY NECESSARY!!!!!! ... Or not. Mother fucker.
-// import { Amplify } from 'aws-amplify';
-// import awsconfig from './aws-exports';
+//It seems like this has something to do with the problem. This needs to be here. It does
+//not, however, solve the annoying "authorization" problem. There is no auth with this 
+//project yet!!!
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from './amplifyconfiguration.json';
 
-// Amplify.configure(awsconfig);
+Amplify.configure(amplifyconfig);
 
 function App() {
 
@@ -37,17 +40,16 @@ function App() {
     //   }
     // })
 
-    const requestRecipes = get({
-      apiName: 'sandboxtwoAPI',
-      path: '/item'
-    })
-
-    const response = await requestRecipes.response
-    const data = await response.body.json()
-
-    console.log("THIS THING IS ON")
-    console.log(data)
-    console.log("\n END GET REQUEST")
+    try {
+      const restOperation = get({ 
+        apiName: 'sandboxtwoAPI',
+        path: '/recipes' 
+      });
+      const response = await restOperation.response;
+      console.log('GET call succeeded: ', response);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (

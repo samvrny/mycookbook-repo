@@ -28,22 +28,22 @@ function App() {
     // const session = await Auth.currentSession();
     // const token = session.getIdToken().getJwtToken();
 
-    // const requestRecipes = get({
-    //   apiName: 'recipeAPI2',
-    //   path: '/recipeTwo',
-    //   options: {
-    //     queryParams: {
-    //       userID,
-    //       recipeID
-    //     }
-    //     // headers: { Authorization: token }
-    //   }
-    // })
-
     const requestRecipes = get({
       apiName: 'recipeAPI2',
-      path: '/item'
+      path: '/recipeTwo',
+      // options: {
+      //   queryParams: {
+      //     userID,
+      //     recipeID
+      //   }
+      //   // headers: { Authorization: token }
+      // }
     })
+
+    // const requestRecipes = get({
+    //   apiName: 'recipeAPI2',
+    //   path: '/item'
+    // })
 
     const response = await requestRecipes.response
     const data = await response.body.json()
