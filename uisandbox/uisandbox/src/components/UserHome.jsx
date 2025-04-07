@@ -16,6 +16,10 @@ export default function UserHome() {
                 <h1>Category Name</h1>
 
                 <p>No recipes found for this category. Choose another category or create a new recipe!</p>
+
+                <article>
+                    Here is where a recipe will go
+                </article>
             </section>
         </main>
     )
