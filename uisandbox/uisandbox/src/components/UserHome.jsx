@@ -11,7 +11,11 @@ export default function UserHome() {
             </aside>
 
             <section>
-                <a href="">Create New Recipe</a>
+                <a className="categoryButtonGreen createRecipeButton" href="">Create New Recipe </a>
+
+                <h1>Category Name</h1>
+
+                <p>No recipes found for this category. Choose another category or create a new recipe!</p>
             </section>
         </main>
     )
