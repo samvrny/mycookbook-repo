@@ -57,3 +57,39 @@ nav a:hover {
     border-radius: 100%;
     border: 2px solid black;
 }
+
+/* The display grid will help a lot with these weird nav components!! */
+#userHome { 
+    display: grid;
+    grid-template-columns: 275px auto;
+}
+
+aside {
+    background-color: #4498FF;
+    width: 250px;
+    padding: 5px;
+}
+
+.categoryButton, .categoryButtonGreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 35px;
+    background-color: #FFFFFF;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: black;
+    margin: 10px;
+    width: 150px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.categoryButtonGreen {
+    background-color: #059400;
+    color: #FFFFFF;
+}
