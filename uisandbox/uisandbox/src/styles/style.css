@@ -18,6 +18,7 @@ body {
     margin: 0 auto;
 }
 
+/* HEADER STYLES */
 header {
     background-color: #0550AB;
     height: 125px;
@@ -59,9 +60,14 @@ nav a:hover {
 }
 
 /* The display grid will help a lot with these weird nav components!! */
+/* STYLES FOR THE USER HOMEPAGE */
 #userHome { 
     display: grid;
     grid-template-columns: 275px auto;
+}
+
+#userHomeMainSection {
+    margin-left: 25px;
 }
 
 aside {

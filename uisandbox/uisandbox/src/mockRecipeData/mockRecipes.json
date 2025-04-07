@@ -1,0 +1,114 @@
+{
+    "categories": [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Misc"
+    ],
+
+    "recipes": [
+        {
+            "userID": "1",
+            "recipeID": "1",
+            "category": "Breakfast",
+            "name": "Scrambled Eggs",
+            "description": "Fluffy scrambled eggs.",
+            "ingredients": [
+                "1 - 5 Eggs",
+                "Pinch of salt",
+                "Dash of black pepper",
+                "1/2 Tbs. Butter"
+            ],
+            "insructions": [
+                "Crack eggs into a bowl",
+                "Add salt and pepper and whisk",
+                "Heat a pan on medium heat and add the butter.",
+                "Add eggs and stir frequently to avoid burning",
+                "Remove from stove when eggs are cooked through",
+                "Serve with some toast!"
+            ]
+        },
+        {
+            "userID": "1",
+            "recipeID": "2",
+            "category": "Breakfast",
+            "name": "Fruit Bowl",
+            "description": "A delicious and healthy bowl of fruit.",
+            "ingredients": [
+                "2 cups of your favorite fruits & berries",
+                "1/2 cup Heavy Cream",
+                "1 tsp. maple syrup"
+            ],
+            "insructions": [
+                "Dice up your fruits (leave berries whole)",
+                "Add heavy cream and syrup to a bowl and whisk with a hand beater or electric mixer until stiff peaks form",
+                "Add fruit to a bowl",
+                "Add whip to the fruit and enjoy!"
+            ]
+        },
+        {
+            "userID": "1",
+            "recipeID": "3",
+            "category": "Lunch",
+            "name": "",
+            "description": "",
+            "ingredients": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "insructions": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            "userID": "1",
+            "recipeID": "4",
+            "category": "Lunch",
+            "name": "",
+            "description": "",
+            "ingredients": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "insructions": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            "userID": "2",
+            "recipeID": "1",
+            "category": "Dinner",
+            "name": "",
+            "description": "",
+            "ingredients": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "insructions": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        }
+    ]
+
+}

@@ -1,5 +1,11 @@
+import mockData from '../mockRecipeData/mockRecipes.json'
+
 
 export default function UserHome() {
+
+    let categories = mockData.categories;
+
+    console.log(categories);
 
     return (
         <main id="userHome">
@@ -10,7 +16,7 @@ export default function UserHome() {
                 <div className="categoryButtonGreen">Add Category +</div>
             </aside>
 
-            <section>
+            <section id="userHomeMainSection">
                 <a className="categoryButtonGreen createRecipeButton" href="">Create New Recipe </a>
 
                 <h1>Category Name</h1>

@@ -11,11 +11,11 @@ function App() {
     <>
       <Header />
 
-      <hr />
+      {/* <hr />
       <hr />
       <p>MOCK USER HOME SCREEN BELOW</p>
       <hr />
-      <hr />
+      <hr /> */}
 
       <UserHome />
     </>
