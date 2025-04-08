@@ -16,7 +16,9 @@ export default function UserHome() {
     // console.log(recipes);
 
     const [currentCategory, setCurrentCategory] = useState("");
-    console.log("Current Category on Render: " + currentCategory);
+    // console.log("Current Category on Render: " + currentCategory);
+
+    const filteredRecipes = recipes.filter(recipe => recipe.category === currentCategory);
 
     return (
         <main id="userHome">
@@ -38,14 +40,13 @@ export default function UserHome() {
 
                 <h1>Category Name</h1>
 
-                <p>No recipes found for this category. Choose another category or create a new recipe!</p>
+                {/* <p>No recipes found for this category. Choose another category or create a new recipe!</p> */}
 
                 {
                     //Triple EQUALS SIGN!!! REMEMBER TO DO IT!! Or else.... things will NOT work
-                    !recipes.category === currentCategory ? <p>No recipes for this category. Create a new recipe or choose another category!</p> :
-                    
-                    recipes.filter(recipe => recipe.category === currentCategory)
-                        .map((recipe) => (
+
+                    filteredRecipes.length === 0 ? <p>No recipes found for this category. Choose another category or create a new recipe!</p> :
+                    filteredRecipes.map((recipe) => (
                             <article>
                                 <h3>{recipe.name}</h3>
                                 <p>{recipe.description}</p>
