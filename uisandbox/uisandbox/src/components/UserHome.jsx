@@ -1,6 +1,6 @@
 import mockData from '../mockRecipeData/mockRecipes.json'
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 export default function UserHome() {
@@ -15,7 +15,7 @@ export default function UserHome() {
     // console.log(categories);
     // console.log(recipes);
 
-    const [currentCategory, setCurrentCategory] = useState("");
+    const [currentCategory, setCurrentCategory] = useState("Welcome");
     // console.log("Current Category on Render: " + currentCategory);
 
     const filteredRecipes = recipes.filter(recipe => recipe.category === currentCategory);
@@ -26,11 +26,11 @@ export default function UserHome() {
                 <ul>
                     {/* This is the way to map through things to create elements!! */}
                     {categories.map((category) => (
-                        <li className="categoryButton" onClick={() => {console.log("Clicked Category: " + category); setCurrentCategory(category)}}>{category}</li>
+                        <li className="categoryButton" onClick={() => {setCurrentCategory(category)}}>{category}</li>
                     ))}
-                    {/* <li className="categoryButton">Breakfast</li> */}
-                    {/* <li className="categoryButton">Lunch</li> */}
-                    {/* <li className="categoryButton">Dinner</li> */}
+
+                    {/* Leave this here always */}
+                    <li className="categoryButton" onClick={() => {setCurrentCategory("Misc")}}>Misc</li>
                     <li className="categoryButtonGreen">Add Category +</li>
                 </ul>
             </aside>
@@ -38,13 +38,14 @@ export default function UserHome() {
             <section id="userHomeMainSection">
                 <a className="createRecipeButton" href="">Create New Recipe +</a>
 
-                <h1>Category Name</h1>
+                <h1>{currentCategory}</h1>
 
                 {/* <p>No recipes found for this category. Choose another category or create a new recipe!</p> */}
 
                 {
                     //Triple EQUALS SIGN!!! REMEMBER TO DO IT!! Or else.... things will NOT work
 
+                    currentCategory === "Welcome" ? <p>Welcome. Please choose a category to get started!</p> :
                     filteredRecipes.length === 0 ? <p>No recipes found for this category. Choose another category or create a new recipe!</p> :
                     filteredRecipes.map((recipe) => (
                             <article>

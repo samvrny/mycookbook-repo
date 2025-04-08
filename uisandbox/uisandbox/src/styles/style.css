@@ -138,3 +138,9 @@ aside ul {
 }
 
 /* CREATE RECIPE STYLES */
+
+/* Delete this style */
+#createRecipe {
+    margin: 0 100px 100px;
+}
+/* Delete the above style */
