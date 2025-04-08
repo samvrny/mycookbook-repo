@@ -5,19 +5,25 @@ export default function UserHome() {
 
     let categories = mockData.categories;
 
-    console.log(categories);
+    // console.log(categories);
 
     return (
         <main id="userHome">
             <aside>
-                <div className="categoryButton">Breakfast</div>
-                <div className="categoryButton">Lunch</div>
-                <div className="categoryButton">Dinner</div>
-                <div className="categoryButtonGreen">Add Category +</div>
+                <ul>
+                    {/* This is the way to map through things to create elements!! */}
+                    {categories.map((category, index) => (
+                        <li className="categoryButton" key={index}>{category}</li>
+                    ))}
+                    {/* <li className="categoryButton">Breakfast</li> */}
+                    {/* <li className="categoryButton">Lunch</li> */}
+                    {/* <li className="categoryButton">Dinner</li> */}
+                    <li className="categoryButtonGreen">Add Category +</li>
+                </ul>
             </aside>
 
             <section id="userHomeMainSection">
-                <a className="categoryButtonGreen createRecipeButton" href="">Create New Recipe </a>
+                <a className="createRecipeButton" href="">Create New Recipe +</a>
 
                 <h1>Category Name</h1>
 

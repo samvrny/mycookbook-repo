@@ -11,9 +11,17 @@ export default function Header() {
             <nav>
                 {/* This is probably where the browserrouter components will live... */}
                 {/* For style demos sake... */}
-                <a href="">Page Link</a>
-                <a href="">Page Link</a>
-                <a href="">Page Link</a>
+                <ul>
+                    <li>
+                        <a href="">Page Link</a>
+                    </li>
+                    <li>
+                        <a href="">Page Link</a>
+                    </li>
+                    <li>
+                        <a href="">Page Link</a>
+                    </li>
+                </ul>
             </nav>
         </header>
     )
