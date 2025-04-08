@@ -13,6 +13,7 @@ npm run dev to start
 ***** INITIALIZE *****
 
 npm install aws-amplify @aws-amplify/ui-react
+++ for React Router, add this onto the npm install: react-router-dom
 amplify init
 continue gen1
 enter project name
