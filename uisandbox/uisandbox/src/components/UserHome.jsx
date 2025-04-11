@@ -45,7 +45,7 @@ export default function UserHome() {
                 {
                     //Triple EQUALS SIGN!!! REMEMBER TO DO IT!! Or else.... things will NOT work
 
-                    currentCategory === "Welcome" ? <p>Welcome. Please choose a category to get started!</p> :
+                    currentCategory === "Welcome" ? <p>Welcome. Please choose a category to view your recipes!</p> :
                     filteredRecipes.length === 0 ? <p>No recipes found for this category. Choose another category or create a new recipe!</p> :
                     filteredRecipes.map((recipe) => (
                             <article>
