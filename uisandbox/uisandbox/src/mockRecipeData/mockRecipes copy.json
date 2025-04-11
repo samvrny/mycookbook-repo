@@ -2,7 +2,8 @@
     "categories": [
         "Breakfast",
         "Lunch",
-        "Dinner"
+        "Dinner",
+        "Misc"
     ],
 
     "recipes": [
@@ -18,7 +19,7 @@
                 "Dash of black pepper",
                 "1/2 Tbs. Butter"
             ],
-            "instructions": [
+            "insructions": [
                 "Crack eggs into a bowl",
                 "Add salt and pepper and whisk",
                 "Heat a pan on medium heat and add the butter.",
