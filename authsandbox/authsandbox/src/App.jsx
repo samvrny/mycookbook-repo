@@ -13,6 +13,7 @@ import Recipe from './components/Recipe'
 import UpdateRecipe from './components/UpdateRecipe'
 // import WelcomePage from './components/WelcomePage'
 import ConditionalHome from './components/ConditionalHome'
+import SignLog from './components/SignLog'
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
               <Route path="/create-recipe" element={<CreateRecipe />} />
               <Route path="/recipe/:recipeIdToDisplay" element={<Recipe />} />
               <Route path="/update-recipe" element={<UpdateRecipe />} />
+
+              {/* TEMP ROUTE FOR THE LOGIN */}
+              <Route path="/sign-log" element={<SignLog />} />
         </Routes>
     </>
   )

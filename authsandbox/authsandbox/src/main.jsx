@@ -10,6 +10,11 @@ import App from './App.jsx'
  */
 import { Authenticator } from '@aws-amplify/ui-react'
 
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports'; // ✅ adjust path if needed
+
+Amplify.configure(awsExports);
+
 //IMPORT THE BROWSERROUTER
 /**
  * Note below: the App component (allegedly) needs to be wrapped in the 
