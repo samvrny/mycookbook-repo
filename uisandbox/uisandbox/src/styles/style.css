@@ -61,14 +61,11 @@ nav a:hover {
     background-color: #87BDFF;
 }
 
-#MOCKLOGO {
-    height: 100px;
-    width: 200px;
-    background-color: aliceblue;
-    margin-left: 20px;
+header img {
+    height: 160px;
+    width: auto;
+    margin: 15px 0 0 25px;
     text-align: center;
-    border-radius: 100%;
-    border: 2px solid black;
 }
 
 /* */
@@ -227,3 +224,5 @@ label {
     transform: translateY(2px); 
     transform: translateX(2px);
 }
+
+/* SINGLE RECIPE DISPLAY STYLES */
