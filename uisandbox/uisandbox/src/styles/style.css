@@ -136,6 +136,15 @@ aside ul {
     color: #FFFFFF;
 }
 
+.categoryButtonGreen:hover, .createRecipeButton:hover {
+    background-color: #1ddb17;
+}
+
+.categoryButton:hover {
+    background-color: #002550;
+    color: #FFFFFF;
+}
+
 .createRecipeButton {
     display: block;
 

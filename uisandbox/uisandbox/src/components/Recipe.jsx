@@ -1,9 +1,16 @@
 import mockData from '../mockRecipeData/mockRecipes.json';
 
+//FOR THE ROUTING
+import { useParams } from 'react-router-dom';
+
 export default function Recipe() {
 
+    //For the routing
+    const { recipeIdToDisplay } = useParams();
+    console.log(recipeIdToDisplay);
+
     let recipes = mockData.recipes;
-    let recipe = recipes.find(recipe => recipe.recipeID === "2");
+    let recipe = recipes.find(recipe => recipe.recipeID === recipeIdToDisplay);
     console.log(recipe);
 
     return (

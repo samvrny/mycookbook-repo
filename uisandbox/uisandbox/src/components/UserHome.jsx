@@ -54,7 +54,7 @@ export default function UserHome() {
                                 <h3>{recipe.name}</h3>
                                 <p>{recipe.description}</p>
 
-                                <a href="" id={recipe.recipeID}>View Recipe</a>
+                            <Link to={`/recipe/${recipe.recipeID}`}>View Recipe</Link>
                             </article>
                         ))
                 }
