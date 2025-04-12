@@ -10,8 +10,6 @@ export default function Recipe() {
     console.log(recipeIdToDisplay);
 
     let recipes = mockData.recipes;
-
-    //Right now, this doesn't account for finding by the USER Id which is causing SOME issues.
     let recipe = recipes.find(recipe => recipe.recipeID === recipeIdToDisplay);
     console.log(recipe);
 
