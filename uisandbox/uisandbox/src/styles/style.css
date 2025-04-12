@@ -177,7 +177,7 @@ input, textarea, select {
     border-radius: 3px;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     outline: none;
     box-shadow: 0 0 4px #0550AB;
     box-sizing: border-box;
@@ -220,4 +220,10 @@ label {
     width: 250px;
     padding: 10px 25px;
     font-size: 1.25em;
+}
+
+.addListButton:active, .submitButtons:active { /* This is to make the buttons do something cool on click!! */
+    box-shadow: 2px 2px 0 black;
+    transform: translateY(2px); 
+    transform: translateX(2px);
 }

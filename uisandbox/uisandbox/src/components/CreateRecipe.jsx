@@ -11,7 +11,26 @@ export default function CreateRecipe() {
     const handleSubmission = (event) => {
         event.preventDefault();
 
-        console.log("Create Recipe On");
+        //Handle the ingredients
+        let ingredientInputs = [...document.querySelectorAll("[name=\"ingredient\"]")];
+        let ingredientRawText = ingredientInputs.map(ingredient => {
+            return ingredient.value.trim();
+        })
+        let ingredientsToSave = ingredientRawText.filter(ingredient => {
+            return ingredient !== "";
+        })
+
+        //Handle the ingredients
+        let instructionInputs = [...document.querySelectorAll("[name=\"instruction\"]")];
+        let instructionRawText = instructionInputs.map(instruction => {
+            return instruction.value.trim();
+        })
+        let instructionsToSave = instructionRawText.filter(instruction => {
+            return instruction !== "";
+        })
+
+        console.log(ingredientsToSave); // IT WORKS BY JOVE!!
+        console.log(instructionsToSave);
     }
 
     /**
@@ -43,7 +62,7 @@ export default function CreateRecipe() {
     }
 
     /**
-     * Reset
+     * Reset the form 
      */
     const resetFormFields = (event) => {
         event.preventDefault();
@@ -65,6 +84,9 @@ export default function CreateRecipe() {
         document.getElementById("createRecipeForm").reset();
     }
 
+    /**
+     * The UI display
+     */
     return (
         <main id="createRecipe">
 
