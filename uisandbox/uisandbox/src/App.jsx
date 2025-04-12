@@ -1,5 +1,9 @@
 import './styles/style.css' //IMPORT THE NEW STYLESHEET
 
+//Import the needed things from React Router DOM
+import { Routes, Route } from 'react-router-dom'
+
+
 //Import Components (for tesing. BrowserRouter will eventually route to pages... I think)
 import Header from './components/Header'
 import UserHome from './components/UserHome'
@@ -14,31 +18,16 @@ function App() {
     <>
       <Header />
 
-      {/* <hr />
-      <hr />
-      <p>MOCK USER HOME SCREEN BELOW</p>
-      <hr />
-      <hr /> */}
+      {/* {location.pathname === "/user-home" && <UserHome />} */}
 
-      {/* <UserHome /> */}
-{/* 
-      <hr />
-      <hr />
-      <p>MOCK CREATE RECIPE BELOW</p>
-      <hr />
-      <hr /> */}
+      <Routes>
+            <Route path="/" element={<UserHome />} />
+            {/* <Route path="/user-home" element={<UserHome />} /> */}
+            <Route path="/create-recipe" element={<CreateRecipe />} />
+            <Route path="/recipe" element={<Recipe />} />
+            <Route path="/update-recipe" element={<UpdateRecipe />} />
+      </Routes>
 
-      {/* <CreateRecipe /> */}
-
-{/* 
-      <hr />
-      <hr />
-      <p>DISPLAY SINGLE RECIPE BELOW</p>
-      <hr />
-      <hr /> */}
-
-      {/* <Recipe /> */}
-      <UpdateRecipe />
     </>
   )
 }

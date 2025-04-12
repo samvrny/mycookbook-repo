@@ -28,7 +28,7 @@ export default function Recipe() {
 
             <h3>Instructions</h3>
             <ul>
-                {recipe.insructions.map(instruction => {
+                {recipe.instructions.map(instruction => {
                     return <li>{instruction}</li>
                 })}
             </ul>
