@@ -28,10 +28,47 @@ export default function CreateRecipe() {
         ingredientList.appendChild(newInput);
     }
 
+    /**
+     * Add a new instruction to the instructions list
+     */
+    const addInstructionInput = (event) => {
+        event.preventDefault();
+
+        const instructionList = document.getElementById("instructions");
+
+        const newInput = document.createElement("input");
+        newInput.setAttribute("name", "instruction");
+
+        instructionList.appendChild(newInput);
+    }
+
+    /**
+     * Reset
+     */
+    const resetFormFields = (event) => {
+        event.preventDefault();
+
+        const ingredientList = document.getElementById("ingredients");
+        const instructionList = document.getElementById("instructions");
+
+        let ingredientChildren = ingredientList.children;
+        let instructionChildren = instructionList.children;
+
+        while (ingredientChildren.length > 1) {
+            ingredientList.removeChild(ingredientList.lastElementChild);
+        }
+
+        while (instructionChildren.length > 1) {
+            instructionList.removeChild(instructionList.lastElementChild);
+        }
+
+        document.getElementById("createRecipeForm").reset();
+    }
+
     return (
         <main id="createRecipe">
 
-            <form onSubmit={handleSubmission}>
+            <form onSubmit={handleSubmission} id="createRecipeForm">
                 <h2>Create New Recipe</h2>
 
                 {/* Choose Category */}
@@ -62,11 +99,14 @@ export default function CreateRecipe() {
 
                 {/* Enter Instructions */}
                 <label htmlFor="">Add Instructions</label>
-                <input type="text" />
-                <button>Add Another Instruction</button>
+                <div id="instructions">
+                    <input type="text" name="instruction"/>
+                </div>
+                <button onClick={addInstructionInput}>Add Another Instruction</button>
 
                 {/* Submit */}
                 <input type="submit" value="Create New Recipe"/>
+                <button onClick={resetFormFields}>Start Over</button>
             </form>
         </main>
     )
