@@ -11,6 +11,15 @@ export default function CreateRecipe() {
     const handleSubmission = (event) => {
         event.preventDefault();
 
+        //Grab the category
+        let category = document.getElementById("categorySelection").value;
+
+        //Grab the title
+        let title = document.getElementById("titleSelection").value;
+
+        //Grab the description
+        let description = document.getElementById("descriptionSelection").value;
+
         //Handle the ingredients
         let ingredientInputs = [...document.querySelectorAll("[name=\"ingredient\"]")];
         let ingredientRawText = ingredientInputs.map(ingredient => {
@@ -29,6 +38,9 @@ export default function CreateRecipe() {
             return instruction !== "";
         })
 
+        console.log(category);
+        console.log(title);
+        console.log(description);
         console.log(ingredientsToSave); // IT WORKS BY JOVE!!
         console.log(instructionsToSave);
     }
@@ -95,7 +107,7 @@ export default function CreateRecipe() {
 
                 {/* Choose Category */}
                 <label htmlFor="categorySelection">Choose a Category</label>
-                <select id="categorySelection">
+                <select id="categorySelection" required>
                     <option value="Misc" defaultValue={"Misc"}>Misc</option>
                     {
                         categories.map((category, index) => (
@@ -106,7 +118,7 @@ export default function CreateRecipe() {
 
                 {/* Choose Name */}
                 <label htmlFor="titleSelection">Give Your Recipe a Title</label>
-                <input type="text" id="titleSelection"/>
+                <input type="text" id="titleSelection" required/>
 
                 {/* Enter Description */}
                 <label htmlFor="descriptionSelection">Enter A Description</label>
@@ -115,7 +127,7 @@ export default function CreateRecipe() {
                 {/* Enter Ingredients */}
                 <label htmlFor="ingredients">Add Ingredients</label>
                 <div id="ingredients">
-                    <input type="text" name="ingredient" />
+                    <input type="text" name="ingredient" required/>
                 </div>
                 <button onClick={addIngredientInput} className="addListButton">Add Another Ingredient +</button>
 
