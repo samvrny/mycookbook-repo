@@ -2,6 +2,8 @@ import mockData from '../mockRecipeData/mockRecipes.json'
 
 import { useState } from 'react';
 
+//YOU HAVE TO IMPORT LINK
+import { Link } from 'react-router-dom';
 
 export default function UserHome() {
 
@@ -36,7 +38,7 @@ export default function UserHome() {
             </aside>
 
             <section id="userHomeMainSection">
-                <a className="createRecipeButton" href="">Create New Recipe +</a>
+                <Link className="createRecipeButton" to="/create-recipe">Create New Recipe +</Link>
 
                 <h1>{currentCategory}</h1>
 

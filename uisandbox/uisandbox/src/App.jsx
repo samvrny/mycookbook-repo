@@ -18,8 +18,6 @@ function App() {
     <>
       <Header />
 
-      {/* {location.pathname === "/user-home" && <UserHome />} */}
-
       <Routes>
             <Route path="/" element={<UserHome />} />
             {/* <Route path="/user-home" element={<UserHome />} /> */}
