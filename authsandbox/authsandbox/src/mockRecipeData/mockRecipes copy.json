@@ -2,7 +2,8 @@
     "categories": [
         "Breakfast",
         "Lunch",
-        "Dinner"
+        "Dinner",
+        "Misc"
     ],
 
     "recipes": [
@@ -18,7 +19,7 @@
                 "Dash of black pepper",
                 "1/2 Tbs. Butter"
             ],
-            "instructions": [
+            "insructions": [
                 "Crack eggs into a bowl",
                 "Add salt and pepper and whisk",
                 "Heat a pan on medium heat and add the butter.",
@@ -38,7 +39,7 @@
                 "1/2 cup Heavy Cream",
                 "1 tsp. maple syrup"
             ],
-            "instructions": [
+            "insructions": [
                 "Dice up your fruits (leave berries whole)",
                 "Add heavy cream and syrup to a bowl and whisk with a hand beater or electric mixer until stiff peaks form",
                 "Add fruit to a bowl",
@@ -59,7 +60,7 @@
                 "Lettuce",
                 "Tomato"
             ],
-            "instructions": [
+            "insructions": [
                 "Spread the mayo on the bread",
                 "Layer the rest of the ingredients on one piece of the bread",
                 "Put the other piece of bread on top",
@@ -75,7 +76,7 @@
             "ingredients": [
                 "Whatever is in the fridge"
             ],
-            "instructions": [
+            "insructions": [
                 "Open up the fridge",
                 "Search around for something to eat",
                 "Reheat food if necessary...",
@@ -96,7 +97,7 @@
                 "1 Tbs Butter",
                 "Scoop of sour cream"
             ],
-            "instructions": [
+            "insructions": [
                 "Preheat oven to 400. Poke holes in potato with a fork and wrap it in foil, then place it in the oven",
                 "After potato has been in the oven for about 40 minutes, Heat a pan on medium high heat",
                 "Salt both sides of the steak generously, as well as adding a little pepper",
