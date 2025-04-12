@@ -10,6 +10,11 @@
       "StackName": "amplify-authsandbox-dev-1dac6",
       "StackId": "arn:aws:cloudformation:us-east-2:209479286992:stack/amplify-authsandbox-dev-1dac6/67443890-17e1-11f0-b49a-0a4700b13e7d",
       "AmplifyAppId": "d1b32zinhb0wm4"
+    },
+    "categories": {
+      "auth": {
+        "authsandboxc128df8c": {}
+      }
     }
   }
 }
