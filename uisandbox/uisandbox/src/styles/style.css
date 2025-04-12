@@ -136,9 +136,9 @@ aside ul {
     width: 300px;
 }
 
-/* CREATE RECIPE STYLES */
+/* CREATE RECIPE/UPDATE RECIPE STYLES */
 
-#createRecipeForm {
+#createRecipeForm, #updateRecipeForm {
     background-color: #FFFFFF;
     width: 700px;
     margin: 50px auto;
@@ -148,7 +148,7 @@ aside ul {
     text-align: center;
 }
 
-#createRecipeForm h2 {
+#createRecipeForm h2, #updateRecipeForm h2 {
     font-size: 2em;
     font-style: italic;
     color: #0550AB;

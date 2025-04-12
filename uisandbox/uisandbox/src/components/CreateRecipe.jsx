@@ -141,7 +141,7 @@ export default function CreateRecipe() {
                 {/* Submit */}
 
                 <div id="formButtons">
-                <button onClick={resetFormFields} className="submitButtons">Start Over</button>
+                    <button onClick={resetFormFields} className="submitButtons">Start Over</button>
                     <input type="submit" value="Create New Recipe" className="submitButtons"/>
                 </div>
             </form>

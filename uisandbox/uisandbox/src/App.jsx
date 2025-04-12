@@ -5,6 +5,7 @@ import Header from './components/Header'
 import UserHome from './components/UserHome'
 import CreateRecipe from './components/CreateRecipe'
 import Recipe from './components/Recipe'
+import UpdateRecipe from './components/UpdateRecipe'
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
       <hr />
       <hr /> */}
 
-      <Recipe />
+      {/* <Recipe /> */}
+      <UpdateRecipe />
     </>
   )
 }
