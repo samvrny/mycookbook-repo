@@ -226,3 +226,12 @@ label {
 }
 
 /* SINGLE RECIPE DISPLAY STYLES */
+#singleRecipePage {
+    background-color: #FFFFFF;
+    width: 700px;
+    margin: 50px auto;
+    padding: 2em;
+    border-radius: 3px;
+    border: 2px solid black;
+    /* text-align: center; */
+}
