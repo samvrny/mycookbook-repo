@@ -76,8 +76,8 @@ export default function CreateRecipe() {
                 <select id="categorySelection">
                     <option value="Misc" defaultValue={"Misc"}>Misc</option>
                     {
-                        categories.map(category => (
-                            <option value={category}>{category}</option>
+                        categories.map((category, index) => (
+                            <option value={category} key={index}>{category}</option>
                         ))
                     }
                 </select>
@@ -95,18 +95,21 @@ export default function CreateRecipe() {
                 <div id="ingredients">
                     <input type="text" name="ingredient" />
                 </div>
-                <button onClick={addIngredientInput}>Add Another Ingredient</button>
+                <button onClick={addIngredientInput} className="addListButton">Add Another Ingredient +</button>
 
                 {/* Enter Instructions */}
                 <label htmlFor="">Add Instructions</label>
                 <div id="instructions">
                     <input type="text" name="instruction"/>
                 </div>
-                <button onClick={addInstructionInput}>Add Another Instruction</button>
+                <button onClick={addInstructionInput} className="addListButton">Add Another Instruction +</button>
 
                 {/* Submit */}
-                <input type="submit" value="Create New Recipe"/>
-                <button onClick={resetFormFields}>Start Over</button>
+
+                <div id="formButtons">
+                <button onClick={resetFormFields} className="submitButtons">Start Over</button>
+                    <input type="submit" value="Create New Recipe" className="submitButtons"/>
+                </div>
             </form>
         </main>
     )

@@ -18,13 +18,13 @@ function App() {
       <hr />
       <hr /> */}
 
-      <UserHome />
-
+      {/* <UserHome /> */}
+{/* 
       <hr />
       <hr />
       <p>MOCK CREATE RECIPE BELOW</p>
       <hr />
-      <hr />
+      <hr /> */}
 
       <CreateRecipe />
     </>
