@@ -4,8 +4,8 @@ export default function Header() {
 
     return(
         <header>
-            <div id="MOCKLOGO">
-                <p>MyCookbook</p>
+            <div>
+                <img src="../../public/logo400x400.png"/>
             </div>
 
             <nav>

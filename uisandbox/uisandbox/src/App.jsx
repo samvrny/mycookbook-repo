@@ -4,6 +4,7 @@ import './styles/style.css' //IMPORT THE NEW STYLESHEET
 import Header from './components/Header'
 import UserHome from './components/UserHome'
 import CreateRecipe from './components/CreateRecipe'
+import Recipe from './components/Recipe'
 
 
 function App() {
@@ -18,15 +19,24 @@ function App() {
       <hr />
       <hr /> */}
 
-      <UserHome />
-
+      {/* <UserHome /> */}
+{/* 
       <hr />
       <hr />
       <p>MOCK CREATE RECIPE BELOW</p>
       <hr />
-      <hr />
+      <hr /> */}
 
-      <CreateRecipe />
+      {/* <CreateRecipe /> */}
+
+{/* 
+      <hr />
+      <hr />
+      <p>DISPLAY SINGLE RECIPE BELOW</p>
+      <hr />
+      <hr /> */}
+
+      <Recipe />
     </>
   )
 }

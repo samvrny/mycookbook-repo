@@ -18,6 +18,8 @@ body {
     margin: 0 auto;
 }
 
+* { box-sizing: border-box; }
+
 /* HEADER STYLES */
 header {
     background-color: #0550AB;
@@ -59,14 +61,11 @@ nav a:hover {
     background-color: #87BDFF;
 }
 
-#MOCKLOGO {
-    height: 100px;
-    width: 200px;
-    background-color: aliceblue;
-    margin-left: 20px;
+header img {
+    height: 160px;
+    width: auto;
+    margin: 15px 0 0 25px;
     text-align: center;
-    border-radius: 100%;
-    border: 2px solid black;
 }
 
 /* */
@@ -139,8 +138,100 @@ aside ul {
 
 /* CREATE RECIPE STYLES */
 
-/* Delete this style */
-#createRecipe {
-    margin: 0 100px 500px;
+#createRecipeForm {
+    background-color: #FFFFFF;
+    width: 700px;
+    margin: 50px auto;
+    padding: 2em;
+    border-radius: 3px;
+    border: 2px solid black;
+    text-align: center;
 }
-/* Delete the above style */
+
+#createRecipeForm h2 {
+    font-size: 2em;
+    font-style: italic;
+    color: #0550AB;
+}
+
+select {
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+
+label, input, textarea {
+    margin: 0 auto 10px;
+    display: block;
+    width: 350px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+input, textarea, select {
+    border: 1px solid #0550AB; 
+    border-radius: 3px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 4px #0550AB;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    margin: 20px auto 7px;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+#formButtons {
+    margin-top: 30px;
+}
+
+.addListButton, .submitButtons {
+    background-color: #0550AB;
+    margin: 10px auto;
+    font-size: 1em;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+
+.submitButtons {
+    background-color: #059400;
+    color: #FFFFFF;
+    width: 250px;
+    padding: 10px 25px;
+    font-size: 1.25em;
+}
+
+.addListButton:active, .submitButtons:active { /* This is to make the buttons do something cool on click!! */
+    box-shadow: 2px 2px 0 black;
+    transform: translateY(2px); 
+    transform: translateX(2px);
+}
+
+/* SINGLE RECIPE DISPLAY STYLES */
+#singleRecipePage {
+    background-color: #FFFFFF;
+    width: 700px;
+    margin: 50px auto;
+    padding: 2em;
+    border-radius: 3px;
+    border: 2px solid black;
+    /* text-align: center; */
+}
