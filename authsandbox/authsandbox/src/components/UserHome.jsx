@@ -12,13 +12,8 @@ export default function UserHome() {
 
     //Get recipes
     let recipes = mockData.recipes;
-    // let recipes = [];
-
-    // console.log(categories);
-    // console.log(recipes);
 
     const [currentCategory, setCurrentCategory] = useState("Welcome");
-    // console.log("Current Category on Render: " + currentCategory);
 
     const filteredRecipes = recipes.filter(recipe => recipe.category === currentCategory);
 

@@ -37,6 +37,9 @@ export default function Header() {
                         <li>
                             <Link to="/sign-log">Sign Up/In</Link>
                         </li>
+                        <li>
+                            <Link to="/sign-in">Sign In</Link>
+                        </li>
                     </ul>
                 )}
             </nav>
