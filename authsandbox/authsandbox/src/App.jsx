@@ -15,6 +15,7 @@ import UpdateRecipe from './components/UpdateRecipe'
 import ConditionalHome from './components/ConditionalHome'
 import SignLog from './components/SignLog'
 import SignIn from './components/SignIn'
+import AuthPage from './components/AuthPage'
 
 
 function App() {
@@ -34,8 +35,8 @@ function App() {
               <Route path="/update-recipe" element={<UpdateRecipe />} />
 
               {/* TEMP ROUTE FOR THE LOGIN */}
-              <Route path="/sign-log" element={<SignLog />} />
-              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<AuthPage />} />
+              <Route path="/sign-in" element={<AuthPage />} />
         </Routes>
     </>
   )

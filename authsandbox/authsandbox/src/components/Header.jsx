@@ -35,7 +35,7 @@ export default function Header() {
                 ) : (
                     <ul>
                         <li>
-                            <Link to="/sign-log">Sign Up/In</Link>
+                            <Link to="/sign-up">Sign Up</Link>
                         </li>
                         <li>
                             <Link to="/sign-in">Sign In</Link>
