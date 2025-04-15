@@ -1,0 +1,58 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-authsandbox-dev-1dac6-authRole",
+      "UnauthRoleArn": "arn:aws:iam::209479286992:role/amplify-authsandbox-dev-1dac6-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::209479286992:role/amplify-authsandbox-dev-1dac6-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-authsandbox-dev-1dac6-deployment",
+      "UnauthRoleName": "amplify-authsandbox-dev-1dac6-unauthRole",
+      "StackName": "amplify-authsandbox-dev-1dac6",
+      "StackId": "arn:aws:cloudformation:us-east-2:209479286992:stack/amplify-authsandbox-dev-1dac6/67443890-17e1-11f0-b49a-0a4700b13e7d",
+      "AmplifyAppId": "d1b32zinhb0wm4"
+    }
+  },
+  "auth": {
+    "authsandboxc128df8c": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-authsandbox-dev-1dac6-deployment/amplify-cfn-templates/auth/authsandboxc128df8c-cloudformation-template.json",
+        "logicalId": "authauthsandboxc128df8c"
+      },
+      "lastPushTimeStamp": "2025-04-12T21:10:57.225Z",
+      "output": {
+        "UserPoolId": "us-east-2_4ohiKNmEr",
+        "AppClientIDWeb": "7mvbm0i0h20jrs23efntjp80ss",
+        "AppClientID": "44ghebsb3dgnjil4r1sag15jsp",
+        "IdentityPoolId": "us-east-2:bccedabc-9792-48b2-89f1-3f43bf18f7bd",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:209479286992:userpool/us-east-2_4ohiKNmEr",
+        "IdentityPoolName": "authsandboxc128df8c_identitypool_c128df8c__dev",
+        "UserPoolName": "authsandboxc128df8c_userpool_c128df8c"
+      },
+      "lastPushDirHash": "CirP7czxlpJbou5eJbSmIHgOcn4="
+    }
+  }
+}
