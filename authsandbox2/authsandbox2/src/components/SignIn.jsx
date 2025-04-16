@@ -5,7 +5,9 @@ export default function SignIn() {
 
     return (
         <main>
-            <Authenticator hideSignUp></Authenticator>
+            <Authenticator 
+                initialState="signIn"
+            ></Authenticator>
         </main>
     )
 

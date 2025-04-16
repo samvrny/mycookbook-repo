@@ -35,11 +35,11 @@ export default function Header() {
                 ) : (
                     <ul>
                         <li>
-                            <Link to="/sign-log">Sign Up/In</Link>
+                            <Link to="/sign-up">Sign Up / Log In</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/sign-in">Sign In</Link>
-                        </li>
+                        </li> */}
                     </ul>
                 )}
             </nav>

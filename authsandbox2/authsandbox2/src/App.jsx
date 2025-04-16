@@ -13,8 +13,9 @@ import Recipe from './components/Recipe'
 import UpdateRecipe from './components/UpdateRecipe'
 // import WelcomePage from './components/WelcomePage'
 import ConditionalHome from './components/ConditionalHome'
-import SignLog from './components/SignLog'
-import SignIn from './components/SignIn'
+// import SignLog from './components/SignLog'
+// import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
 
 function App() {
 
@@ -33,8 +34,9 @@ function App() {
               <Route path="/update-recipe" element={<UpdateRecipe />} />
 
               {/* TEMP ROUTE FOR THE LOGIN */}
-              <Route path="/sign-up" element={<SignLog />} />
-              <Route path="/sign-in" element={<SignIn />} />
+              {/* <Route path="/sign-up" element={<SignLog />} /> */}
+              {/* <Route path="/sign-in" element={<SignIn />} /> */}
+              <Route path="/sign-up" element={<SignUp />} />
         </Routes>
     </>
   )

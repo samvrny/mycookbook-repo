@@ -262,5 +262,9 @@ label {
     padding: 2em;
     border-radius: 3px;
     border: 2px solid black;
-    /* text-align: center; */
+}
+
+/* AUTHORIZATION STYLES - These overwrite some of the amplify initial styles */
+div[data-amplify-router] {
+    margin-top: 50px
 }
