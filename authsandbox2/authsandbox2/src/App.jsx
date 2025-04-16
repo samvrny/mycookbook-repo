@@ -3,18 +3,13 @@ import './styles/style.css' //IMPORT THE NEW STYLESHEET
 //Import the needed things from React Router DOM
 import { Routes, Route } from 'react-router-dom'
 
-//Import the cognito stuff
-
 //Import Components (for tesing. BrowserRouter will eventually route to pages... I think)
 import Header from './components/Header'
-// import UserHome from './components/UserHome'
 import CreateRecipe from './components/CreateRecipe'
 import Recipe from './components/Recipe'
 import UpdateRecipe from './components/UpdateRecipe'
-// import WelcomePage from './components/WelcomePage'
+import DeleteRecipe from './components/DeleteRecipe'
 import ConditionalHome from './components/ConditionalHome'
-// import SignLog from './components/SignLog'
-// import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 
 function App() {
@@ -23,19 +18,14 @@ function App() {
     <>
       <Header />
         <Routes>
-              {/* <Route path="/" element={<UserHome />} /> */}
-              {/* <Route path="/" element={<WelcomePage />} /> */}
 
               <Route path="/" element={<ConditionalHome />} />
 
-              {/* <Route path="/user-home" element={<UserHome />} /> */}
               <Route path="/create-recipe" element={<CreateRecipe />} />
               <Route path="/recipe/:recipeIdToDisplay" element={<Recipe />} />
-              <Route path="/update-recipe" element={<UpdateRecipe />} />
+              <Route path="/update-recipe/:recipeIdToUpdate" element={<UpdateRecipe />} />
+              <Route path="/delete-recipe/:recipeIdToDelete" element={<DeleteRecipe />} />
 
-              {/* TEMP ROUTE FOR THE LOGIN */}
-              {/* <Route path="/sign-up" element={<SignLog />} /> */}
-              {/* <Route path="/sign-in" element={<SignIn />} /> */}
               <Route path="/sign-up" element={<SignUp />} />
         </Routes>
     </>

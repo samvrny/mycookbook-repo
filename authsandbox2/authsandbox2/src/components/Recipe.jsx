@@ -89,8 +89,8 @@ export default function Recipe() {
             </ul>
 
             <div id="recipeButtons">
-                <Link to={`/delete-recipe/${recipe.recipeID}`} id="recipeUpdateButton">Update Recipe</Link>
-                <Link to={`/update-recipe/${recipe.recipeID}`} id="recipeDeleteButton">Delete Recipe</Link>
+                <Link to={`/update-recipe/${recipe.recipeID}`} id="recipeUpdateButton">Update Recipe</Link>
+                <Link to={`/delete-recipe/${recipe.recipeID}`} id="recipeDeleteButton">Delete Recipe</Link>
             </div>
         </main>
     )
