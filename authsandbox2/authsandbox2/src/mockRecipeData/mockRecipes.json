@@ -71,7 +71,7 @@
             "recipeID": "4",
             "category": "Lunch",
             "name": "Leftovers",
-            "description": "Leftovers from the fridge",
+            "description": "Leftovers from the fridge. Could be anything. Potato pie, sweet corn, chili, hamburders, sushi. Just about anything might be left over.",
             "ingredients": [
                 "Whatever is in the fridge"
             ],

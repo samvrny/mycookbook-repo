@@ -180,8 +180,7 @@ aside ul {
 .recipeCard a {
     text-decoration: none;
     background-color: #0550AB;
-    margin: 10px auto;
-    font-size: 1em;
+    font-size: 1.25em;
     padding: 5px 15px;
     font-weight: bold;
     font-style: italic;
@@ -192,9 +191,16 @@ aside ul {
     text-align: center;
     cursor: pointer;
 
+    width: 175px;
     position: absolute;
-    top: 0.5em;
+    top: 1em;
     right: 1.5em;
+}
+
+.recipeCard h3 {
+    color: #0550AB;
+    font-style: italic;
+    font-size: 1.5em;
 }
 
 /* CREATE RECIPE/UPDATE RECIPE STYLES */
