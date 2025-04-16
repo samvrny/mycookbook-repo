@@ -1,5 +1,6 @@
 import mockData from '../mockRecipeData/mockRecipes.json';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 //FOR THE ROUTING
 import { useParams } from 'react-router-dom';
@@ -88,7 +89,8 @@ export default function Recipe() {
             </ul>
 
             <div id="recipeButtons">
-                
+                <Link to={`/delete-recipe/${recipe.recipeID}`} id="recipeUpdateButton">Update Recipe</Link>
+                <Link to={`/update-recipe/${recipe.recipeID}`} id="recipeDeleteButton">Delete Recipe</Link>
             </div>
         </main>
     )

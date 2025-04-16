@@ -297,9 +297,22 @@ label {
     background-color: #FFFFFF;
     width: 700px;
     margin: 50px auto;
-    padding: 2em;
+    padding: 2em 5em;
     border-radius: 3px;
     border: 2px solid black;
+}
+
+#singleRecipePage h2 {
+    color: #0550AB;
+    text-align: center;
+    font-style: italic;
+    font-size: 2.25em;
+    margin-top: 0.5em;
+}
+
+#singleRecipePage h3 {
+    font-style: italic;
+    font-size: 1.45em;
 }
 
 /* AUTHORIZATION STYLES - These overwrite some of the amplify initial styles */
