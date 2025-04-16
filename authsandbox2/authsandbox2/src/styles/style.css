@@ -107,12 +107,14 @@ aside {
     width: 250px;
     /* text-align: center; */
     padding: 10px 13px 10px 10px;
+    height: fit-content;  
     max-height: 500px;
 }
 
 aside ul {
     margin: 0;
     padding: 0;
+    /* position: absolute; */
 }
 
 .categoryButton, .categoryButtonGreen {
@@ -163,6 +165,36 @@ aside ul {
     margin: 20px 30px 0 auto;
     padding: 10px 0;
     width: 300px;
+}
+
+.recipeCard {
+    background-color: #FFFFFF;
+    width: 600px;
+    padding: 0.5em 1.5em;
+    margin: 1.75em 0 0;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #0550AB;
+}
+
+.recipeCard a {
+    text-decoration: none;
+    background-color: #0550AB;
+    margin: 10px auto;
+    font-size: 1em;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+
+    position: absolute;
+    top: 0.5em;
+    right: 1.5em;
 }
 
 /* CREATE RECIPE/UPDATE RECIPE STYLES */
@@ -268,3 +300,31 @@ label {
 div[data-amplify-router] {
     margin-top: 50px
 }
+
+
+/* 
+
+    MEDIA QUERY BREAKPOINTS
+
+    955px
+        User Homepage
+            Cards smaller
+            Thinner Side Menu
+
+    760px
+        User Homepage
+            Mobile Cards
+
+        Create Recipe
+            Thinned Down
+        Update Recipe
+            Thinned down
+
+    600px
+        All
+            Mobile Breakpoint
+
+        User Homepage
+            Mobile Category Navigation
+            Mobile Cards
+*/

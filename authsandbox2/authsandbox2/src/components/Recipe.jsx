@@ -6,51 +6,57 @@ import { useParams } from 'react-router-dom';
 
 //FOR GRABBING THE USER ID
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Recipe() {
 
     //Get the user
     const { user } = useAuthenticator((context) => [context.user]);
 
+    //Protect the route from unauthorized access
+    const navigate = useNavigate();
+
+    if (!user) {
+        navigate("/sign-up");
+    }
+
     //For the routing (recipeID passed from the routing)
     const { recipeIdToDisplay } = useParams();
     console.log(recipeIdToDisplay);
 
-    //State must be used to prevent weird non rendering behavior in React
+    //Set the state of the recipe to be rendered
     const [recipe, setRecipe] = useState(null);
 
-    // const getRecipe = async () => {
-
-    //     //Fetch the recipes. THIS WILL EVENTUALLY BE A FETCH.
-    //     let recipes = mockData.recipes;
-
-    //     let recipe = recipes.find(recipe => recipe.recipeID === recipeIdToDisplay);
-    //     console.log(recipe);
-
-    //     return recipe;
-    // }
-
+    /**
+     * This useEffect calls to fetch the recipe, and then sets the
+     * recipe to be rendered into state.
+     */
     useEffect(() => {
         //Make sure there is a user.
         if (!user) return;
 
+        /**
+         * Fetch the recipe
+         */
         const fetchRecipe = async () => {
             const userID = JSON.stringify(user.userId); //THIS IS THE CODE TO GRAB THE USER ID
             console.log('UserID:', userID);
             console.log('Recipe ID:', recipeIdToDisplay);
     
-          // For now just pull from mock JSON
-          const recipes = mockData.recipes;
-          let recipe = recipes.find(recipe => recipe.recipeID === recipeIdToDisplay);
+            // For now just pull from mock JSON
+            const recipes = mockData.recipes;
+            let recipe = recipes.find(recipe => recipe.recipeID === recipeIdToDisplay);
     
         //   console.log('Found recipe:', recipe);
-          setRecipe(recipe);
+
+            //Once the recipe is retrieved, set it into state.
+            setRecipe(recipe);
         };
     
         fetchRecipe();
     }, [user, recipeIdToDisplay]);
 
-    // 👇 Prevent rendering until recipe is loaded
+    //Prevent rendering until recipe is loaded
     if (!recipe) {
         return <p>Loading recipe...</p>;
     }
@@ -59,7 +65,6 @@ export default function Recipe() {
         <main id="singleRecipePage">
             
             <h2>{recipe.name}</h2>
-
 
             {recipe.description ? 
                 <>
