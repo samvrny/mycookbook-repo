@@ -26,10 +26,10 @@ export default function Header() {
                             <Link to="/manage-categories">Categories</Link>
                         </li>
                         <li>
-                            <button id="signOutButton" onClick={() => {
+                            <Link id="signOutButton" onClick={() => {
                                 signOut();
                                 navigate("/");
-                            }}>Sign Out</button>
+                            }}>Sign Out</Link>
                         </li>
                     </ul>
                 ) : (
