@@ -1,6 +1,22 @@
 import mockData from '../mockRecipeData/mockRecipes.json'
 
+//Authenticator stuff...
+import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useNavigate } from 'react-router-dom';
+
+
 export default function UpdateRecipe() {
+
+    /**
+     * Protect the route from unauthorized access
+     */
+    const { user } = useAuthenticator((context) => [context.user]);
+    const navigate = useNavigate();
+
+    if (!user) {
+        navigate("/sign-up");
+    }
+
 
     //Get categories. Will eventually need to be a fetch.
     let categories = mockData.categories;
