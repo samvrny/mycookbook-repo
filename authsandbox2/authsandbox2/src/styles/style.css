@@ -296,7 +296,7 @@ label {
 #singleRecipePage {
     background-color: #FFFFFF;
     width: 700px;
-    margin: 50px auto;
+    margin: 50px auto 100px;
     padding: 2em 5em;
     border-radius: 3px;
     border: 2px solid black;
@@ -313,6 +313,42 @@ label {
 #singleRecipePage h3 {
     font-style: italic;
     font-size: 1.45em;
+}
+
+#recipeButtons {
+    margin-top: 3em;
+    display: flex;
+}
+
+#recipeUpdateButton, #recipeDeleteButton {
+    text-decoration: none;
+    margin: 10px auto;
+    font-size: 1.25em;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+
+#recipeUpdateButton {
+    background-color: #059400;
+}
+
+#recipeDeleteButton {
+    background-color: #D10000;
+}
+
+#recipeUpdateButton:hover {
+    background-color: #1ddb17;
+}
+
+#recipeDeleteButton:hover {
+    background-color: #ff0000;
 }
 
 /* AUTHORIZATION STYLES - These overwrite some of the amplify initial styles */
