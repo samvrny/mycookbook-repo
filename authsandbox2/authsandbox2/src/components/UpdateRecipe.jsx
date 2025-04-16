@@ -4,6 +4,9 @@ import mockData from '../mockRecipeData/mockRecipes.json'
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
 
+import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
 
 export default function UpdateRecipe() {
 
@@ -17,12 +20,47 @@ export default function UpdateRecipe() {
         navigate("/sign-up");
     }
 
+    //Grab the recipe to be updated from the parameters
+    const { recipeIdToUpdate } = useParams();
+    console.log(recipeIdToUpdate);
 
-    //Get categories. Will eventually need to be a fetch.
-    let categories = mockData.categories;
+    const categories = mockData.categories;
 
-    let recipes = mockData.recipes;
-    let recipe = recipes.find(recipe => recipe.recipeID === "2");
+    const [recipe, setRecipe] = useState(null);
+
+    /**
+     * This useEffect calls to fetch the recipe, and then sets the
+     * recipe to be rendered into state.
+     */
+    useEffect(() => {
+        //Make sure there is a user.
+        if (!user) return;
+
+        /**
+         * Fetch the recipe
+         */
+        const fetchRecipe = async () => {
+            const userID = JSON.stringify(user.userId); //THIS IS THE CODE TO GRAB THE USER ID
+            console.log('UserID:', userID);
+            console.log('Recipe ID:', recipeIdToUpdate);
+    
+            // For now just pull from mock JSON
+            const recipes = mockData.recipes;
+            let recipe = recipes.find(recipe => recipe.recipeID === recipeIdToUpdate);
+    
+        //   console.log('Found recipe:', recipe);
+
+            //Once the recipe is retrieved, set it into state.
+            setRecipe(recipe);
+        };
+    
+        fetchRecipe();
+    }, [user, recipeIdToUpdate]);
+
+    //Prevent rendering until recipe is loaded
+    if (!recipe) {
+        return <p>Loading recipe...</p>;
+    }
 
     /**
      * Handle the form submission. This is identical to the Create Recipe...
@@ -112,7 +150,9 @@ export default function UpdateRecipe() {
         <main id="updateRecipe">
 
             <form onSubmit={handleSubmission} id="updateRecipeForm">
-                <h2>Update {} Recipe</h2>
+                <Link to={`/recipe/${recipe.recipeID}`}>Back To Recipe</Link>
+
+                <h2>Update {recipe.name}</h2>
 
                 {/* Choose Category */}
                 <label htmlFor="categorySelection">Choose a Category</label>
@@ -163,7 +203,7 @@ export default function UpdateRecipe() {
 
                 <div id="formButtons">
                     <button onClick={startOver} className="submitButtons">Start Over</button>
-                    <input type="submit" value="Create New Recipe" className="submitButtons"/>
+                    <input type="submit" value="Update Recipe" className="submitButtons"/>
                 </div>
             </form>
         </main>
