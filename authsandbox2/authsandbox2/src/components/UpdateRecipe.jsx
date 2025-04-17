@@ -16,9 +16,11 @@ export default function UpdateRecipe() {
     const { user } = useAuthenticator((context) => [context.user]);
     const navigate = useNavigate();
 
-    if (!user) {
-        navigate("/sign-up");
-    }
+    useEffect(() => {
+        if (!user) {
+          navigate("/");
+        }
+    }, [user, navigate]);
 
     //Grab the recipe to be updated from the parameters
     const { recipeIdToUpdate } = useParams();

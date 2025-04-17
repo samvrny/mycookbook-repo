@@ -1,6 +1,7 @@
 import mockData from '../mockRecipeData/mockRecipes.json';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Delete from './Delete';
 
 //FOR THE ROUTING
 import { useParams } from 'react-router-dom';
@@ -17,9 +18,11 @@ export default function Recipe() {
     //Protect the route from unauthorized access
     const navigate = useNavigate();
 
-    if (!user) {
-        navigate("/sign-up");
-    }
+    useEffect(() => {
+        if (!user) {
+          navigate("/");
+        }
+    }, [user, navigate]);
 
     //For the routing (recipeID passed from the routing)
     const { recipeIdToDisplay } = useParams();
@@ -27,6 +30,9 @@ export default function Recipe() {
 
     //Set the state of the recipe to be rendered
     const [recipe, setRecipe] = useState(null);
+
+    //Set the initial state of the delete modal
+    const [isOpen, setIsOpen] = useState(false);
 
     /**
      * This useEffect calls to fetch the recipe, and then sets the
@@ -90,8 +96,10 @@ export default function Recipe() {
 
             <div id="recipeButtons">
                 <Link to={`/update-recipe/${recipe.recipeID}`} id="recipeUpdateButton">Update Recipe</Link>
-                <Link to={`/delete-recipe/${recipe.recipeID}`} id="recipeDeleteButton">Delete Recipe</Link>
+                <button id="recipeDeleteButton" onClick={() => setIsOpen(true)}>Delete Recipe</button>
             </div>
+
+            {isOpen && <Delete setIsOpen={setIsOpen} />}
         </main>
     )
 
