@@ -2,7 +2,7 @@ import mockData from '../mockRecipeData/mockRecipes.json'
 
 //Authenticator stuff...
 import { useAuthenticator } from '@aws-amplify/ui-react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -14,13 +14,25 @@ export default function UpdateRecipe() {
      * Protect the route from unauthorized access
      */
     const { user } = useAuthenticator((context) => [context.user]);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!user) {
-          navigate("/");
-        }
-    }, [user, navigate]);
+    // useEffect(() => {
+
+    //     if (!user) {
+    //       navigate("/");
+    //     }
+
+    // }, [user, navigate]);
+
+    /**
+     * Reset the form 
+     */
+    const startOver = (event) => {
+        event.preventDefault();
+
+        //NOT as elegant as I'd like.... more complicated logic to follow.
+        location.reload();
+    }
 
     //Grab the recipe to be updated from the parameters
     const { recipeIdToUpdate } = useParams();
@@ -36,7 +48,7 @@ export default function UpdateRecipe() {
      */
     useEffect(() => {
         //Make sure there is a user.
-        if (!user) return;
+        // if (!user) return;
 
         /**
          * Fetch the recipe
@@ -133,16 +145,6 @@ export default function UpdateRecipe() {
         newInput.setAttribute("name", "instruction");
 
         instructionList.appendChild(newInput);
-    }
-
-    /**
-     * Reset the form 
-     */
-    const startOver = (event) => {
-        event.preventDefault();
-
-        //NOT as elegant as I'd like.... more complicated logic to follow.
-        location.reload();
     }
 
     /**

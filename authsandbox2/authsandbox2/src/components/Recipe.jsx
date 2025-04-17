@@ -94,12 +94,12 @@ export default function Recipe() {
                 })}
             </ul>
 
-            <div id="recipeButtons">
-                <Link to={`/update-recipe/${recipe.recipeID}`} id="recipeUpdateButton">Update Recipe</Link>
-                <button id="recipeDeleteButton" onClick={() => setIsOpen(true)}>Delete Recipe</button>
+            <div className="recipeButtons">
+                <Link to={`/update-recipe/${recipe.recipeID}`} className="recipeUpdateButton">Update Recipe</Link>
+                <button className="recipeDeleteButton" onClick={() => setIsOpen(true)}>Delete Recipe</button>
             </div>
 
-            {isOpen && <Delete setIsOpen={setIsOpen} />}
+            {isOpen && <Delete setIsOpen={ setIsOpen } recipeID={recipe.recipeID} recipeName={recipe.name} />}
         </main>
     )
 
