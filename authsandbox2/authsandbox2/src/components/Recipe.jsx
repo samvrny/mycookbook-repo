@@ -22,7 +22,7 @@ export default function Recipe() {
         if (authStatus === 'unauthenticated') {
           navigate('/');
         }
-      }, [authStatus, navigate]);
+    }, [authStatus, navigate]);
 
     // useEffect(() => {
     //     if (!user) {

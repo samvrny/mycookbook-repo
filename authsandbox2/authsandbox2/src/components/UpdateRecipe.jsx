@@ -10,20 +10,17 @@ import { useState, useEffect } from 'react';
 
 export default function UpdateRecipe() {
 
-    const { user } = useAuthenticator((context) => [context.user]);
+    //Get the user and their authentication status
+    const { user, authStatus } = useAuthenticator(context => [context.user, context.authStatus]);
 
-    /**
-     * Protect the route from unauthorized access
-     */
+    //Protect the route from unauthorized access
     const navigate = useNavigate();
 
     useEffect(() => {
-
-        if (!user) {
-          navigate("/");
+        if (authStatus === 'unauthenticated') {
+          navigate('/');
         }
-
-    }, [user, navigate]);
+    }, [authStatus, navigate]);
 
     /**
      * Reset the form 
