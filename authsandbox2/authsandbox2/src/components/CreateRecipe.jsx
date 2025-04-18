@@ -21,10 +21,6 @@ export default function CreateRecipe() {
         }
     }, [authStatus, navigate]);
 
-    // if (!user) {
-    //     navigate("/");
-    // } else {
-
     //Get categories. Will eventually need to be a fetch.
     let categories = mockData.categories;
 

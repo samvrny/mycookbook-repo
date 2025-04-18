@@ -3,6 +3,9 @@
         "Breakfast",
         "Lunch",
         "Dinner",
+        "Dessert",
+        "Chicken",
+        "Mexican",
         "Misc"
     ],
 

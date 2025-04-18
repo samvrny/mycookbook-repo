@@ -2,7 +2,10 @@
     "categories": [
         "Breakfast",
         "Lunch",
-        "Dinner"
+        "Dinner",
+        "Chicken",
+        "Mexican",
+        "Dessert"
     ],
 
     "recipes": [

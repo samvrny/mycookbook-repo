@@ -198,13 +198,30 @@ footer {
 
 aside {
     background-color: #4498FF;
-    border-right: 3px solid #0550AB;
-    border-bottom: 3px solid #0550AB;
+    border-right: 2px solid #0550AB;
+    border-bottom: 2px solid #0550AB;
     width: 250px;
     /* text-align: center; */
     padding: 10px 13px 10px 10px;
     height: fit-content;  
     max-height: 500px;
+    overflow-y: scroll;
+}
+
+aside::-webkit-scrollbar {
+    width: 8px; /* width for vertical scrollbars */
+    background: #002550;
+}
+
+aside::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+    border-radius: 10px;
+    height: 10px;
+}
+
+aside::-webkit-scrollbar-thumb:hover {
+    background: #b5d5fc;
+    cursor: pointer;
 }
 
 aside ul {
