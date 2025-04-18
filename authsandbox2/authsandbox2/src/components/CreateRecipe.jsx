@@ -7,7 +7,7 @@ import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
 
 //Import Helper functions
-
+import { addIngredientInput, addInstructionInput } from '../helpers/addFormFields';
 
 export default function CreateRecipe() {
 
@@ -68,34 +68,6 @@ export default function CreateRecipe() {
         console.log(description);
         console.log(ingredientsToSave); // IT WORKS BY JOVE!!
         console.log(instructionsToSave);
-    }
-
-    /**
-     * Add a new ingredient to the ingredients list
-     */
-    const addIngredientInput = (event) => {
-        event.preventDefault();
-
-        const ingredientList = document.getElementById("ingredients");
-
-        const newInput = document.createElement("input");
-        newInput.setAttribute("name", "ingredient");
-
-        ingredientList.appendChild(newInput);
-    }
-
-    /**
-     * Add a new instruction to the instructions list
-     */
-    const addInstructionInput = (event) => {
-        event.preventDefault();
-
-        const instructionList = document.getElementById("instructions");
-
-        const newInput = document.createElement("input");
-        newInput.setAttribute("name", "instruction");
-
-        instructionList.appendChild(newInput);
     }
 
     /**

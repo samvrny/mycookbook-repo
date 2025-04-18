@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+//Import helpers
+import { addIngredientInput, addInstructionInput } from '../helpers/addFormFields';
+
 
 export default function UpdateRecipe() {
 
@@ -115,34 +118,6 @@ export default function UpdateRecipe() {
         console.log(description);
         console.log(ingredientsToSave);
         console.log(instructionsToSave);
-    }
-
-    /**
-     * Add a new ingredient to the ingredients list
-     */
-    const addIngredientInput = (event) => {
-        event.preventDefault();
-
-        const ingredientList = document.getElementById("ingredients");
-
-        const newInput = document.createElement("input");
-        newInput.setAttribute("name", "ingredient");
-
-        ingredientList.appendChild(newInput);
-    }
-
-    /**
-     * Add a new instruction to the instructions list
-     */
-    const addInstructionInput = (event) => {
-        event.preventDefault();
-
-        const instructionList = document.getElementById("instructions");
-
-        const newInput = document.createElement("input");
-        newInput.setAttribute("name", "instruction");
-
-        instructionList.appendChild(newInput);
     }
 
     /**
