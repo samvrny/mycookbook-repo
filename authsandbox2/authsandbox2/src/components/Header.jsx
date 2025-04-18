@@ -28,8 +28,8 @@ export default function Header() {
                             <Link to="/manage-categories">Categories</Link>
                         </li>
                         <li>
-                            <Link id="signOutButton" onClick={() => {
-                                signOut();
+                            <Link id="signOutButton" onClick={async () => {          
+                                await signOut();
                                 navigate("/");
                             }}>Sign Out</Link>
                         </li>

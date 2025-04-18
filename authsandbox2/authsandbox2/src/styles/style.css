@@ -455,7 +455,7 @@ div[data-amplify-router] {
 
 /* DELETE MODAL STYLES */
 
-.darkBG {
+.modalBackground {
     position: fixed; /* Keeps it fixed while scrolling */
     top: 50%;
     left: 50%;
@@ -471,13 +471,16 @@ div[data-amplify-router] {
   
 .deleteModalContent {
     width: 400px;
-    height: 400px;
+    height: 475px;
     background: white;
-    /* color: white; */
     z-index: 10;
     border-radius: 16px;
     padding: 2em;
     text-align: center;
+}
+
+#deleteModal strong, #deleteModal em {
+    color: #D10000;
 }
 
 .deleteModalContent button {

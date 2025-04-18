@@ -1,5 +1,7 @@
 import mockData from '../mockRecipeData/mockRecipes.json'
 
+import { useEffect } from 'react';
+
 //Authenticator stuff...
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
@@ -10,12 +12,18 @@ export default function CreateRecipe() {
     /**
      * Protect the route from unauthorized access
      */
-    const { user } = useAuthenticator((context) => [context.user]);
+    const { user, authStatus } = useAuthenticator(context => [context.user, context.authStatus]);
     const navigate = useNavigate();
 
-    if (!user) {
-        navigate("/sign-up");
-    }
+    useEffect(() => {
+        if (authStatus === 'unauthenticated') {
+          navigate('/');
+        }
+    }, [authStatus, navigate]);
+
+    // if (!user) {
+    //     navigate("/");
+    // } else {
 
     //Get categories. Will eventually need to be a fetch.
     let categories = mockData.categories;
@@ -25,6 +33,10 @@ export default function CreateRecipe() {
      */
     const handleSubmission = (event) => {
         event.preventDefault();
+
+        const userID = JSON.stringify(user.userId); //THIS IS THE CODE TO GRAB THE USER ID
+        console.log('UserID:', userID);
+
 
         //Grab the category
         let category = document.getElementById("categorySelection").value;

@@ -13,16 +13,22 @@ import { useNavigate } from 'react-router-dom';
 export default function Recipe() {
 
     //Get the user
-    const { user } = useAuthenticator((context) => [context.user]);
+    const { user, authStatus } = useAuthenticator(context => [context.user, context.authStatus]);
 
     //Protect the route from unauthorized access
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!user) {
-          navigate("/");
+        if (authStatus === 'unauthenticated') {
+          navigate('/');
         }
-    }, [user, navigate]);
+      }, [authStatus, navigate]);
+
+    // useEffect(() => {
+    //     if (!user) {
+    //       navigate("/");
+    //     }
+    // }, [user, navigate]);
 
     //For the routing (recipeID passed from the routing)
     const { recipeIdToDisplay } = useParams();
