@@ -1,4 +1,5 @@
 import mockCategories from "../mockRecipeData/mockRecipes.json"
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function Categories() {
 
@@ -8,6 +9,17 @@ export default function Categories() {
         event.preventDefault();
 
         console.log("Hello, Category");
+    }
+    
+    const deleteCategory = (event) => {
+        const categoryToDeleteId = event.target.id;
+
+        const categoryToDelete = document.querySelector(
+            `[name="${categoryToDeleteId}"]`
+        ).textContent;
+
+        console.log(categoryToDeleteId);
+        console.log(categoryToDelete);
     }
 
     return (
@@ -21,8 +33,11 @@ export default function Categories() {
             <section>
                 <h2>Your Categories</h2>
 
-                {categories.map(category => {
-                    return <p>{category}</p>
+                {categories.map((category, index )=> {
+                    return <p key={index} className="categoryText" name={index}>
+                                {category} 
+                                <i id={index} className="bi bi-trash-fill" onClick={deleteCategory}></i>
+                            </p>
                 })}
             </section>
         </main>

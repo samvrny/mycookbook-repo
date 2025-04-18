@@ -1,7 +1,7 @@
 import mockData from '../mockRecipeData/mockRecipes.json';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Delete from './Delete';
+import DeleteRecipeModal from './DeleteRecipeModal';
 
 //FOR THE ROUTING
 import { useParams } from 'react-router-dom';
@@ -105,7 +105,7 @@ export default function Recipe() {
                 <button className="recipeDeleteButton" onClick={() => setIsOpen(true)}>Delete Recipe</button>
             </div>
 
-            {isOpen && <Delete setIsOpen={ setIsOpen } recipeID={recipe.recipeID} recipeName={recipe.name} />}
+            {isOpen && <DeleteRecipeModal setIsOpen={ setIsOpen } recipeID={recipe.recipeID} recipeName={recipe.name} />}
         </main>
     )
 

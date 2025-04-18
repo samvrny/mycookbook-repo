@@ -2,9 +2,11 @@ import mockData from '../mockRecipeData/mockRecipes.json'
 
 import { useEffect } from 'react';
 
-//Authenticator stuff...
+//Import Authentication 
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
+
+//Import Helper functions
 
 
 export default function CreateRecipe() {

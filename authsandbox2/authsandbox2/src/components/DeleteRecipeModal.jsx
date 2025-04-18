@@ -1,4 +1,4 @@
-export default function Delete({ setIsOpen, recipeID, recipeName }) {
+export default function DeleteRecipeModal({ setIsOpen, recipeID, recipeName }) {
 
     console.log(recipeID);
     console.log(recipeName);

@@ -9,7 +9,6 @@ import Footer from './components/Footer'
 import CreateRecipe from './components/CreateRecipe'
 import Recipe from './components/Recipe'
 import UpdateRecipe from './components/UpdateRecipe'
-import DeleteRecipe from './components/DeleteRecipe'
 import ConditionalHome from './components/ConditionalHome'
 import SignUp from './components/SignUp'
 import Categories from './components/Categories'
@@ -35,10 +34,6 @@ function App() {
             <Route 
               path="/update-recipe/:recipeIdToUpdate" 
               element={<UpdateRecipe />} 
-            />
-            <Route 
-              path="/delete-recipe/:recipeIdToDelete" 
-              element={<DeleteRecipe />} 
             />
             <Route 
               path="/manage-categories"
