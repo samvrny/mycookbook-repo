@@ -17,17 +17,30 @@ function App() {
   return (
     <>
       <Header />
-        <Routes>
+      
+      <Routes>
 
-              <Route path="/" element={<ConditionalHome />} />
+            <Route path="/" element={<ConditionalHome />} />
 
-              <Route path="/create-recipe" element={<CreateRecipe />} />
-              <Route path="/recipe/:recipeIdToDisplay" element={<Recipe />} />
-              <Route path="/update-recipe/:recipeIdToUpdate" element={<UpdateRecipe />} />
-              <Route path="/delete-recipe/:recipeIdToDelete" element={<DeleteRecipe />} />
+            <Route 
+              path="/create-recipe" 
+              element={<CreateRecipe />} 
+            />
+            <Route 
+              path="/recipe/:recipeIdToDisplay" 
+              element={<Recipe />} 
+            />
+            <Route 
+              path="/update-recipe/:recipeIdToUpdate" 
+              element={<UpdateRecipe />} 
+            />
+            <Route 
+              path="/delete-recipe/:recipeIdToDelete" 
+              element={<DeleteRecipe />} 
+            />
 
-              <Route path="/sign-up" element={<SignUp />} />
-        </Routes>
+            <Route path="/sign-up" element={<SignUp />} />
+      </Routes>
     </>
   )
 }

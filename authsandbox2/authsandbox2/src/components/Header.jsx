@@ -11,7 +11,9 @@ export default function Header() {
 
     return(
         <header>
-            <img src="../../public/logo400x400.png"/>
+            <h1>
+                <img src="../../public/logo400x400.png" alt="MyCookBook"/>
+            </h1>
 
             <nav>
                 {user ? (

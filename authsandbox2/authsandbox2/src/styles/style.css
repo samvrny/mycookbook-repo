@@ -6,16 +6,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-  
+
 body {
     margin: 0;
     min-height: 100vh;
     box-sizing: border-box;
-    background-color: #FDF8E7;
+    background-color: #002550;
 }
 
 #root {
     margin: 0 auto;
+    max-width: 1750px;
+    /* border: 4px solid #0550AB; */
+    min-height: 100vh;
+    background-color: #FDF8E7;
 }
 
 * { box-sizing: border-box; }
@@ -86,6 +90,69 @@ header img {
     width: auto;
     margin: 15px 0 0 25px;
     text-align: center;
+}
+
+/* WELCOME PAGE STYLES */
+#hero {
+    max-width: 100%;
+    margin-top: 2em;
+}
+
+.welcomePageCta {
+    width: 95%;
+    background-color: #FFFFFF;
+    margin: 2em auto;
+    padding: 1em 4em 3em;
+    border: 3px solid #0550AB;
+    border-radius: 4px;
+}
+
+.welcomePageCta h1 {
+    font-size: 2em;
+    color: #0550AB;
+    font-style: italic;
+}
+
+.welcomePageCta p, #welcomeCards p {
+    font-size: 1.2em;
+}
+
+.welcomePageCta a {
+    display: block;
+    text-align: center;
+    max-width: 300px;
+
+    text-decoration: none;
+    padding: 5px 15px;
+    background-color: #0550AB;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    margin: 2em auto 0;
+}
+
+.welcomePageCta a:hover {
+    background-color: #002550;
+    color: #FFFFFF;
+}
+
+#welcomeCards {
+    display: flex;
+    justify-content: space-around;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.welcomePageCard {
+    width: 300px;
+}
+
+.welcomePageCard img {
+    max-width: 100%;
 }
 
 /* */
