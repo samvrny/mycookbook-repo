@@ -20,20 +20,26 @@ export default function WelcomePage() {
             <section id="welcomeCards">
                 <article className="welcomePageCard">
                     <img src="../../public/homecard.jpg" alt="Hero Image" />
-                    <h2>Share With Friends</h2>
-                    <p>Mycookbook allows you to print recipes or post and share them on social media, so you can share recipes with freinds and families in multiple formats. A paper copy of the family brownie recipe for your grandma, and an IM of it for your younger brother.</p>
+                    <div className="welcomePadding">
+                        <h2>Share With Friends</h2>
+                        <p>Mycookbook allows you to print recipes or post and share them on social media, so you can share recipes with freinds and families in multiple formats. A paper copy of the family brownie recipe for your grandma, and an IM of it for your younger brother.</p>
+                    </div>
                 </article>
 
                 <article className="welcomePageCard">
                     <img src="../../public/homecard2.jpg" alt="Hero Image" />
-                    <h2>Save Time</h2>
-                    <p>Don't waste time sorting through browser bookmarks or waiting for recipe pages with loads of ads to load. And reading 5 mile long stories before even getting to the recipe? Who has the time. Once you find a recipe you love, save it here for easy access.</p>
+                    <div className="welcomePadding">
+                        <h2>Save Time</h2>
+                        <p>Don't waste time sorting through browser bookmarks or waiting for recipe pages with loads of ads to load. And reading 5 mile long stories before even getting to the recipe? Who has the time. Once you find a recipe you love, save it here for easy access.</p>
+                    </div>
                 </article>
 
                 <article className="welcomePageCard">
                     <img src="../../public/homecard3.jpg" alt="Hero Image" />
-                    <h2>Protect Recipes You Love</h2>
-                    <p>We can understand the sentimental and human value of those old recipes your grandmother has written on an old index card. Save those recipes here too, in case it happens to be lost so not to lose treasured history!</p>
+                    <div className="welcomePadding">
+                        <h2>Protect Recipes You Love</h2>
+                        <p>We can understand the sentimental and human value of those old recipes your grandmother has written on an old index card. Save those recipes here too, in case it happens to be lost so not to lose treasured history!</p>
+                    </div>
                 </article>
             </section>
         </main>
