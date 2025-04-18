@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 
 //Import Components (for tesing. BrowserRouter will eventually route to pages... I think)
 import Header from './components/Header'
+import Footer from './components/Footer'
 import CreateRecipe from './components/CreateRecipe'
 import Recipe from './components/Recipe'
 import UpdateRecipe from './components/UpdateRecipe'
@@ -41,6 +42,8 @@ function App() {
 
             <Route path="/sign-up" element={<SignUp />} />
       </Routes>
+
+      <Footer />
     </>
   )
 }
