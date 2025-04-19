@@ -1,6 +1,6 @@
 import mockData from '../mockRecipeData/mockRecipes.json'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 //YOU HAVE TO IMPORT LINK
 import { Link } from 'react-router-dom';
@@ -21,38 +21,65 @@ export default function UserHome() {
      * This is to toggle the categories navigation open and closed
      * for small screens/mobile devices
      */
+    // useEffect(() => {
+    //     const toggle = document.querySelector(".dropdownToggle");
+    //     const nav = document.querySelector(".categoryList");
+    //     const modal = document.querySelector(".navigationBackground");
+
+    //     const handleClick = () => {
+    //         nav.classList.toggle("open");
+    //         modal.classList.toggle("open");
+
+    //     };
+    
+    //     toggle.addEventListener("click", handleClick);
+    //     return () => toggle.removeEventListener("click", handleClick);
+    // }, []);
+
+    const navRef = useRef(null);
+    const modalRef = useRef(null);
+
     useEffect(() => {
-        const toggle = document.querySelector(".dropdownToggle");
-        const nav = document.querySelector(".categoryList");
-    
         const handleClick = () => {
-            nav.classList.toggle("open");
-
-            console.log("Working");
+            navRef.current?.classList.toggle("open");
+            modalRef.current?.classList.toggle("open");
         };
-    
-        
 
-        toggle.addEventListener("click", handleClick);
-        return () => toggle.removeEventListener("click", handleClick);
+        const toggle = document.querySelector(".dropdownToggle");
+        toggle?.addEventListener("click", handleClick);
+        return () => toggle?.removeEventListener("click", handleClick);
     }, []);
 
     return (
         <main id="userHome">
-            <aside className="categoryNavigation">
+            {/* <aside className="categoryNavigation">
                 <div className="dropdownToggle">Categories ⌄</div>
 
                 <ul className="categoryList">
-                    {/* This is the way to map through things to create elements!! */}
                     {categories.map((category) => (
                         <li className="categoryButton" onClick={() => {setCurrentCategory(category)}}>{category}</li>
                     ))}
 
-                    {/* Leave this here always */}
+
                     <li className="categoryButton" onClick={() => {setCurrentCategory("Misc")}}>Misc</li>
                     <li className="categoryButtonGreen">Add Category +</li>
                 </ul>
+            </aside> */}
+            <aside className="categoryNavigation">
+                <div className="dropdownToggle">Categories ⌄</div>
+
+                <ul className="categoryList" ref={navRef}>
+                    {categories.map((category) => (
+                        <li className="categoryButton" onClick={() => setCurrentCategory(category)}>{category}</li>
+                    ))}
+                    <li className="categoryButton" onClick={() => setCurrentCategory("Misc")}>Misc</li>
+                    <li className="categoryButtonGreen">Add Category +</li>
+                </ul>
             </aside>
+
+            <div className="navigationBackground" ref={modalRef}></div>
+
+            {/* <div className="navigationBackground"></div> */}
 
             <section id="userHomeMainSection">
                 <Link className="createRecipeButton" to="/create-recipe">Create New Recipe +</Link>
