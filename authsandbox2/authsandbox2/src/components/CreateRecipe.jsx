@@ -41,7 +41,7 @@ export default function CreateRecipe() {
             return ingredient !== "";
         })
 
-        //Handle the ingredients
+        //Handle the instructions
         let instructionInputs = [...document.querySelectorAll("[name=\"instruction\"]")];
         let instructionRawText = instructionInputs.map(instruction => {
             return instruction.value.trim();

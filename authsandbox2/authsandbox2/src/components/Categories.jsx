@@ -24,21 +24,23 @@ export default function Categories() {
 
     return (
         <main id="categoriesMainElement">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="categoryForm">
                 <label htmlFor="categoryInput">Add New Category</label>
                 <input type="text" id="categoryInput"/>
-                <input type="submit" value="Add Category"/>
+                <input type="submit" value="Add Category +" className="addCategoryButton"/>
             </form>
 
-            <section>
+            <section className="categoryDisplay">
                 <h2>Your Categories</h2>
 
-                {categories.map((category, index )=> {
-                    return <p key={index} className="categoryText" name={index}>
-                                {category} 
-                                <i id={index} className="bi bi-trash-fill" onClick={deleteCategory}></i>
-                            </p>
-                })}
+                <ul>
+                    {categories.map((category, index )=> {
+                        return <li key={index} className="categoryText" name={index}>
+                                    {category} 
+                                    <i id={index} className="bi bi-trash-fill" onClick={deleteCategory}></i>
+                                </li>
+                    })}
+                </ul>
             </section>
         </main>
     )

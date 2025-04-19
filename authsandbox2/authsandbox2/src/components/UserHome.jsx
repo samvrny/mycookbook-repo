@@ -1,8 +1,6 @@
 import mockData from '../mockRecipeData/mockRecipes.json'
 
 import { useState, useEffect, useRef } from 'react';
-
-//YOU HAVE TO IMPORT LINK
 import { Link } from 'react-router-dom';
 
 export default function UserHome() {
@@ -21,21 +19,6 @@ export default function UserHome() {
      * This is to toggle the categories navigation open and closed
      * for small screens/mobile devices
      */
-    // useEffect(() => {
-    //     const toggle = document.querySelector(".dropdownToggle");
-    //     const nav = document.querySelector(".categoryList");
-    //     const modal = document.querySelector(".navigationBackground");
-
-    //     const handleClick = () => {
-    //         nav.classList.toggle("open");
-    //         modal.classList.toggle("open");
-
-    //     };
-    
-    //     toggle.addEventListener("click", handleClick);
-    //     return () => toggle.removeEventListener("click", handleClick);
-    // }, []);
-
     const navRef = useRef(null);
     const modalRef = useRef(null);
 
@@ -52,19 +35,7 @@ export default function UserHome() {
 
     return (
         <main id="userHome">
-            {/* <aside className="categoryNavigation">
-                <div className="dropdownToggle">Categories ⌄</div>
 
-                <ul className="categoryList">
-                    {categories.map((category) => (
-                        <li className="categoryButton" onClick={() => {setCurrentCategory(category)}}>{category}</li>
-                    ))}
-
-
-                    <li className="categoryButton" onClick={() => {setCurrentCategory("Misc")}}>Misc</li>
-                    <li className="categoryButtonGreen">Add Category +</li>
-                </ul>
-            </aside> */}
             <aside className="categoryNavigation">
                 <div className="dropdownToggle">Categories ⌄</div>
 
@@ -79,18 +50,13 @@ export default function UserHome() {
 
             <div className="navigationBackground" ref={modalRef}></div>
 
-            {/* <div className="navigationBackground"></div> */}
-
             <section id="userHomeMainSection">
                 <Link className="createRecipeButton" to="/create-recipe">Create New Recipe +</Link>
 
                 <h1>{currentCategory}</h1>
 
-                {/* <p>No recipes found for this category. Choose another category or create a new recipe!</p> */}
 
                 {
-                    //Triple EQUALS SIGN!!! REMEMBER TO DO IT!! Or else.... things will NOT work
-
                     currentCategory === "Welcome" ? <p>Welcome. Please choose a category to view your recipes!</p> :
                     filteredRecipes.length === 0 ? <p>No recipes found for this category. Choose another category or create a new recipe!</p> :
                     filteredRecipes.map((recipe) => (
@@ -102,10 +68,6 @@ export default function UserHome() {
                             </article>
                         ))
                 }
-
-                {/* <article>
-                    Here is where a recipe will go
-                </article> */}
             </section>
         </main>
     )
