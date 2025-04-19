@@ -8,9 +8,6 @@ import { addIngredientInput, addInstructionInput } from '../helpers/addFormField
 
 export default function CreateRecipe() {
 
-    /**
-     * Protect the route from unauthorized access
-     */
     const { user } = useAuthenticator(context => [context.user]);
 
     //Get categories. Will eventually need to be a fetch.

@@ -1,38 +1,17 @@
-import mockData from '../mockRecipeData/mockRecipes.json';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DeleteRecipeModal from './DeleteRecipeModal';
 
-//FOR THE ROUTING
 import { useParams } from 'react-router-dom';
-
-//FOR GRABBING THE USER ID
 import { useAuthenticator } from '@aws-amplify/ui-react';
-//import { useNavigate } from 'react-router-dom';
+
+import { fetchSingleRecipe } from '../helpers/fetchSingleRecipe';
 
 export default function Recipe() {
 
     //Get the user
     const { user } = useAuthenticator(context => [context.user]);
-
-    //Protect the route from unauthorized access
-    // const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (authStatus === 'unauthenticated') {
-    //       navigate('/');
-    //     }
-    // }, [authStatus, navigate]);
-
-    // useEffect(() => {
-    //     if (!user) {
-    //       navigate("/");
-    //     }
-    // }, [user, navigate]);
-
-    //For the routing (recipeID passed from the routing)
     const { recipeIdToDisplay } = useParams();
-    console.log(recipeIdToDisplay);
 
     //Set the state of the recipe to be rendered
     const [recipe, setRecipe] = useState(null);
@@ -45,28 +24,16 @@ export default function Recipe() {
      * recipe to be rendered into state.
      */
     useEffect(() => {
-        //Make sure there is a user.
-        if (!user) return;
 
-        /**
-         * Fetch the recipe
-         */
-        const fetchRecipe = async () => {
-            const userID = JSON.stringify(user.userId); //THIS IS THE CODE TO GRAB THE USER ID
-            console.log('UserID:', userID);
-            console.log('Recipe ID:', recipeIdToDisplay);
-    
-            // For now just pull from mock JSON
-            const recipes = mockData.recipes;
-            let recipe = recipes.find(recipe => recipe.recipeID === recipeIdToDisplay);
-    
-        //   console.log('Found recipe:', recipe);
+        const getRecipe = async () => {
+            const userID = JSON.stringify(user.userId);
+            let recipe = await fetchSingleRecipe(userID, recipeIdToDisplay);
 
-            //Once the recipe is retrieved, set it into state.
             setRecipe(recipe);
-        };
+        }
     
-        fetchRecipe();
+        getRecipe();
+
     }, [user, recipeIdToDisplay]);
 
     //Prevent rendering until recipe is loaded
@@ -74,6 +41,7 @@ export default function Recipe() {
         return <p>Loading recipe...</p>;
     }
 
+    //Main display UI
     return (
         <main id="singleRecipePage">
             

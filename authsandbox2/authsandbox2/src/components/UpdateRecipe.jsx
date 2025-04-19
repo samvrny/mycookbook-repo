@@ -1,43 +1,17 @@
 import mockData from '../mockRecipeData/mockRecipes.json'
 
-//Authenticator stuff...
 import { useAuthenticator } from '@aws-amplify/ui-react';
-// import { useNavigate } from 'react-router-dom';
-
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 //Import helpers
 import { addIngredientInput, addInstructionInput } from '../helpers/addFormFields';
-
+import { fetchSingleRecipe } from '../helpers/fetchSingleRecipe';
 
 export default function UpdateRecipe() {
 
-    //Get the user and their authentication status
-    const { user  } = useAuthenticator(context => [context.user]);
-
-    //Protect the route from unauthorized access
-    // const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (authStatus === 'unauthenticated') {
-    //       navigate('/');
-    //     }
-    // }, [authStatus, navigate]);
-
-    /**
-     * Reset the form 
-     */
-    const startOver = (event) => {
-        event.preventDefault();
-
-        //NOT as elegant as I'd like.... more complicated logic to follow.
-        location.reload();
-    }
-
-    //Grab the recipe to be updated from the parameters
+    const { user } = useAuthenticator(context => [context.user]);
     const { recipeIdToUpdate } = useParams();
-    console.log(recipeIdToUpdate);
 
     const categories = mockData.categories;
 
@@ -48,34 +22,17 @@ export default function UpdateRecipe() {
      * recipe to be rendered into state.
      */
     useEffect(() => {
-        //Make sure there is a user.
-        // if (!user) return;
 
-        /**
-         * Fetch the recipe
-         */
-        const fetchRecipe = async () => {
-            const userID = JSON.stringify(user.userId); //THIS IS THE CODE TO GRAB THE USER ID
-            console.log('UserID:', userID);
-            console.log('Recipe ID:', recipeIdToUpdate);
-    
-            // For now just pull from mock JSON
-            const recipes = mockData.recipes;
-            let recipe = recipes.find(recipe => recipe.recipeID === recipeIdToUpdate);
-    
-        //   console.log('Found recipe:', recipe);
+        const getRecipe = async () => {
+            const userID = JSON.stringify(user.userId);
+            let recipe = await fetchSingleRecipe(userID, recipeIdToUpdate);
 
-            //Once the recipe is retrieved, set it into state.
             setRecipe(recipe);
-        };
+        }
     
-        fetchRecipe();
-    }, [user, recipeIdToUpdate]);
+        getRecipe();
 
-    //Prevent rendering until recipe is loaded
-    if (!recipe) {
-        return <p>Loading recipe...</p>;
-    }
+    }, [user, recipeIdToUpdate]);
 
     /**
      * Handle the form submission. This is identical to the Create Recipe...
@@ -121,8 +78,21 @@ export default function UpdateRecipe() {
     }
 
     /**
-     * The UI display
+     * This method resets the form
      */
+    const startOver = (event) => {
+        event.preventDefault();
+
+        //NOT as elegant as I'd like.... more complicated logic to follow.
+        location.reload();
+    }
+
+    //Prevent rendering until recipe is loaded
+    if (!recipe) {
+        return <p>Loading recipe...</p>;
+    }
+
+    //Main UI display
     return (
         <main id="updateRecipe">
 
