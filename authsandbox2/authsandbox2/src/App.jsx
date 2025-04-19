@@ -13,6 +13,9 @@ import ConditionalHome from './components/ConditionalHome'
 import SignUp from './components/SignUp'
 import Categories from './components/Categories'
 
+//Authorization wrapper
+import RequireAuthWrapper from './components/RequireAuthWrapper'
+
 function App() {
 
   return (
@@ -25,19 +28,33 @@ function App() {
 
             <Route 
               path="/create-recipe" 
-              element={<CreateRecipe />} 
+              element={
+              <RequireAuthWrapper>
+                <CreateRecipe />
+              </RequireAuthWrapper>} 
             />
             <Route 
               path="/recipe/:recipeIdToDisplay" 
-              element={<Recipe />} 
+              element={
+              <RequireAuthWrapper>
+                <Recipe />
+              </RequireAuthWrapper>} 
             />
             <Route 
               path="/update-recipe/:recipeIdToUpdate" 
-              element={<UpdateRecipe />} 
+              element={
+                <RequireAuthWrapper>
+                  <UpdateRecipe />
+                </RequireAuthWrapper>
+              } 
             />
             <Route 
               path="/manage-categories"
-              element={<Categories />}
+              element={
+                <RequireAuthWrapper>
+                  <Categories />
+                </RequireAuthWrapper>
+              }
             />
 
             <Route path="/sign-up" element={<SignUp />} />

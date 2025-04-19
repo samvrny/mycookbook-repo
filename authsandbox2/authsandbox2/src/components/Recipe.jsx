@@ -8,21 +8,21 @@ import { useParams } from 'react-router-dom';
 
 //FOR GRABBING THE USER ID
 import { useAuthenticator } from '@aws-amplify/ui-react';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 export default function Recipe() {
 
     //Get the user
-    const { user, authStatus } = useAuthenticator(context => [context.user, context.authStatus]);
+    const { user } = useAuthenticator(context => [context.user]);
 
     //Protect the route from unauthorized access
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        if (authStatus === 'unauthenticated') {
-          navigate('/');
-        }
-    }, [authStatus, navigate]);
+    // useEffect(() => {
+    //     if (authStatus === 'unauthenticated') {
+    //       navigate('/');
+    //     }
+    // }, [authStatus, navigate]);
 
     // useEffect(() => {
     //     if (!user) {

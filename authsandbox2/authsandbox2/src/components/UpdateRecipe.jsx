@@ -2,7 +2,7 @@ import mockData from '../mockRecipeData/mockRecipes.json'
 
 //Authenticator stuff...
 import { useAuthenticator } from '@aws-amplify/ui-react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -14,16 +14,16 @@ import { addIngredientInput, addInstructionInput } from '../helpers/addFormField
 export default function UpdateRecipe() {
 
     //Get the user and their authentication status
-    const { user, authStatus } = useAuthenticator(context => [context.user, context.authStatus]);
+    const { user  } = useAuthenticator(context => [context.user]);
 
     //Protect the route from unauthorized access
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        if (authStatus === 'unauthenticated') {
-          navigate('/');
-        }
-    }, [authStatus, navigate]);
+    // useEffect(() => {
+    //     if (authStatus === 'unauthenticated') {
+    //       navigate('/');
+    //     }
+    // }, [authStatus, navigate]);
 
     /**
      * Reset the form 

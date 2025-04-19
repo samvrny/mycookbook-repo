@@ -1,10 +1,7 @@
 import mockData from '../mockRecipeData/mockRecipes.json'
 
-import { useEffect } from 'react';
-
 //Import Authentication 
 import { useAuthenticator } from '@aws-amplify/ui-react';
-import { useNavigate } from 'react-router-dom';
 
 //Import Helper functions
 import { addIngredientInput, addInstructionInput } from '../helpers/addFormFields';
@@ -14,14 +11,7 @@ export default function CreateRecipe() {
     /**
      * Protect the route from unauthorized access
      */
-    const { user, authStatus } = useAuthenticator(context => [context.user, context.authStatus]);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (authStatus === 'unauthenticated') {
-          navigate('/');
-        }
-    }, [authStatus, navigate]);
+    const { user } = useAuthenticator(context => [context.user]);
 
     //Get categories. Will eventually need to be a fetch.
     let categories = mockData.categories;

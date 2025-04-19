@@ -5,10 +5,11 @@
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { Navigate } from 'react-router-dom';
 
-export default function RequireAuth({ children }) {
-  const { user } = useAuthenticator((context) => [context.user]);
+export default function RequireAuthWrapper({ children }) {
+//   const { authStatus } = useAuthenticator((context) => [context.user]);
+  const { authStatus } = useAuthenticator(context => [context.authStatus]);
 
-  return user ? children : <Navigate to="/login" replace />;
+  return (authStatus === "authenticated" ? children : <Navigate to="/login" replace />);
 }
 
 //Route example: 
