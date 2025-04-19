@@ -1,4 +1,5 @@
-import './styles/style.css' //IMPORT THE NEW STYLESHEET
+import './styles/style.css' 
+import './styles/media-queries.css'
 
 //Import the needed things from React Router DOM
 import { Routes, Route, Navigate } from 'react-router-dom'

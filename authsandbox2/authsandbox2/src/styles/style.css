@@ -187,7 +187,7 @@ footer {
 /* */
 /* The display grid will help a lot with these weird nav components!! */
 /* STYLES FOR THE USER HOMEPAGE */
-#userHome { /* */
+#userHome {
     display: grid;
     grid-template-columns: 275px auto;
 }
@@ -196,35 +196,38 @@ footer {
     margin-left: 25px;
 }
 
-aside {
+.dropdownToggle {
+    display: none;
+}
+
+.categoryNavigation {
     background-color: #4498FF;
     border-right: 2px solid #0550AB;
     border-bottom: 2px solid #0550AB;
     width: 250px;
-    /* text-align: center; */
     padding: 10px 13px 10px 10px;
     height: fit-content;  
     max-height: 500px;
     overflow-y: scroll;
 }
 
-aside::-webkit-scrollbar {
+.categoryNavigation::-webkit-scrollbar {
     width: 8px; /* width for vertical scrollbars */
     background: #002550;
 }
 
-aside::-webkit-scrollbar-thumb {
+.categoryNavigation::-webkit-scrollbar-thumb {
     background: #FFFFFF;
     border-radius: 10px;
     height: 10px;
 }
 
-aside::-webkit-scrollbar-thumb:hover {
+.categoryNavigation::-webkit-scrollbar-thumb:hover {
     background: #b5d5fc;
     cursor: pointer;
 }
 
-aside ul {
+.categoryNavigation ul {
     margin: 0;
     padding: 0;
     /* position: absolute; */
@@ -275,7 +278,7 @@ aside ul {
     color: #FFFFFF;
 
     text-decoration: none;
-    margin: 20px 30px 0 auto;
+    margin: 1em 0;
     padding: 10px 0;
     width: 300px;
 }

@@ -1,6 +1,6 @@
 import mockData from '../mockRecipeData/mockRecipes.json'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 //YOU HAVE TO IMPORT LINK
 import { Link } from 'react-router-dom';
@@ -17,10 +17,32 @@ export default function UserHome() {
 
     const filteredRecipes = recipes.filter(recipe => recipe.category === currentCategory);
 
+    /**
+     * This is to toggle the categories navigation open and closed
+     * for small screens/mobile devices
+     */
+    useEffect(() => {
+        const toggle = document.querySelector(".dropdownToggle");
+        const nav = document.querySelector(".categoryList");
+    
+        const handleClick = () => {
+            nav.classList.toggle("open");
+
+            console.log("Working");
+        };
+    
+        
+
+        toggle.addEventListener("click", handleClick);
+        return () => toggle.removeEventListener("click", handleClick);
+    }, []);
+
     return (
         <main id="userHome">
-            <aside>
-                <ul>
+            <aside className="categoryNavigation">
+                <div className="dropdownToggle">Categories ⌄</div>
+
+                <ul className="categoryList">
                     {/* This is the way to map through things to create elements!! */}
                     {categories.map((category) => (
                         <li className="categoryButton" onClick={() => {setCurrentCategory(category)}}>{category}</li>
