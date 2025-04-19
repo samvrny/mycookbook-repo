@@ -247,6 +247,11 @@ footer {
     background-color: #FDF8E7;
 }
 
+.categoryButtonGreen a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
 .categoryButtonGreen {
     background-color: #059400;
     color: #FFFFFF;

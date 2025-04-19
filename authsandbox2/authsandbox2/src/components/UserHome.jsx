@@ -40,11 +40,11 @@ export default function UserHome() {
                 <div className="dropdownToggle">Categories ⌄</div>
 
                 <ul className="categoryList" ref={navRef}>
-                    {categories.map((category) => (
-                        <li className="categoryButton" onClick={() => setCurrentCategory(category)}>{category}</li>
+                    {categories.map((category, index) => (
+                        <li className="categoryButton" key={index} onClick={() => setCurrentCategory(category)}>{category}</li>
                     ))}
                     <li className="categoryButton" onClick={() => setCurrentCategory("Misc")}>Misc</li>
-                    <li className="categoryButtonGreen">Add Category +</li>
+                    <li className="categoryButtonGreen"><Link to="/manage-categories">Manage Categories</Link></li>
                 </ul>
             </aside>
 
@@ -59,8 +59,8 @@ export default function UserHome() {
                 {
                     currentCategory === "Welcome" ? <p>Welcome. Please choose a category to view your recipes!</p> :
                     filteredRecipes.length === 0 ? <p>No recipes found for this category. Choose another category or create a new recipe!</p> :
-                    filteredRecipes.map((recipe) => (
-                            <article className="recipeCard">
+                    filteredRecipes.map((recipe, index) => (
+                            <article className="recipeCard" key={index}>
                                 <h3>{recipe.name}</h3>
                                 <p>{recipe.description}</p>
 
