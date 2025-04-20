@@ -43,7 +43,7 @@ export default function Recipe() {
 
     //Main display UI
     return (
-        <main id="singleRecipePage">
+        <main className="mainContentContainer singleRecipePage">
             
             <h2>{recipe.name}</h2>
 
@@ -56,21 +56,21 @@ export default function Recipe() {
 
             <h3>Ingredients</h3>
             <ul>
-                {recipe.ingredients.map(ingredient => {
-                    return <li>{ingredient}</li>
+                {recipe.ingredients.map((ingredient, index) => {
+                    return <li key={index}>{ingredient}</li>
                 })}
             </ul>
 
             <h3>Instructions</h3>
             <ul>
-                {recipe.instructions.map(instruction => {
-                    return <li>{instruction}</li>
+                {recipe.instructions.map((instruction, index) => {
+                    return <li key={index}>{instruction}</li>
                 })}
             </ul>
 
-            <div className="recipeButtons">
-                <Link to={`/update-recipe/${recipe.recipeID}`} className="recipeUpdateButton">Update Recipe</Link>
-                <button className="recipeDeleteButton" onClick={() => setIsOpen(true)}>Delete Recipe</button>
+            <div className="recipeButtonsContainer">
+                <Link to={`/update-recipe/${recipe.recipeID}`} className="defaultButton buttonGreen singleRecipeButton">Update Recipe</Link>
+                <button className="defaultButton buttonRed singleRecipeButton" onClick={() => setIsOpen(true)}>Delete Recipe</button>
             </div>
 
             {isOpen && <DeleteRecipeModal setIsOpen={ setIsOpen } recipeID={recipe.recipeID} recipeName={recipe.name} />}

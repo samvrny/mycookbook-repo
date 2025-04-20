@@ -126,6 +126,81 @@ body {
     font-size: 1.25em;
 }
 
+/* Single recipe button additional styles */
+.singleRecipeButton {
+    width: 200px;
+    padding: 0.3em;
+    font-size: 1.2em;
+}
+
+/*  ===================
+    *** FORM STYLES ***
+    ===================
+*/
+
+#createRecipeForm, #updateRecipeForm {
+    background-color: #FFFFFF;
+    width: 700px;
+    margin: 50px auto;
+    padding: 2em;
+    border-radius: 3px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+#createRecipeForm h2, #updateRecipeForm h2 {
+    font-size: 2.5em;
+    font-style: italic;
+    color: #0550AB;
+}
+
+select {
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+
+label, input, textarea {
+    margin: 0 auto 10px;
+    display: block;
+    width: 350px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+input, textarea, select {
+    border: 1px solid #0550AB; 
+    border-radius: 3px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 4px #0550AB;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    margin: 1em auto 0.25em;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+/* 
+    =================================
+    *** AUTHORIZATION FORM STYLES ***
+    =================================
+*/
+div[data-amplify-router] {
+    margin-top: 50px
+}
+
 /* 
     =============================
     *** HEADER AND NAV STYLES ***
@@ -177,12 +252,6 @@ footer {
     font-size: 1.5em;
 }
 
-
-/*  ===================
-    *** FORM STYLES ***
-    ===================
-*/
-
 /* 
     ========================
     *** USER HOME STYLES ***
@@ -200,7 +269,7 @@ footer {
 #userHomeMainContent h2 {
     color: #0550AB;
     font-size: 2.5em;
-    text-align: center;
+    margin-left: 2em;
     font-style: italic;
 }
 
@@ -259,6 +328,45 @@ footer {
 .navigationBackground {
     display: none;
 }
+
+/* 
+    ====================================
+    *** SINGLE RECIPE DISPLAY STYLES ***
+    ====================================
+*/
+.singleRecipePage {
+    background-color: #FFFFFF;
+    width: 700px;
+    margin: 4em auto;
+    padding: 2em 5em;
+    border-radius: 3px;
+    border: 2px solid black;
+}
+
+.singleRecipePage h2 {
+    color: #0550AB;
+    text-align: center;
+    font-style: italic;
+    font-size: 2.25em;
+    margin-top: 0.5em;
+}
+
+.singleRecipePage h3 {
+    font-style: italic;
+    font-size: 1.45em;
+}
+
+.singleRecipePage li, .singleRecipePage p {
+    font-size: 1.25em;
+    margin-bottom: 0.25em;
+}
+
+.recipeButtonsContainer {
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+
 
 /* 
     MEDIA QUERY BREAKPOINTS
