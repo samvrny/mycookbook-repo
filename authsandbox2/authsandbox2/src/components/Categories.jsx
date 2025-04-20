@@ -1,25 +1,41 @@
 import mockCategories from "../mockRecipeData/mockRecipes.json"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+import { useAuthenticator } from "@aws-amplify/ui-react";
+import { useState } from "react";
+
+import DeleteCategoryModal from "./DeleteCategoryModal";
+
 export default function Categories() {
 
     const categories = mockCategories.categories;
+    const { user } = useAuthenticator(context => [context.user]);
+    const userID = JSON.stringify(user.userId);
+
+    //Set the initial state of the delete modal
+    const [isOpen, setIsOpen] = useState(false);
+
+    const [categoryToDeleteId, setCategoryToDeleteId] = useState(null);
+    const [categoryToDelete, setCategoryToDelete] = useState(null);
+    
+    const deleteCategory = (event) => {
+        const recipeId = event.target.id;
+        const category = document.querySelector(`[name="${recipeId}"]`).textContent;
+
+        setCategoryToDeleteId(recipeId);
+        setCategoryToDelete(category);
+
+        console.log(categoryToDeleteId);
+        console.log(categoryToDelete);
+        console.log(userID);
+
+        setIsOpen(true);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         console.log("Hello, Category");
-    }
-    
-    const deleteCategory = (event) => {
-        const categoryToDeleteId = event.target.id;
-
-        const categoryToDelete = document.querySelector(
-            `[name="${categoryToDeleteId}"]`
-        ).textContent;
-
-        console.log(categoryToDeleteId);
-        console.log(categoryToDelete);
     }
 
     return (
@@ -45,6 +61,8 @@ export default function Categories() {
                     </ul>
                 </section>
             </div>
+
+            {isOpen && <DeleteCategoryModal setIsOpen={ setIsOpen } categoryID={categoryToDeleteId} categoryName={categoryToDelete} userID={userID} />}
         </main>
     )
 
