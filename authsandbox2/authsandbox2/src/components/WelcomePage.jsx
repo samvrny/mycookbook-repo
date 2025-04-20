@@ -14,7 +14,7 @@ export default function WelcomePage() {
 
                 <p>MyCookbook is free to use. Simply sign up and start saving recipes right away!</p>
 
-                <Link to="/sign-up">Sign Up / Log In</Link>
+                <Link to="/sign-up" className="defaultButton buttonBlue welcomePageCtaButton">Sign Up / Log In</Link>
             </section>
 
             <section id="welcomeCards">

@@ -37,7 +37,7 @@ export default function Header() {
                 ) : (
                     <ul>
                         <li>
-                            <Link to="/sign-up">Sign Up / Log In</Link>
+                            <Link to="/sign-up" className="defaultButton navButton">Sign Up / Log In</Link>
                         </li>
                     </ul>
                 )}
