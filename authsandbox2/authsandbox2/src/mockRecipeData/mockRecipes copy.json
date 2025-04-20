@@ -1,12 +1,30 @@
 {
     "categories": [
-        "Breakfast",
-        "Lunch",
-        "Dinner",
-        "Dessert",
-        "Chicken",
-        "Mexican",
-        "Misc"
+        {
+            "userID": "1",
+            "categoryID": "1",
+            "categoryName": "Breakfast"
+        },
+        {
+            "userID": "1",
+            "categoryID": "2",
+            "categoryName": "Lunch"
+        },
+        {
+            "userID": "1",
+            "categoryID": "3",
+            "categoryName": "Dinner"
+        },
+        {
+            "userID": "1",
+            "categoryID": "4",
+            "categoryName": "Mexican"
+        },
+        {
+            "userID": "1",
+            "categoryID": "5",
+            "categoryName": "Dessert"
+        }
     ],
 
     "recipes": [

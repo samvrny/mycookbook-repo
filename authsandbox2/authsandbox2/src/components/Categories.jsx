@@ -12,22 +12,23 @@ export default function Categories() {
     const { user } = useAuthenticator(context => [context.user]);
     const userID = JSON.stringify(user.userId);
 
-    //Set the initial state of the delete modal
+    /**
+     * These state blocks are used for deleting a category
+     */
     const [isOpen, setIsOpen] = useState(false);
-
     const [categoryToDeleteId, setCategoryToDeleteId] = useState(null);
     const [categoryToDelete, setCategoryToDelete] = useState(null);
     
+    /**
+     * Gather details for deleting a category, then open the 
+     * delete category modal
+     */
     const deleteCategory = (event) => {
-        const recipeId = event.target.id;
-        const category = document.querySelector(`[name="${recipeId}"]`).textContent;
+        const id = event.target.id;
+        const category = document.querySelector(`[name="${id}"]`).textContent;
 
-        setCategoryToDeleteId(recipeId);
+        setCategoryToDeleteId(id);
         setCategoryToDelete(category);
-
-        console.log(categoryToDeleteId);
-        console.log(categoryToDelete);
-        console.log(userID);
 
         setIsOpen(true);
     }
