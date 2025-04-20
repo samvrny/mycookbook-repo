@@ -1,0 +1,287 @@
+/* 
+    ========================
+    *** UNIVERSAL STYLES ***
+    ========================
+*/
+
+* { box-sizing: border-box; }
+
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    background-color: #002550;
+}
+
+#root {
+    max-width: 1750px;
+    min-height: 100vh;
+    background-color: #FDF8E7;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContentContainer {
+    flex: 1;
+}
+
+/* 
+    =====================
+    *** BUTTON STYLES ***
+    =====================
+*/
+
+ /* Default style for all buttons */
+.defaultButton {
+    text-decoration: none;
+    padding: 5px 15px;
+    background-color: #FDF8E7;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0 #000000;
+    color: #000000;
+    cursor: pointer;
+    text-align: center;
+}
+
+.defaultButton:hover {
+    background-color: #002550;
+    color: #FFFFFF;
+}
+
+ /* For <a> elements embedded in an <li> */
+.defaultButton a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.buttonGreen a,
+.buttonRed a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/* Additional button background color schemes */
+.buttonGreen {
+    background-color: #059400;
+    color: #FFFFFF;
+}
+
+.buttonGreen:hover {
+    background-color: #1ddb17;
+}
+
+.buttonRed {
+    background-color: #D10000;
+    color: #FFFFFF;
+}
+
+.buttonRed:hover {
+    background-color: #FF0000;
+}
+
+.buttonBlue {
+    background-color: #0550AB;
+    color: #FFFFFF;
+}
+
+.buttonBlue:hover {
+    background-color: #002550;
+}
+
+/* Nav button additional styles */
+.navButton {
+    font-size: 1.25em;
+    margin-right: 1em;
+}
+
+/* User home button additional styles */
+.userHomeCategoryButton {
+    font-size: 1.35em;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
+
+.createRecipeHomeButton {
+    display: block;
+    margin: 1.25em 0 1.75em;
+    width: 275px;
+    font-size: 1.5em;
+}
+
+.recipeCardButton {
+    width: 175px;
+    position: absolute;
+    top: 1em;
+    right: 1.5em;
+    font-size: 1.25em;
+}
+
+/* 
+    =============================
+    *** HEADER AND NAV STYLES ***
+    =============================
+*/
+
+header {
+    background-color: #0550AB;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img {
+    height: 160px;
+    width: auto;
+    margin: 15px 0 0 25px;
+    text-align: center;
+}
+
+nav {
+    margin-right: 20px;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    list-style: none;
+}
+
+/* 
+    =====================
+    *** FOOTER STYLES ***
+    =====================
+*/
+
+footer {
+    background-color: #0550AB;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.5em;
+}
+
+
+/*  ===================
+    *** FORM STYLES ***
+    ===================
+*/
+
+/* 
+    ========================
+    *** USER HOME STYLES ***
+    ========================
+*/
+.userHome {
+    display: grid;
+    grid-template-columns: 275px auto;
+}
+
+#userHomeMainContent {
+    margin-left: 1.75em;
+}
+
+#userHomeMainContent h2 {
+    color: #0550AB;
+    font-size: 2.5em;
+    text-align: center;
+    font-style: italic;
+}
+
+.dropdownToggle {
+    display: none;
+}
+
+.categoryNavigation {
+    background-color: #4498FF;
+    border-right: 2px solid #0550AB;
+    border-bottom: 2px solid #0550AB;
+    width: 250px;
+    padding: 1em;
+    height: fit-content;  
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.categoryNavigation::-webkit-scrollbar {
+    width: 8px; /* width for vertical scrollbars */
+    background: #002550;
+}
+
+.categoryNavigation::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+    border-radius: 10px;
+    height: 10px;
+}
+
+.categoryNavigation::-webkit-scrollbar-thumb:hover {
+    background: #b5d5fc;
+    cursor: pointer;
+}
+
+.categoryList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recipeCard {
+    background-color: #FFFFFF;
+    width: 600px;
+    padding: 0.5em 1.5em;
+    margin: 0 0 2em;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #0550AB;
+}
+
+.recipeCard h3 {
+    color: #0550AB;
+    font-size: 1.5em;
+}
+
+.navigationBackground {
+    display: none;
+}
+
+/* 
+    MEDIA QUERY BREAKPOINTS
+
+    955px
+        User Homepage
+            Cards smaller
+            Thinner Side Menu
+
+    760px
+        User Homepage
+            Mobile Cards
+
+        Create Recipe
+            Thinned Down
+        Update Recipe
+            Thinned down
+
+    600px
+        All
+            Mobile Breakpoint
+
+        User Homepage
+            Mobile Category Navigation
+            Mobile Cards
+*/

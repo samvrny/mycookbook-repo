@@ -19,16 +19,16 @@ export default function Header() {
                 {user ? (
                     <ul>
                         <li>
-                            <Link to="/">View Recipes</Link>
+                            <Link to="/" className="defaultButton navButton">View Recipes</Link>
                         </li>
                         <li>
-                            <Link to="/create-recipe">Create Recipe</Link>
+                            <Link to="/create-recipe" className="defaultButton navButton">Create Recipe</Link>
                         </li>
                         <li>
-                            <Link to="/manage-categories">Categories</Link>
+                            <Link to="/manage-categories" className="defaultButton navButton">Categories</Link>
                         </li>
                         <li>
-                            <Link id="signOutButton" onClick={async () => {          
+                            <Link id="signOutButton" className="defaultButton navButton" onClick={async () => {          
                                 await signOut();
                                 navigate("/");
                             }}>Sign Out</Link>
@@ -39,9 +39,6 @@ export default function Header() {
                         <li>
                             <Link to="/sign-up">Sign Up / Log In</Link>
                         </li>
-                        {/* <li>
-                            <Link to="/sign-in">Sign In</Link>
-                        </li> */}
                     </ul>
                 )}
             </nav>

@@ -1,7 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import '@aws-amplify/ui-react/styles.css'; //IMPORT STYLESHEET FOR COGNITO
-import './styles/style.css' //IMPORT THE NEW STYLESHEET
+import '@aws-amplify/ui-react/styles.css' //IMPORT STYLESHEET FOR COGNITO
+import './styles/refactorStyles.css'
+// import './styles/style.css'
+// import './styles/media-queries.css'
 import App from './App.jsx'
 
 //Import auth
@@ -11,8 +13,12 @@ import App from './App.jsx'
  */
 import { Authenticator } from '@aws-amplify/ui-react'
 
+/**
+ * Import the Amplify configuration needed for the application
+ * to run properly
+ */
 import { Amplify } from 'aws-amplify';
-import awsExports from './aws-exports'; // ✅ adjust path if needed
+import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
 //IMPORT THE BROWSERROUTER

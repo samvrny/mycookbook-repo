@@ -28,32 +28,32 @@ export default function UserHome() {
             modalRef.current?.classList.toggle("open");
         };
 
-        const toggle = document.querySelector(".dropdownToggle");
-        toggle?.addEventListener("click", handleClick);
-        return () => toggle?.removeEventListener("click", handleClick);
+        const toggleDropdown = document.querySelector(".dropdownToggle");
+        toggleDropdown?.addEventListener("click", handleClick);
+        return () => toggleDropdown?.removeEventListener("click", handleClick);
     }, []);
 
     return (
-        <main id="userHome">
+        <main className="mainContentContainer userHome">
 
             <aside className="categoryNavigation">
                 <div className="dropdownToggle">Categories ⌄</div>
 
                 <ul className="categoryList" ref={navRef}>
                     {categories.map((category, index) => (
-                        <li className="categoryButton" key={index} onClick={() => setCurrentCategory(category)}>{category}</li>
+                        <li className="defaultButton userHomeCategoryButton" key={index} onClick={() => setCurrentCategory(category)}>{category}</li>
                     ))}
-                    <li className="categoryButton" onClick={() => setCurrentCategory("Misc")}>Misc</li>
-                    <li className="categoryButtonGreen"><Link to="/manage-categories">Manage Categories</Link></li>
+                    <li className="defaultButton userHomeCategoryButton" onClick={() => setCurrentCategory("Misc")}>Misc</li>
+                    <li className="defaultButton userHomeCategoryButton buttonGreen"><Link to="/manage-categories">Manage Categories</Link></li>
                 </ul>
             </aside>
 
             <div className="navigationBackground" ref={modalRef}></div>
 
-            <section id="userHomeMainSection">
-                <Link className="createRecipeButton" to="/create-recipe">Create New Recipe +</Link>
+            <section id="userHomeMainContent">
+                <Link className="defaultButton buttonGreen createRecipeHomeButton" to="/create-recipe">Create New Recipe +</Link>
 
-                <h1>{currentCategory}</h1>
+                <h2>{currentCategory}</h2>
 
 
                 {
@@ -64,7 +64,7 @@ export default function UserHome() {
                                 <h3>{recipe.name}</h3>
                                 <p>{recipe.description}</p>
 
-                                <Link to={`/recipe/${recipe.recipeID}`}>View Recipe</Link>
+                                <Link className="defaultButton buttonBlue recipeCardButton" to={`/recipe/${recipe.recipeID}`}>View Recipe</Link>
                             </article>
                         ))
                 }

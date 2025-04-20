@@ -1,6 +1,3 @@
-import './styles/style.css' 
-import './styles/media-queries.css'
-
 //Import the needed things from React Router DOM
 import { Routes, Route, Navigate } from 'react-router-dom'
 
@@ -16,6 +13,7 @@ import Categories from './components/Categories'
 
 //Authorization wrapper
 import RequireAuthWrapper from './components/RequireAuthWrapper'
+import Ax from './components/Ax'
 
 function App() {
 
@@ -55,6 +53,13 @@ function App() {
                 <RequireAuthWrapper>
                   <Categories />
                 </RequireAuthWrapper>
+              }
+            />
+
+            <Route 
+              path="/ax"
+              element={
+                  <Ax />
               }
             />
 

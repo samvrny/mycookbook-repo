@@ -10,6 +10,8 @@ export default function SignUp() {
      */
     const navigate = useNavigate();
     const { route } = useAuthenticator((context) => [context.route]);
+    
+    console.log(route);
 
     useEffect(() => {
         if (route === 'authenticated') {

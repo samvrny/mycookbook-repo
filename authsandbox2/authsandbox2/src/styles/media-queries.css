@@ -6,9 +6,7 @@
     #userHome {
         display: flex;
         flex-direction: column;
-        /* justify-content: center; */
         align-items: center;
-        /* grid-template-columns: 275px auto; */
     }
 
     .categoryNavigation {
