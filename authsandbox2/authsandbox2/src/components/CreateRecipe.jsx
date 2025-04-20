@@ -113,20 +113,20 @@ export default function CreateRecipe() {
                 <div id="ingredients">
                     <input type="text" name="ingredient" required/>
                 </div>
-                <button onClick={addIngredientInput} className="addListButton">Add Another Ingredient +</button>
+                <button onClick={addIngredientInput} className="defaultButton buttonBlue">Add Another Ingredient +</button>
 
                 {/* Enter Instructions */}
                 <label htmlFor="">Add Instructions</label>
                 <div id="instructions">
                     <input type="text" name="instruction"/>
                 </div>
-                <button onClick={addInstructionInput} className="addListButton">Add Another Instruction +</button>
+                <button onClick={addInstructionInput} className="defaultButton buttonBlue">Add Another Instruction +</button>
 
                 {/* Submit */}
 
-                <div id="formButtons">
-                    <button onClick={resetFormFields} className="submitButtons">Start Over</button>
-                    <input type="submit" value="Create New Recipe" className="submitButtons"/>
+                <div id="updateCreateFormButtonContainer">
+                    <button onClick={resetFormFields} className="defaultButton buttonGreen updateCreateRecipeButton">Start Over</button>
+                    <input type="submit" value="Create New Recipe" className="defaultButton buttonGreen updateCreateRecipeButton"/>
                 </div>
             </form>
         </main>

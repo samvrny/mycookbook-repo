@@ -1,3 +1,11 @@
+/* 
+    ========================
+    *** UNIVERSAL STYLES ***
+    ========================
+*/
+
+* { box-sizing: border-box; }
+
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   
@@ -9,330 +17,151 @@
 
 body {
     margin: 0;
-    box-sizing: border-box;
     background-color: #002550;
 }
 
 #root {
-    margin: 0 auto;
     max-width: 1750px;
     min-height: 100vh;
     background-color: #FDF8E7;
-}
-
-* { box-sizing: border-box; }
-
-/* HEADER STYLES */
-header {
-    background-color: #0550AB;
-    height: 125px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-nav {
-    margin-right: 20px;
-}
-
-nav ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-nav li {
-    list-style: none;
-}
-
-nav a {
-    text-decoration: none;
-    padding: 5px 15px;
-    background-color: #FFFFFF;
-    font-size: 25px;
-    font-weight: bold;
-    font-style: italic;
-    border-radius: 3px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
-    color: black;
-    margin: 0 10px;
-}
-
-nav a:hover {
-    background-color: #002550;
-    color: #FFFFFF;
-}
-
-/* BELOW FOR MEDIA QUERY 1 ON SMALLER SCREENS */
-/* header img {
-    height: 160px;
-    width: auto;
-    margin: 0;
-    text-align: center;
-}
-
-nav {
-    margin-right: 20px;
-    display: flex;
-}
-
-nav ul {
-    display: flex;
-    margin: 0 0 30px;
-    padding: 0;
-} */
-
-header img {
-    height: 160px;
-    width: auto;
-    margin: 15px 0 0 25px;
-    text-align: center;
+.mainContentContainer {
+    flex: 1;
 }
 
 /* 
-    FOOTER STYLES
+    =====================
+    *** BUTTON STYLES ***
+    =====================
 */
-footer {
-    background-color: #0550AB;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-    font-size: 1.5em;
-    margin-top: 90px; /* THIS ISN'T REALLY VERY ELEGANT, NGL. */
-}
 
-/* WELCOME PAGE STYLES */
-#hero {
-    max-width: 100%;
-    margin-top: 2em;
-}
-
-.welcomePageCta {
-    width: 95%;
-    background-color: #FFFFFF;
-    margin: 2em auto;
-    padding: 1em 4em 3em;
-    border: 3px solid #0550AB;
-    border-radius: 4px;
-}
-
-.welcomePageCta h1 {
-    font-size: 2em;
-    color: #0550AB;
-    font-style: italic;
-}
-
-.welcomePageCta p, #welcomeCards p {
-    font-size: 1.2em;
-}
-
-.welcomePageCta a {
-    display: block;
-    text-align: center;
-    max-width: 300px;
-
+ /* Default style for all buttons */
+.defaultButton {
     text-decoration: none;
     padding: 5px 15px;
-    background-color: #0550AB;
-    font-size: 25px;
+    background-color: #FDF8E7;
     font-weight: bold;
     font-style: italic;
     border-radius: 3px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
-    color: #FFFFFF;
-    margin: 2em auto 0;
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0 #000000;
+    color: #000000;
+    cursor: pointer;
+    text-align: center;
 }
 
-.welcomePageCta a:hover {
+.defaultButton:hover {
     background-color: #002550;
     color: #FFFFFF;
 }
 
-#welcomeCards {
-    display: flex;
-    justify-content: space-around;
-    width: 95%;
-    margin: 0 auto;
-    flex-wrap: wrap;
+ /* For <a> elements embedded in an <li> */
+.defaultButton a {
+    text-decoration: none;
+    color: #000000;
 }
 
-.welcomePageCard {
-    width: 400px;
-    margin: 1em 5px;
-    border: 3px solid #0550AB;
-    border-radius: 4px;
-    background-color: #FFFFFF;
-}
-
-.welcomePadding {
-    padding: 0 1em;
-}
-
-.welcomePageCard img {
-    max-width: 100%;
-}
-
-.welcomePageCard h2 {
-    text-align: center;
-    color: #0550AB;
-    font-style: italic;
-}
-
-/* */
-/* The display grid will help a lot with these weird nav components!! */
-/* STYLES FOR THE USER HOMEPAGE */
-#userHome {
-    display: grid;
-    grid-template-columns: 275px auto;
-}
-
-#userHomeMainSection {
-    margin-left: 25px;
-}
-
-
-.dropdownToggle {
-    display: none;
-}
-
-.categoryNavigation {
-    background-color: #4498FF;
-    border-right: 2px solid #0550AB;
-    border-bottom: 2px solid #0550AB;
-    width: 250px;
-    padding: 10px 13px 10px 10px;
-    height: fit-content;  
-    max-height: 500px;
-    overflow-y: scroll;
-}
-
-.categoryNavigation::-webkit-scrollbar {
-    width: 8px; /* width for vertical scrollbars */
-    background: #002550;
-}
-
-.categoryNavigation::-webkit-scrollbar-thumb {
-    background: #FFFFFF;
-    border-radius: 10px;
-    height: 10px;
-}
-
-.categoryNavigation::-webkit-scrollbar-thumb:hover {
-    background: #b5d5fc;
-    cursor: pointer;
-}
-
-.categoryNavigation ul {
-    margin: 0;
-    padding: 0;
-    /* position: absolute; */
-}
-
-.categoryButton, .categoryButtonGreen {
-    font-size: 25px;
-    font-weight: bold;
-    font-style: italic;
-    border-radius: 3px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
-    color: black;
-    text-align: center;
-    list-style: none;
-    margin: 15px auto;
-    padding: 10px 0;
-    cursor: pointer;
-    background-color: #FDF8E7;
-}
-
-.categoryButtonGreen a {
+.buttonGreen a,
+.buttonRed a {
     text-decoration: none;
     color: #FFFFFF;
 }
 
-.categoryButtonGreen {
+/* Additional button background color schemes */
+.buttonGreen {
     background-color: #059400;
     color: #FFFFFF;
 }
 
-.categoryButtonGreen:hover, .createRecipeButton:hover {
+.buttonGreen:hover {
     background-color: #1ddb17;
 }
 
-.categoryButton:hover {
-    background-color: #002550;
+.buttonRed {
+    background-color: #D10000;
     color: #FFFFFF;
 }
 
-.createRecipeButton {
-    display: block;
-
-    font-size: 25px;
-    font-weight: bold;
-    font-style: italic;
-    border-radius: 3px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
-    text-align: center;
-    cursor: pointer;
-    background-color: #059400;
-    color: #FFFFFF;
-
-    text-decoration: none;
-    margin: 1em 0;
-    padding: 10px 0;
-    width: 300px;
+.buttonRed:hover {
+    background-color: #FF0000;
 }
 
-.recipeCard {
-    background-color: #FFFFFF;
-    width: 600px;
-    padding: 0.5em 1.5em;
-    margin: 1.75em 0 0;
-    position: relative;
-    border-radius: 3px;
-    border: 1px solid #0550AB;
-}
-
-.recipeCard a {
-    text-decoration: none;
+.buttonBlue {
     background-color: #0550AB;
-    font-size: 1.25em;
-    padding: 5px 15px;
-    font-weight: bold;
-    font-style: italic;
-    border-radius: 3px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
     color: #FFFFFF;
-    text-align: center;
-    cursor: pointer;
+}
 
+.buttonBlue:hover {
+    background-color: #002550;
+}
+
+/* Nav button additional styles */
+.navButton {
+    font-size: 1.25em;
+    margin-right: 1em;
+}
+
+/* User home button additional styles */
+.userHomeCategoryButton {
+    font-size: 1.35em;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
+
+.createRecipeHomeButton {
+    display: block;
+    margin: 1.25em 0 1.75em;
+    width: 275px;
+    font-size: 1.5em;
+}
+
+.recipeCardButton {
     width: 175px;
     position: absolute;
     top: 1em;
     right: 1.5em;
+    font-size: 1.25em;
 }
 
-.recipeCard h3 {
-    color: #0550AB;
-    font-style: italic;
+/* Single recipe button additional styles */
+.singleRecipeButton {
+    width: 200px;
+    padding: 0.3em;
+    font-size: 1.2em;
+}
+
+/* Update/Create recipe form button additional styles */
+.updateCreateRecipeButton {
+    width: 250px;
     font-size: 1.5em;
+    margin-top: 0.75em;
 }
 
-.navigationBackground {
-    display: none;
+/* Add category page button additional styles */
+.addCategoryButton {
+    font-size: 1.35em;
+    margin: 1em auto 0;
 }
 
-/* CREATE RECIPE/UPDATE RECIPE STYLES */
+/* Modal button additional styles */
+.modalButton {
+    margin: 1em auto;
+    font-size: 1.25em;
+    width: 125px;
+}
+
+/*  ===================
+    *** FORM STYLES ***
+    ===================
+*/
 
 #createRecipeForm, #updateRecipeForm {
     background-color: #FFFFFF;
     width: 700px;
-    margin: 50px auto;
+    margin: 4em auto;
     padding: 2em;
     border-radius: 3px;
     border: 2px solid black;
@@ -353,7 +182,7 @@ select {
 }
 
 label, input, textarea {
-    margin: 0 auto 10px;
+    margin: 0 auto 0.75em;
     display: block;
     width: 350px;
     padding: 5px;
@@ -378,55 +207,167 @@ textarea {
 }
 
 label {
-    margin: 20px auto 7px;
+    margin: 1em auto 0.25em;
     font-weight: bold;
     font-size: 1.25em;
 }
 
-#formButtons {
-    margin-top: 30px;
+#updateCreateFormButtonContainer {
+    margin-top: 2em;
 }
 
-.addListButton, .submitButtons {
+/* 
+    =================================
+    *** AUTHORIZATION FORM STYLES ***
+    =================================
+*/
+div[data-amplify-router] {
+    margin-top: 50px
+}
+
+/* 
+    =============================
+    *** HEADER AND NAV STYLES ***
+    =============================
+*/
+
+header {
     background-color: #0550AB;
-    margin: 10px auto;
-    font-size: 1em;
-    padding: 5px 15px;
-    font-weight: bold;
-    font-style: italic;
-    border-radius: 3px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
-    color: #FFFFFF;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img {
+    height: 160px;
+    width: auto;
+    margin: 15px 0 0 25px;
     text-align: center;
+}
+
+nav {
+    margin-right: 20px;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    list-style: none;
+}
+
+/* 
+    =====================
+    *** FOOTER STYLES ***
+    =====================
+*/
+
+footer {
+    background-color: #0550AB;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.5em;
+}
+
+/* 
+    ========================
+    *** USER HOME STYLES ***
+    ========================
+*/
+.userHome {
+    display: grid;
+    grid-template-columns: 275px auto;
+}
+
+#userHomeMainContent {
+    margin-left: 1.75em;
+}
+
+#userHomeMainContent h2 {
+    color: #0550AB;
+    font-size: 2.5em;
+    margin-left: 2em;
+    font-style: italic;
+}
+
+.dropdownToggle {
+    display: none;
+}
+
+.categoryNavigation {
+    background-color: #4498FF;
+    border-right: 2px solid #0550AB;
+    border-bottom: 2px solid #0550AB;
+    width: 250px;
+    padding: 1em;
+    height: fit-content;  
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.categoryNavigation::-webkit-scrollbar {
+    width: 8px; /* width for vertical scrollbars */
+    background: #002550;
+}
+
+.categoryNavigation::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+    border-radius: 10px;
+    height: 10px;
+}
+
+.categoryNavigation::-webkit-scrollbar-thumb:hover {
+    background: #b5d5fc;
     cursor: pointer;
 }
 
-.submitButtons {
-    background-color: #059400;
-    color: #FFFFFF;
-    width: 250px;
-    padding: 10px 25px;
-    font-size: 1.25em;
+.categoryList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.addListButton:active, .submitButtons:active { /* This is to make the buttons do something cool on click!! */
-    box-shadow: 2px 2px 0 black;
-    transform: translateY(2px); 
-    transform: translateX(2px);
+.recipeCard {
+    background-color: #FFFFFF;
+    width: 600px;
+    padding: 0.5em 1.5em;
+    margin: 0 0 2em;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #0550AB;
 }
 
-/* SINGLE RECIPE DISPLAY STYLES */
-#singleRecipePage {
+.recipeCard h3 {
+    color: #0550AB;
+    font-size: 1.5em;
+}
+
+.navigationBackground {
+    display: none;
+}
+
+/* 
+    ====================================
+    *** SINGLE RECIPE DISPLAY STYLES ***
+    ====================================
+*/
+.singleRecipePage {
     background-color: #FFFFFF;
     width: 700px;
-    margin: 50px auto 100px;
+    margin: 4em auto;
     padding: 2em 5em;
     border-radius: 3px;
     border: 2px solid black;
 }
 
-#singleRecipePage h2 {
+.singleRecipePage h2 {
     color: #0550AB;
     text-align: center;
     font-style: italic;
@@ -434,96 +375,35 @@ label {
     margin-top: 0.5em;
 }
 
-#singleRecipePage h3 {
+.singleRecipePage h3 {
     font-style: italic;
     font-size: 1.45em;
 }
 
-.recipeButtons {
+.singleRecipePage li, .singleRecipePage p {
+    font-size: 1.25em;
+    margin-bottom: 0.25em;
+}
+
+.recipeButtonsContainer {
     margin-top: 3em;
     display: flex;
     justify-content: space-around;
 }
 
-.recipeUpdateButton, .recipeDeleteButton {
-    text-decoration: none;
-    margin: 10px auto;
-    font-size: 1.25em;
-    padding: 5px 15px;
-    font-weight: bold;
-    font-style: italic;
-    border-radius: 3px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
-    color: #FFFFFF;
-    text-align: center;
-    cursor: pointer;
-}
-
-.recipeUpdateButton {
-    background-color: #059400;
-}
-
-.recipeDeleteButton {
-    background-color: #D10000;
-}
-
-.recipeUpdateButton:hover {
-    background-color: #1ddb17;
-}
-
-.recipeDeleteButton:hover {
-    background-color: #ff0000;
-}
-
-/* AUTHORIZATION STYLES - These overwrite some of the amplify initial styles */
-div[data-amplify-router] {
-    margin-top: 50px
-}
-
-/* DELETE MODAL STYLES */
-
-.modalBackground {
-    position: fixed; /* Keeps it fixed while scrolling */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-  
-.deleteModalContent {
-    width: 400px;
-    height: 475px;
-    background: white;
-    z-index: 10;
-    border-radius: 16px;
-    padding: 2em;
-    text-align: center;
-}
-
-#deleteModal strong, #deleteModal em {
-    color: #D10000;
-}
-
-.deleteModalContent button {
-    
-}
-
 /* 
-    CATEGORIES STYLES
+    =======================================
+    *** CATEGORY MAINTENANCE PAGE STYLE ***
+    =======================================
 */
-#categoriesMainElement {
+
+.categoriesMainElement {
     background-color: #FFFFFF;
     width: 500px;
     margin: 2em auto;
     padding: 3em;
     border: 2px solid black;
+    border-radius: 3px;
 }
 
 .categoryForm {
@@ -542,26 +422,6 @@ div[data-amplify-router] {
     color: #0550AB;
     font-style: italic;
     font-size: 1.75em;
-}
-
-.addCategoryButton {
-    background-color: #059400;
-    margin: 1em auto 0;
-    font-size: 1.35em;
-    padding: 0.2em;
-    font-weight: bold;
-    font-style: italic;
-    border-radius: 3px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
-    color: #FFFFFF;
-    text-align: center;
-    cursor: pointer;
-    width: 250px;
-}
-
-.addCategoryButton:hover {
-    background-color: #1ddb17;
 }
 
 .categoryDisplay {
@@ -606,9 +466,44 @@ i {
     color: #D10000;
     cursor: pointer;
     font-size: 1.3em;
-    /* margin-right: 1em; */
 }
 
+/* 
+    ===========================
+    *** DELETE MODAL STYLES ***
+    ===========================
+*/
+.modalBackground {
+    position: fixed; /* Keeps it fixed while scrolling */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.deleteModalContent {
+    width: 400px;
+    background: white;
+    z-index: 10;
+    border-radius: 16px;
+    padding: 2em;
+    text-align: center;
+}
+
+#deleteModal strong, #deleteModal em {
+    color: #D10000;
+}
+
+.deleteModalButtons {
+    display: flex;
+    justify-content: space-around;
+}
 
 /* 
     MEDIA QUERY BREAKPOINTS

@@ -135,7 +135,7 @@ export default function UpdateRecipe() {
                         return <input type="text" name="ingredient" defaultValue={ingredient}/>
                     })}
                 </div>
-                <button onClick={addIngredientInput} className="addListButton">Add Another Ingredient +</button>
+                <button onClick={addIngredientInput} className="defaultButton buttonBlue">Add Another Ingredient +</button>
 
                 {/* Enter Instructions */}
                 <label htmlFor="">Add Instructions</label>
@@ -144,13 +144,13 @@ export default function UpdateRecipe() {
                         return <input type="text" name="instruction" defaultValue={instruction}/>
                     })}
                 </div>
-                <button onClick={addInstructionInput} className="addListButton">Add Another Instruction +</button>
+                <button onClick={addInstructionInput} className="defaultButton buttonBlue">Add Another Instruction +</button>
 
                 {/* Submit */}
 
-                <div id="formButtons">
-                    <button onClick={startOver} className="submitButtons">Start Over</button>
-                    <input type="submit" value="Update Recipe" className="submitButtons"/>
+                <div id="updateCreateFormButtonContainer">
+                    <button onClick={startOver} className="defaultButton buttonGreen updateCreateRecipeButton">Start Over</button>
+                    <input type="submit" value="Update Recipe" className="defaultButton buttonGreen updateCreateRecipeButton"/>
                 </div>
             </form>
         </main>

@@ -12,9 +12,9 @@ export default function DeleteRecipeModal({ setIsOpen, recipeID, recipeName }) {
 
                 {/* <p>{recipeID}</p>                 */}
 
-                <div className="recipeButtons">
-                    <button className="recipeDeleteButton">Delete</button>
-                    <button className="recipeUpdateButton" onClick={() => setIsOpen(false)}>Go Back</button>
+                <div className="deleteModalButtons">
+                    <button className="defaultButton buttonRed modalButton">Delete</button>
+                    <button className="defaultButton buttonGreen modalButton" onClick={() => setIsOpen(false)}>Go Back</button>
                 </div>
             </div>
         </section>
