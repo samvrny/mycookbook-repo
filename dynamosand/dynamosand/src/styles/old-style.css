@@ -1,0 +1,637 @@
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #002550;
+}
+
+#root {
+    margin: 0 auto;
+    max-width: 1750px;
+    min-height: 100vh;
+    background-color: #FDF8E7;
+}
+
+* { box-sizing: border-box; }
+
+/* HEADER STYLES */
+header {
+    background-color: #0550AB;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    margin-right: 20px;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 5px 15px;
+    background-color: #FFFFFF;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: black;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    background-color: #002550;
+    color: #FFFFFF;
+}
+
+/* BELOW FOR MEDIA QUERY 1 ON SMALLER SCREENS */
+/* header img {
+    height: 160px;
+    width: auto;
+    margin: 0;
+    text-align: center;
+}
+
+nav {
+    margin-right: 20px;
+    display: flex;
+}
+
+nav ul {
+    display: flex;
+    margin: 0 0 30px;
+    padding: 0;
+} */
+
+header img {
+    height: 160px;
+    width: auto;
+    margin: 15px 0 0 25px;
+    text-align: center;
+}
+
+/* 
+    FOOTER STYLES
+*/
+footer {
+    background-color: #0550AB;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    margin-top: 90px; /* THIS ISN'T REALLY VERY ELEGANT, NGL. */
+}
+
+/* WELCOME PAGE STYLES */
+#hero {
+    max-width: 100%;
+    margin-top: 2em;
+}
+
+.welcomePageCta {
+    width: 95%;
+    background-color: #FFFFFF;
+    margin: 2em auto;
+    padding: 1em 4em 3em;
+    border: 3px solid #0550AB;
+    border-radius: 4px;
+}
+
+.welcomePageCta h1 {
+    font-size: 2em;
+    color: #0550AB;
+    font-style: italic;
+}
+
+.welcomePageCta p, #welcomeCards p {
+    font-size: 1.2em;
+}
+
+.welcomePageCta a {
+    display: block;
+    text-align: center;
+    max-width: 300px;
+
+    text-decoration: none;
+    padding: 5px 15px;
+    background-color: #0550AB;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    margin: 2em auto 0;
+}
+
+.welcomePageCta a:hover {
+    background-color: #002550;
+    color: #FFFFFF;
+}
+
+#welcomeCards {
+    display: flex;
+    justify-content: space-around;
+    width: 95%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.welcomePageCard {
+    width: 400px;
+    margin: 1em 5px;
+    border: 3px solid #0550AB;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+.welcomePadding {
+    padding: 0 1em;
+}
+
+.welcomePageCard img {
+    max-width: 100%;
+}
+
+.welcomePageCard h2 {
+    text-align: center;
+    color: #0550AB;
+    font-style: italic;
+}
+
+/* */
+/* The display grid will help a lot with these weird nav components!! */
+/* STYLES FOR THE USER HOMEPAGE */
+#userHome {
+    display: grid;
+    grid-template-columns: 275px auto;
+}
+
+#userHomeMainSection {
+    margin-left: 25px;
+}
+
+
+.dropdownToggle {
+    display: none;
+}
+
+.categoryNavigation {
+    background-color: #4498FF;
+    border-right: 2px solid #0550AB;
+    border-bottom: 2px solid #0550AB;
+    width: 250px;
+    padding: 10px 13px 10px 10px;
+    height: fit-content;  
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.categoryNavigation::-webkit-scrollbar {
+    width: 8px; /* width for vertical scrollbars */
+    background: #002550;
+}
+
+.categoryNavigation::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+    border-radius: 10px;
+    height: 10px;
+}
+
+.categoryNavigation::-webkit-scrollbar-thumb:hover {
+    background: #b5d5fc;
+    cursor: pointer;
+}
+
+.categoryNavigation ul {
+    margin: 0;
+    padding: 0;
+    /* position: absolute; */
+}
+
+.categoryButton, .categoryButtonGreen {
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: black;
+    text-align: center;
+    list-style: none;
+    margin: 15px auto;
+    padding: 10px 0;
+    cursor: pointer;
+    background-color: #FDF8E7;
+}
+
+.categoryButtonGreen a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.categoryButtonGreen {
+    background-color: #059400;
+    color: #FFFFFF;
+}
+
+.categoryButtonGreen:hover, .createRecipeButton:hover {
+    background-color: #1ddb17;
+}
+
+.categoryButton:hover {
+    background-color: #002550;
+    color: #FFFFFF;
+}
+
+.createRecipeButton {
+    display: block;
+
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    text-align: center;
+    cursor: pointer;
+    background-color: #059400;
+    color: #FFFFFF;
+
+    text-decoration: none;
+    margin: 1em 0;
+    padding: 10px 0;
+    width: 300px;
+}
+
+.recipeCard {
+    background-color: #FFFFFF;
+    width: 600px;
+    padding: 0.5em 1.5em;
+    margin: 1.75em 0 0;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #0550AB;
+}
+
+.recipeCard a {
+    text-decoration: none;
+    background-color: #0550AB;
+    font-size: 1.25em;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+
+    width: 175px;
+    position: absolute;
+    top: 1em;
+    right: 1.5em;
+}
+
+.recipeCard h3 {
+    color: #0550AB;
+    font-style: italic;
+    font-size: 1.5em;
+}
+
+.navigationBackground {
+    display: none;
+}
+
+/* CREATE RECIPE/UPDATE RECIPE STYLES */
+
+#createRecipeForm, #updateRecipeForm {
+    background-color: #FFFFFF;
+    width: 700px;
+    margin: 50px auto;
+    padding: 2em;
+    border-radius: 3px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+#createRecipeForm h2, #updateRecipeForm h2 {
+    font-size: 2.5em;
+    font-style: italic;
+    color: #0550AB;
+}
+
+select {
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+
+label, input, textarea {
+    margin: 0 auto 10px;
+    display: block;
+    width: 350px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+input, textarea, select {
+    border: 1px solid #0550AB; 
+    border-radius: 3px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 4px #0550AB;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    margin: 20px auto 7px;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+#formButtons {
+    margin-top: 30px;
+}
+
+.addListButton, .submitButtons {
+    background-color: #0550AB;
+    margin: 10px auto;
+    font-size: 1em;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+
+.submitButtons {
+    background-color: #059400;
+    color: #FFFFFF;
+    width: 250px;
+    padding: 10px 25px;
+    font-size: 1.25em;
+}
+
+.addListButton:active, .submitButtons:active { /* This is to make the buttons do something cool on click!! */
+    box-shadow: 2px 2px 0 black;
+    transform: translateY(2px); 
+    transform: translateX(2px);
+}
+
+/* SINGLE RECIPE DISPLAY STYLES */
+#singleRecipePage {
+    background-color: #FFFFFF;
+    width: 700px;
+    margin: 50px auto 100px;
+    padding: 2em 5em;
+    border-radius: 3px;
+    border: 2px solid black;
+}
+
+#singleRecipePage h2 {
+    color: #0550AB;
+    text-align: center;
+    font-style: italic;
+    font-size: 2.25em;
+    margin-top: 0.5em;
+}
+
+#singleRecipePage h3 {
+    font-style: italic;
+    font-size: 1.45em;
+}
+
+.recipeButtons {
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.recipeUpdateButton, .recipeDeleteButton {
+    text-decoration: none;
+    margin: 10px auto;
+    font-size: 1.25em;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+
+.recipeUpdateButton {
+    background-color: #059400;
+}
+
+.recipeDeleteButton {
+    background-color: #D10000;
+}
+
+.recipeUpdateButton:hover {
+    background-color: #1ddb17;
+}
+
+.recipeDeleteButton:hover {
+    background-color: #ff0000;
+}
+
+/* AUTHORIZATION STYLES - These overwrite some of the amplify initial styles */
+div[data-amplify-router] {
+    margin-top: 50px
+}
+
+/* DELETE MODAL STYLES */
+
+.modalBackground {
+    position: fixed; /* Keeps it fixed while scrolling */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.deleteModalContent {
+    width: 400px;
+    height: 475px;
+    background: white;
+    z-index: 10;
+    border-radius: 16px;
+    padding: 2em;
+    text-align: center;
+}
+
+#deleteModal strong, #deleteModal em {
+    color: #D10000;
+}
+
+.deleteModalContent button {
+    
+}
+
+/* 
+    CATEGORIES STYLES
+*/
+#categoriesMainElement {
+    background-color: #FFFFFF;
+    width: 500px;
+    margin: 2em auto;
+    padding: 3em;
+    border: 2px solid black;
+}
+
+.categoryForm {
+    background-color: #FDF8E7;
+    margin: 0 auto;
+    width: 400px;
+    padding: 2em 1em;
+    border-radius: 3px;
+    border: 2px solid black;
+}
+
+.categoryForm label {
+    display: block;
+    text-align: center;
+    margin: 0 0 0.35em;
+    color: #0550AB;
+    font-style: italic;
+    font-size: 1.75em;
+}
+
+.addCategoryButton {
+    background-color: #059400;
+    margin: 1em auto 0;
+    font-size: 1.35em;
+    padding: 0.2em;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0 black;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+    width: 250px;
+}
+
+.addCategoryButton:hover {
+    background-color: #1ddb17;
+}
+
+.categoryDisplay {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.categoryDisplay h2 {
+    text-align: center;
+    color: #0550AB;
+    font-style: italic;
+    font-size: 2.25em;
+    margin-bottom: 0;
+}
+
+.categoryDisplay ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.categoryDisplay li {
+    border: 2px solid black;
+    width: 300px;
+    border-radius: 3px;
+    margin: 1em 0;
+    padding: 0.35em 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-style: italic;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.categoryText {
+    font-size: 1.25em;
+}
+
+i {
+    color: #D10000;
+    cursor: pointer;
+    font-size: 1.3em;
+    /* margin-right: 1em; */
+}
+
+
+/* 
+    MEDIA QUERY BREAKPOINTS
+
+    955px
+        User Homepage
+            Cards smaller
+            Thinner Side Menu
+
+    760px
+        User Homepage
+            Mobile Cards
+
+        Create Recipe
+            Thinned Down
+        Update Recipe
+            Thinned down
+
+    600px
+        All
+            Mobile Breakpoint
+
+        User Homepage
+            Mobile Category Navigation
+            Mobile Cards
+*/
