@@ -9,11 +9,24 @@
       "UnauthRoleName": "amplify-dynamosand-dev-b1c8e-unauthRole",
       "StackName": "amplify-dynamosand-dev-b1c8e",
       "StackId": "arn:aws:cloudformation:us-east-2:209479286992:stack/amplify-dynamosand-dev-b1c8e/8add2b40-1fd9-11f0-94ca-0641fab08323",
-      "AmplifyAppId": "d2bolqzlcugdy1"
+      "AmplifyAppId": "d2bolqzlcugdy1",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
         "dynamosandc635e448": {}
+      },
+      "storage": {
+        "dynamosand": {}
+      },
+      "function": {
+        "recipefunction": {
+          "deploymentBucketName": "amplify-dynamosand-dev-b1c8e-deployment",
+          "s3Key": "amplify-builds/recipefunction-595861575a3472393953-build.zip"
+        }
+      },
+      "api": {
+        "recipeapi": {}
       }
     }
   }

@@ -2,8 +2,33 @@ import mockData from '../mockRecipeData/mockRecipes.json'
 
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+
+import { get } from '@aws-amplify/api';
 
 export default function UserHome() {
+
+    const { user } = useAuthenticator(context => [context.user]);
+    const userID = user.userId;
+
+    console.log(userID);
+
+    const fetchRecipe = async () =>  {
+        try {
+          const restOperation = get({ 
+            apiName: 'recipeapi',
+            path: `/recipe/${userID}` 
+          });
+          const response = await restOperation.response;
+          console.log('GET call succeeded: ', response);
+        } catch (e) {
+          console.log('GET call failed: ', JSON.parse(e.response.body));
+        }
+      }
+
+    useEffect(() => {
+        fetchRecipe()
+    }, [])
 
     //Get categories
     let categories = mockData.categories;

@@ -96,6 +96,9 @@ amplify add storage
 ? Do you want to add another path? N
 
 
+NOTE ON FIRST API GATEWAY command
+
+
 ***** COGINITO *****
 AWS documentation here for Cognito installation:
 https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/create-a-react-app-by-using-aws-amplify-and-add-authentication-with-amazon-cognito.html
