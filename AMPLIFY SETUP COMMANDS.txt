@@ -43,11 +43,57 @@ select NoSQL Database
 A new database will need to be created for every single one...
 * use a string-set OR a list for the ingredients and the instructions
 * make the userID the partition key
-* make the recipeID the sort key
+* make the recopied the sort key
 * make the category the GSI key
 
 add lambda trigger? No
 amplify push
+
+THIS IS A MORE COMPREHENSIVE DYNAMODB SETUP....
+
+amplify add storage
+
+? Please select from one of the below mentioned services: NoSQL Database
+? Please provide a friendly name for your resource that will be used to label
+  this category in the project: tableName
+? Please provide table name: tableName
+? What would you like to name this column: id
+? Please choose the data type: string
+? Would you like to add another column? N
+? Please choose partition key for the table: id
+? Do you want to add a sort key to your table? N (could add if yes)
+? Do you want to add global secondary indexes to your table? N (could add if yes)
+? Do you want to add a Lambda Trigger for your Table? N
+
+~ amplify add api
+
+? Please select from one of the below mentioned services: REST
+? Provide a friendly name for your resource to be used as a label for this
+  category in the project: ecommerceapi
+? Provide a path: /products
+? Choose a Lambda source: Create a new Lambda function
+? Provide a friendly name for your resource to be used as a label for this
+  category in the project: ecommercefunction
+? Provide the AWS Lambda function name: ecommercefunction
+? Choose the function runtime that you want to use: NodeJS
+? Choose the function template that you want to use: Serverless express
+  function (Integration with Amazon API Gateway)
+? Do you want to access other resources created in this project from your
+  Lambda function? Y
+? Select the category: storage, auth
+? Select the operations you want to permit for <app_name>: create, read, update,
+  delete
+? Select the operations you want to permit for producttable: create, read,
+  update, delete
+? Do you want to invoke this function on a recurring schedule? N
+? Do you want to configure Lambda layers for this function? N
+? Do you want to edit the local Lambda function now? N
+? Restrict API access: Y
+? Who should have access? Authenticated and Guest users
+? What kind of access do you want for Authenticated users? create, read,
+  update, delete
+? What kind of access do you want for Guest users? read
+? Do you want to add another path? N
 
 
 ***** COGINITO *****
