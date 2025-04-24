@@ -1,0 +1,14 @@
+{
+  "resourceName": "apple",
+  "tableName": "apple",
+  "partitionKey": {
+    "fieldName": "userID",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "ID",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

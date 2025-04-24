@@ -14,6 +14,18 @@
     "categories": {
       "auth": {
         "apihelp7f5d34d1": {}
+      },
+      "function": {
+        "applefunction": {
+          "deploymentBucketName": "amplify-apihelp-dev-45ce2-deployment",
+          "s3Key": "amplify-builds/applefunction-6d592f376d364f756b42-build.zip"
+        }
+      },
+      "storage": {
+        "apple": {}
+      },
+      "api": {
+        "appleapi": {}
       }
     }
   }
