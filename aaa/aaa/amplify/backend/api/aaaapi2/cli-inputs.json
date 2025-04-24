@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/aaa2": {
+      "name": "/aaa2",
+      "lambdaFunction": "aaafunc2",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

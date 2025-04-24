@@ -1,0 +1,78 @@
+{
+  "api": {
+    "aaaapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "aaaapifunc"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "aaaapi2": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "aaafunc2"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "aaaapifunc": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "aaafunc2": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_aaaapifunc_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "aaaapifunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_aaaapifunc_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "aaaapifunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_aaafunc2_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "aaafunc2"
+        }
+      ]
+    },
+    "AMPLIFY_function_aaafunc2_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "aaafunc2"
+        }
+      ]
+    }
+  }
+}
