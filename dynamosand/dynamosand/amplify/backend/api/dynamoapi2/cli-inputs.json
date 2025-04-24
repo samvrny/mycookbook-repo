@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/recipe2": {
+      "name": "/recipe2",
+      "lambdaFunction": "dynamoapi2function",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

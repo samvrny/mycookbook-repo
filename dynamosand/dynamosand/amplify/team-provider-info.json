@@ -23,10 +23,20 @@
         "recipefunction": {
           "deploymentBucketName": "amplify-dynamosand-dev-b1c8e-deployment",
           "s3Key": "amplify-builds/recipefunction-595861575a3472393953-build.zip"
+        },
+        "dynamoapi2function": {
+          "deploymentBucketName": "amplify-dynamosand-dev-b1c8e-deployment",
+          "s3Key": "amplify-builds/dynamoapi2function-315333357745356a3078-build.zip"
+        },
+        "dyn3func": {
+          "deploymentBucketName": "amplify-dynamosand-dev-b1c8e-deployment",
+          "s3Key": "amplify-builds/dyn3func-7a67787554476e724b2f-build.zip"
         }
       },
       "api": {
-        "recipeapi": {}
+        "recipeapi": {},
+        "dynamoapi2": {},
+        "dyn3": {}
       }
     }
   }

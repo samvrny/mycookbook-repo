@@ -16,8 +16,8 @@ export default function UserHome() {
     const fetchRecipe = async () =>  {
         try {
           const restOperation = get({ 
-            apiName: 'recipeapi',
-            path: `/recipe/${userID}` 
+            apiName: 'dynamoapi2',
+            path: `/recipe2` 
           });
           const response = await restOperation.response;
           console.log('GET call succeeded: ', response);

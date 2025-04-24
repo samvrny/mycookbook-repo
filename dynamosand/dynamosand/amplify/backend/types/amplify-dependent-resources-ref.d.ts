@@ -1,5 +1,15 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
+    "dyn3": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    },
+    "dynamoapi2": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    },
     "recipeapi": {
       "ApiId": "string",
       "ApiName": "string",
@@ -18,6 +28,20 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "dyn3func": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "dynamoapi2function": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "recipefunction": {
       "Arn": "string",
       "LambdaExecutionRole": "string",

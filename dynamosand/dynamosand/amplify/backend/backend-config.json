@@ -1,5 +1,33 @@
 {
   "api": {
+    "dyn3": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "dyn3func"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "dynamoapi2": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "dynamoapi2function"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "recipeapi": {
       "dependsOn": [
         {
@@ -44,6 +72,30 @@
     }
   },
   "function": {
+    "dyn3func": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "dynamosand"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "dynamoapi2function": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "recipefunction": {
       "build": true,
       "dependsOn": [
@@ -65,6 +117,38 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_dyn3func_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dyn3func"
+        }
+      ]
+    },
+    "AMPLIFY_function_dyn3func_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dyn3func"
+        }
+      ]
+    },
+    "AMPLIFY_function_dynamoapi2function_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dynamoapi2function"
+        }
+      ]
+    },
+    "AMPLIFY_function_dynamoapi2function_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dynamoapi2function"
+        }
+      ]
+    },
     "AMPLIFY_function_recipefunction_deploymentBucketName": {
       "usedBy": [
         {
