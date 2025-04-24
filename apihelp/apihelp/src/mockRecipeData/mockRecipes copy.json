@@ -1,0 +1,134 @@
+{
+    "categories": [
+        {
+            "userID": "1",
+            "categoryID": "1",
+            "categoryName": "Breakfast"
+        },
+        {
+            "userID": "1",
+            "categoryID": "2",
+            "categoryName": "Lunch"
+        },
+        {
+            "userID": "1",
+            "categoryID": "3",
+            "categoryName": "Dinner"
+        },
+        {
+            "userID": "1",
+            "categoryID": "4",
+            "categoryName": "Mexican"
+        },
+        {
+            "userID": "1",
+            "categoryID": "5",
+            "categoryName": "Dessert"
+        }
+    ],
+
+    "recipes": [
+        {
+            "userID": "1",
+            "recipeID": "1",
+            "category": "Breakfast",
+            "name": "Scrambled Eggs",
+            "description": "Fluffy scrambled eggs.",
+            "ingredients": [
+                "1 - 5 Eggs",
+                "Pinch of salt",
+                "Dash of black pepper",
+                "1/2 Tbs. Butter"
+            ],
+            "insructions": [
+                "Crack eggs into a bowl",
+                "Add salt and pepper and whisk",
+                "Heat a pan on medium heat and add the butter.",
+                "Add eggs and stir frequently to avoid burning",
+                "Remove from stove when eggs are cooked through",
+                "Serve with some toast!"
+            ]
+        },
+        {
+            "userID": "1",
+            "recipeID": "2",
+            "category": "Breakfast",
+            "name": "Fruit Bowl",
+            "description": "A delicious and healthy bowl of fruit.",
+            "ingredients": [
+                "2 cups of your favorite fruits & berries",
+                "1/2 cup Heavy Cream",
+                "1 tsp. maple syrup"
+            ],
+            "insructions": [
+                "Dice up your fruits (leave berries whole)",
+                "Add heavy cream and syrup to a bowl and whisk with a hand beater or electric mixer until stiff peaks form",
+                "Add fruit to a bowl",
+                "Add whip to the fruit and enjoy!"
+            ]
+        },
+        {
+            "userID": "1",
+            "recipeID": "3",
+            "category": "Lunch",
+            "name": "Turkey Sandwich",
+            "description": "A classic cold cut turkey sandwich",
+            "ingredients": [
+                "2 slices bread",
+                "5 slices deli turket",
+                "2 slices cheese",
+                "Mayo",
+                "Lettuce",
+                "Tomato"
+            ],
+            "insructions": [
+                "Spread the mayo on the bread",
+                "Layer the rest of the ingredients on one piece of the bread",
+                "Put the other piece of bread on top",
+                "Serve with chips and a drink"
+            ]
+        },
+        {
+            "userID": "1",
+            "recipeID": "4",
+            "category": "Lunch",
+            "name": "Leftovers",
+            "description": "Leftovers from the fridge",
+            "ingredients": [
+                "Whatever is in the fridge"
+            ],
+            "insructions": [
+                "Open up the fridge",
+                "Search around for something to eat",
+                "Reheat food if necessary...",
+                "... Or just eat it cold."
+            ]
+        },
+        {
+            "userID": "2",
+            "recipeID": "1",
+            "category": "Dinner",
+            "name": "Steak and Potatoes",
+            "description": "Classic American dinner option",
+            "ingredients": [
+                "1 steak, a Ribeye or NY Strip is preffered",
+                "Pinch of salt",
+                "Pinch of pepper",
+                "Potato",
+                "1 Tbs Butter",
+                "Scoop of sour cream"
+            ],
+            "insructions": [
+                "Preheat oven to 400. Poke holes in potato with a fork and wrap it in foil, then place it in the oven",
+                "After potato has been in the oven for about 40 minutes, Heat a pan on medium high heat",
+                "Salt both sides of the steak generously, as well as adding a little pepper",
+                "Add some oil to the pan. When oil shimmers, add steak and let cook for 5 minutes. After that, flip and cook another 5 minutes",
+                "At this point, the steak should be medium rare. Cook an additional minute and 30 seconds for medium, 3 minutes for medium well, or 5 minutes for well done.",
+                "Remove steak from pan and let rest on cutting board",
+                "Remove potato from the oven and unwrap. Cut it open and put butter and sour cream on it",
+                "Serve the steak and the potato."
+            ]
+        }
+    ]
+
+}

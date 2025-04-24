@@ -1,33 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//Import the needed things from React Router DOM
+import { Routes, Route, Navigate } from 'react-router-dom'
+
+//Import Components (for tesing. BrowserRouter will eventually route to pages... I think)
+import Header from './components/Header'
+import Footer from './components/Footer'
+import CreateRecipe from './components/CreateRecipe'
+import Recipe from './components/Recipe'
+import UpdateRecipe from './components/UpdateRecipe'
+import ConditionalHome from './components/ConditionalHome'
+import SignUp from './components/SignUp'
+import Categories from './components/Categories'
+
+//Authorization wrapper
+import RequireAuthWrapper from './components/RequireAuthWrapper'
+import Ax from './components/Ax'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      
+      <Routes>
+
+            <Route path="/" element={<ConditionalHome />} />
+
+            <Route 
+              path="/create-recipe" 
+              element={
+              <RequireAuthWrapper>
+                <CreateRecipe />
+              </RequireAuthWrapper>} 
+            />
+            <Route 
+              path="/recipe/:recipeIdToDisplay" 
+              element={
+              <RequireAuthWrapper>
+                <Recipe />
+              </RequireAuthWrapper>} 
+            />
+            <Route 
+              path="/update-recipe/:recipeIdToUpdate" 
+              element={
+                <RequireAuthWrapper>
+                  <UpdateRecipe />
+                </RequireAuthWrapper>
+              } 
+            />
+            <Route 
+              path="/manage-categories"
+              element={
+                <RequireAuthWrapper>
+                  <Categories />
+                </RequireAuthWrapper>
+              }
+            />
+
+            <Route 
+              path="/ax"
+              element={
+                  <Ax />
+              }
+            />
+
+            <Route path="/sign-up" element={<SignUp />} />
+
+            {/* 👇 This catches all undefined routes and redirects to home */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+
+      <Footer />
     </>
   )
 }
