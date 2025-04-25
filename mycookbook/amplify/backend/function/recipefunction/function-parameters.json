@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "auth": {
+      "mycookbook40f9429f": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "storage": {
+      "mycookbookdb": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
