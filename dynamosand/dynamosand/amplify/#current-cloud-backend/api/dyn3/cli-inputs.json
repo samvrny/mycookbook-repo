@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/dyn3": {
+      "name": "/dyn3",
+      "lambdaFunction": "dyn3func",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "tableName": "dynamosand",
+  "partitionKeyName": "userID",
+  "partitionKeyType": "S",
+  "sortKeyName": "recipeID",
+  "sortKeyType": "S"
+}

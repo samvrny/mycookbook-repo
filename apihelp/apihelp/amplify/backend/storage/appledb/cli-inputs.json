@@ -1,0 +1,10 @@
+{
+  "resourceName": "appledb",
+  "tableName": "recipes",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "number"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

@@ -18,11 +18,11 @@
       "function": {
         "applefunction": {
           "deploymentBucketName": "amplify-apihelp-dev-45ce2-deployment",
-          "s3Key": "amplify-builds/applefunction-6d592f376d364f756b42-build.zip"
+          "s3Key": "amplify-builds/applefunction-38544a63335941456369-build.zip"
         }
       },
       "storage": {
-        "apple": {}
+        "appledb": {}
       },
       "api": {
         "appleapi": {}

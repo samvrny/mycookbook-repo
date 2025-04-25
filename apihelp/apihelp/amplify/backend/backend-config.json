@@ -48,16 +48,20 @@
       "build": true,
       "dependsOn": [
         {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "apihelp7f5d34d1"
+        },
+        {
           "attributes": [
             "Name",
-            "Arn"
+            "Arn",
+            "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "apple"
+          "resourceName": "appledb"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -83,7 +87,7 @@
     }
   },
   "storage": {
-    "apple": {
+    "appledb": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

@@ -1,0 +1,266 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dynamosand-dev-b1c8e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::209479286992:role/amplify-dynamosand-dev-b1c8e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::209479286992:role/amplify-dynamosand-dev-b1c8e-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-dynamosand-dev-b1c8e-deployment",
+      "UnauthRoleName": "amplify-dynamosand-dev-b1c8e-unauthRole",
+      "StackName": "amplify-dynamosand-dev-b1c8e",
+      "StackId": "arn:aws:cloudformation:us-east-2:209479286992:stack/amplify-dynamosand-dev-b1c8e/8add2b40-1fd9-11f0-94ca-0641fab08323",
+      "AmplifyAppId": "d2bolqzlcugdy1",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    }
+  },
+  "auth": {
+    "dynamosandc635e448": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/auth/dynamosandc635e448-cloudformation-template.json",
+        "logicalId": "authdynamosandc635e448"
+      },
+      "lastPushTimeStamp": "2025-04-24T00:29:44.577Z",
+      "output": {
+        "UserPoolId": "us-east-2_hLLVMSVYN",
+        "AppClientIDWeb": "4qr6vku7l730qse8uc4snkmplu",
+        "AppClientID": "5n9modrnj6p08jsmutor5baap6",
+        "IdentityPoolId": "us-east-2:5d7abc1b-d0f1-46e6-890f-e3d52207cc39",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:209479286992:userpool/us-east-2_hLLVMSVYN",
+        "IdentityPoolName": "dynamosandc635e448_identitypool_c635e448__dev",
+        "UserPoolName": "dynamosandc635e448_userpool_c635e448"
+      },
+      "lastPushDirHash": "NIZtVGs1ZW3CTHmq6DFhi6/tox8="
+    }
+  },
+  "storage": {
+    "dynamosand": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/storage/dynamosand-cloudformation-template.json",
+        "logicalId": "storagedynamosand"
+      },
+      "lastPushTimeStamp": "2025-04-24T00:29:44.598Z",
+      "output": {
+        "PartitionKeyName": "userID",
+        "SortKeyName": "recipeID",
+        "SortKeyType": "S",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:dynamodb:us-east-2:209479286992:table/dynamosand-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-2:209479286992:table/dynamosand-dev/stream/2025-04-23T02:09:28.192",
+        "PartitionKeyType": "S",
+        "Name": "dynamosand-dev"
+      },
+      "lastPushDirHash": "xLNScwNYImHVFlOZbY1VCz+yQPg="
+    }
+  },
+  "function": {
+    "recipefunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "dynamosand",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2025-04-23T02:24:09.869Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-04-23T02:24:59.662Z",
+      "distZipFilename": "recipefunction-595861575a3472393953-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-dynamosand-dev-b1c8e-deployment",
+        "s3Key": "amplify-builds/recipefunction-595861575a3472393953-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/function/recipefunction-cloudformation-template.json",
+        "logicalId": "functionrecipefunction"
+      },
+      "lastPushTimeStamp": "2025-04-24T00:29:44.641Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::209479286992:role/dynamosandLambdaRole9465ef9d-dev",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:209479286992:function:recipefunction-dev",
+        "Name": "recipefunction-dev",
+        "LambdaExecutionRole": "dynamosandLambdaRole9465ef9d-dev"
+      },
+      "lastPushDirHash": "ZzCu/cwoP7oSWS0V8sYb48lKlLc="
+    },
+    "dynamoapi2function": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2025-04-23T04:15:21.281Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-04-23T04:15:27.464Z",
+      "distZipFilename": "dynamoapi2function-315333357745356a3078-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-dynamosand-dev-b1c8e-deployment",
+        "s3Key": "amplify-builds/dynamoapi2function-315333357745356a3078-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/function/dynamoapi2function-cloudformation-template.json",
+        "logicalId": "functiondynamoapi2function"
+      },
+      "lastPushTimeStamp": "2025-04-24T00:29:44.697Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::209479286992:role/dynamosandLambdaRoled8d587ac-dev",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:209479286992:function:dynamoapi2function-dev",
+        "Name": "dynamoapi2function-dev",
+        "LambdaExecutionRole": "dynamosandLambdaRoled8d587ac-dev"
+      },
+      "lastPushDirHash": "DtSSCpd9bdiXLeWiIYQEI+VA3Qo="
+    },
+    "dyn3func": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "dynamosand",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2025-04-24T00:07:25.797Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-04-24T00:08:35.465Z",
+      "distZipFilename": "dyn3func-7a67787554476e724b2f-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-dynamosand-dev-b1c8e-deployment",
+        "s3Key": "amplify-builds/dyn3func-7a67787554476e724b2f-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/function/dyn3func-cloudformation-template.json",
+        "logicalId": "functiondyn3func"
+      },
+      "lastPushTimeStamp": "2025-04-24T00:29:44.749Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::209479286992:role/dynamosandLambdaRolea407b108-dev",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:209479286992:function:dyn3func-dev",
+        "Name": "dyn3func-dev",
+        "LambdaExecutionRole": "dynamosandLambdaRolea407b108-dev"
+      },
+      "lastPushDirHash": "jKj+FEx93MaBLnofHI3fSJ8OTYE="
+    }
+  },
+  "api": {
+    "recipeapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "recipefunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/api/recipeapi-cloudformation-template.json",
+        "logicalId": "apirecipeapi"
+      },
+      "lastPushTimeStamp": "2025-04-24T00:29:44.780Z",
+      "output": {
+        "ApiName": "recipeapi",
+        "RootUrl": "https://xfu2ewzws7.execute-api.us-east-2.amazonaws.com/dev",
+        "ApiId": "xfu2ewzws7"
+      },
+      "lastPushDirHash": "x6O9ojy+qdoj2CSH3yr+Miq1g0o="
+    },
+    "dynamoapi2": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "dynamoapi2function",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/api/dynamoapi2-cloudformation-template.json",
+        "logicalId": "apidynamoapi2"
+      },
+      "lastPushTimeStamp": "2025-04-24T00:29:44.809Z",
+      "output": {
+        "ApiName": "dynamoapi2",
+        "RootUrl": "https://m8v0ju1gej.execute-api.us-east-2.amazonaws.com/dev",
+        "ApiId": "m8v0ju1gej"
+      },
+      "lastPushDirHash": "3jC7WdXgm76NCzQFPIaAT5LBXsA="
+    },
+    "dyn3": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "dyn3func",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dynamosand-dev-b1c8e-deployment/amplify-cfn-templates/api/dyn3-cloudformation-template.json",
+        "logicalId": "apidyn3"
+      },
+      "lastPushTimeStamp": "2025-04-24T00:29:44.849Z",
+      "output": {
+        "ApiName": "dyn3",
+        "RootUrl": "https://vq18b2e3tf.execute-api.us-east-2.amazonaws.com/dev",
+        "ApiId": "vq18b2e3tf"
+      },
+      "lastPushDirHash": "Jqf1Pd5hgafhDoTGGQmgtONh41M="
+    }
+  }
+}

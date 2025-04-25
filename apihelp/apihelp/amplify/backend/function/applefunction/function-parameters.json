@@ -1,3 +1,21 @@
 {
+  "permissions": {
+    "auth": {
+      "apihelp7f5d34d1": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "storage": {
+      "appledb": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
   "lambdaLayers": []
 }
