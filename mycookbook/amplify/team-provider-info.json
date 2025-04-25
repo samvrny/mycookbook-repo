@@ -22,11 +22,11 @@
       "function": {
         "recipefunction": {
           "deploymentBucketName": "amplify-mycookbook-dev-e40fc-deployment",
-          "s3Key": "amplify-builds/recipefunction-6a6d4237487a5967482f-build.zip"
+          "s3Key": "amplify-builds/recipefunction-453132453469415a4a6a-build.zip"
         },
         "categoryfunction": {
           "deploymentBucketName": "amplify-mycookbook-dev-e40fc-deployment",
-          "s3Key": "amplify-builds/categoryfunction-6e765536446c33764a74-build.zip"
+          "s3Key": "amplify-builds/categoryfunction-634b44314f4650486448-build.zip"
         }
       },
       "api": {

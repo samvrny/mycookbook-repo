@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
 
 //Import DynamoDB access
 const region = process.env.REGION;
-const ddb_table_name = process.env.STORAGE_APPLEDB_NAME;
+const ddb_table_name = process.env.STORAGE_MYCOOKBOOKDB_NAME;
 const docsClient = new AWS.DynamoDB.DocumentClient({region})
 
 /**********************
@@ -61,7 +61,7 @@ const docsClient = new AWS.DynamoDB.DocumentClient({region})
 
 app.get('/recipe', async function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  // res.json({success: 'get call succeed!', url: req.url});
 
   let params = {TableName: ddb_table_name}
   try {

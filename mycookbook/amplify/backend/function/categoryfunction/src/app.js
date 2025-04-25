@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
 
 //Import DynamoDB access
 const region = process.env.REGION;
-const ddb_table_name = process.env.STORAGE_APPLEDB_NAME;
+const ddb_table_name = process.env.STORAGE_MYCOOKBOOKCATDB_NAME;
 const docsClient = new AWS.DynamoDB.DocumentClient({region})
 
 /**********************
