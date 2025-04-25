@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/category": {
+      "name": "/category",
+      "lambdaFunction": "categoryfunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

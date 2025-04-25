@@ -1,0 +1,10 @@
+{
+  "resourceName": "mycookbookcatdb",
+  "tableName": "category",
+  "partitionKey": {
+    "fieldName": "userID",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

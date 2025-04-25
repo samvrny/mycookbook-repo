@@ -1,5 +1,19 @@
 {
   "api": {
+    "mycookbookcategory": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "categoryfunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "mycookbookrecipe": {
       "dependsOn": [
         {
@@ -44,6 +58,29 @@
     }
   },
   "function": {
+    "categoryfunction": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "mycookbook40f9429f"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "mycookbookcatdb"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "recipefunction": {
       "build": true,
       "dependsOn": [
@@ -69,6 +106,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_categoryfunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "categoryfunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_categoryfunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "categoryfunction"
+        }
+      ]
+    },
     "AMPLIFY_function_recipefunction_deploymentBucketName": {
       "usedBy": [
         {
@@ -87,6 +140,10 @@
     }
   },
   "storage": {
+    "mycookbookcatdb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "mycookbookdb": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"

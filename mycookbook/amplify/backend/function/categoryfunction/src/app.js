@@ -11,9 +11,9 @@ See the License for the specific language governing permissions and limitations 
 	AUTH_MYCOOKBOOK40F9429F_USERPOOLID
 	ENV
 	REGION
-	STORAGE_MYCOOKBOOKDB_ARN
-	STORAGE_MYCOOKBOOKDB_NAME
-	STORAGE_MYCOOKBOOKDB_STREAMARN
+	STORAGE_MYCOOKBOOKCATDB_ARN
+	STORAGE_MYCOOKBOOKCATDB_NAME
+	STORAGE_MYCOOKBOOKCATDB_STREAMARN
 Amplify Params - DO NOT EDIT */
 
 const express = require('express')
@@ -44,25 +44,9 @@ const docsClient = new AWS.DynamoDB.DocumentClient({region})
  * Example get method *
  **********************/
 
-// app.get('/items', async function(req, res) {
-//   // Add your code here
-//   // res.json({success: 'get call succeed!', url: req.url});
-//   let params = {TableName: ddb_table_name}
-//   try {
-//     console.log('GETTING DATA!!!')
-//     const data = await docsClient.scan(params).promise()
-//     console.log('GOT DATA!!! HELL TO THE YES!!!')
-//     res.json(data);
-//   } catch (error) {
-//     console.log('UHOH, ERROR!!!', error)
-//     res.json({'error, apple!': error})
-//   }
-// });
-
-app.get('/recipe', async function(req, res) {
+app.get('/items', async function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-
+  // res.json({success: 'get call succeed!', url: req.url});
   let params = {TableName: ddb_table_name}
   try {
     console.log('GETTING DATA!!!')
@@ -73,10 +57,14 @@ app.get('/recipe', async function(req, res) {
     console.log('UHOH, ERROR!!!', error)
     res.json({'error, apple!': error})
   }
-
 });
 
-app.get('/recipe/*', function(req, res) {
+app.get('/category', function(req, res) {
+  // Add your code here
+  res.json({success: 'get call succeed!', url: req.url});
+});
+
+app.get('/category/*', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
@@ -85,12 +73,12 @@ app.get('/recipe/*', function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/recipe', function(req, res) {
+app.post('/category', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
-app.post('/recipe/*', function(req, res) {
+app.post('/category/*', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
@@ -99,12 +87,12 @@ app.post('/recipe/*', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/recipe', function(req, res) {
+app.put('/category', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/recipe/*', function(req, res) {
+app.put('/category/*', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
@@ -113,12 +101,12 @@ app.put('/recipe/*', function(req, res) {
 * Example delete method *
 ****************************/
 
-app.delete('/recipe', function(req, res) {
+app.delete('/category', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-app.delete('/recipe/*', function(req, res) {
+app.delete('/category/*', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });

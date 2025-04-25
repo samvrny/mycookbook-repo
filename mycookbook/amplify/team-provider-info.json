@@ -16,16 +16,22 @@
         "mycookbook40f9429f": {}
       },
       "storage": {
-        "mycookbookdb": {}
+        "mycookbookdb": {},
+        "mycookbookcatdb": {}
       },
       "function": {
         "recipefunction": {
           "deploymentBucketName": "amplify-mycookbook-dev-e40fc-deployment",
-          "s3Key": "amplify-builds/recipefunction-75335253334e41453369-build.zip"
+          "s3Key": "amplify-builds/recipefunction-6a6d4237487a5967482f-build.zip"
+        },
+        "categoryfunction": {
+          "deploymentBucketName": "amplify-mycookbook-dev-e40fc-deployment",
+          "s3Key": "amplify-builds/categoryfunction-6e765536446c33764a74-build.zip"
         }
       },
       "api": {
-        "mycookbookrecipe": {}
+        "mycookbookrecipe": {},
+        "mycookbookcategory": {}
       }
     }
   }
