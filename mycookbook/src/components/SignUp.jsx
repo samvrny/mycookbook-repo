@@ -22,9 +22,8 @@ export default function SignUp() {
 
 
     return (
-        <main>
+        <main className="mainContentContainer">
             <Authenticator></Authenticator>
         </main>
     )
-
 }
