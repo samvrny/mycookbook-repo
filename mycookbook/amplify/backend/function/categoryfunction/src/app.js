@@ -48,12 +48,7 @@ const docsClient = new AWS.DynamoDB.DocumentClient({region})
  * Get ALL categories route
  * NOT USED, because will never need to get all routes.
  */
-app.get('/category', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
-
-// app.get('/category/*', function(req, res) {
+// app.get('/category', function(req, res) {
 //   // Add your code here
 //   res.json({success: 'get call succeed!', url: req.url});
 // });
@@ -91,17 +86,14 @@ app.get('/category/:userID', async function(req, res) {
 ****************************/
 
 app.post('/category', async function(req, res) {
-  // Add your code here
-  // const { userID, recipeID, category } = req.body;
-  const userID = "e1fb35d0-6011-7003-7d2c-7d1c1dc2b3ab";
-  const recipeID = 3;
-  const category = "Fish";
+
+  const { userID, categoryID, category } = req.body;
 
   let params = {
     TableName: ddb_table_name,
     Item: {
       userID: userID,
-      recipeID: recipeID,
+      categoryID: categoryID,
       category: category
     }
   };
@@ -112,8 +104,6 @@ app.post('/category', async function(req, res) {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-
-  // res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
 // app.post('/category/*', function(req, res) {

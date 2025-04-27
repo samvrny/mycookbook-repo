@@ -5,6 +5,7 @@ import { useAuthenticator } from "@aws-amplify/ui-react";
 import { useState, useEffect } from "react";
 
 import { getUsersCategories } from '../helpers/getUsersCategories';
+import { addCategory } from '../helpers/addCategory';
 
 import DeleteCategoryModal from "./DeleteCategoryModal";
 
@@ -14,15 +15,15 @@ export default function Categories() {
     // const { user } = useAuthenticator(context => [context.user]);
     // const userID = JSON.stringify(user.userId);
 
+    //Get the user ID for use in creating and deleting categories
+    const { user } = useAuthenticator(context => [context.user]);
+    const userID = user.userId;
+
     /**
      * ==========================
      * Get the users categories
      * ==========================
      */
-
-    //Get the user ID
-    const { user } = useAuthenticator(context => [context.user]);
-    const userID = user.userId;
 
     const [categories, setCategories] = useState([]);
 
@@ -84,15 +85,24 @@ export default function Categories() {
      * Handle the button event click for creating a category
      */
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         //Get the category input
         const categoryInput = document.getElementById("categoryInput");
 
-        console.log(categoryInput.value.trim());
+        //Trimp whitespace off the user entry
+        let categoryToAdd = categoryInput.value.trim();
 
-        
+        //Add the category
+        try {
+            const response = await addCategory(userID, categoryToAdd);
+
+            console.log(response);
+            // setCategories(data.Items);
+        } catch (error) {
+            console.log(error);
+        }
 
     }
 
