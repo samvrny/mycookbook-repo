@@ -74,10 +74,26 @@ export default function Categories() {
         setIsOpen(true);
     }
 
+    /**
+     * ============================
+     * Add category functionality
+     * ============================
+     */
+
+    /**
+     * Handle the button event click for creating a category
+     */
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log("Hello, Category");
+        //Get the category input
+        const categoryInput = document.getElementById("categoryInput");
+
+        console.log(categoryInput.value.trim());
+
+        
+
     }
 
     /**
@@ -100,9 +116,10 @@ export default function Categories() {
         <main className="mainContentContainer">
 
             <div className="categoriesMainElement">
+
                 <form onSubmit={handleSubmit} className="categoryForm">
                     <label htmlFor="categoryInput">Add New Category</label>
-                    <input type="text" id="categoryInput"/>
+                    <input type="text" id="categoryInput" required/>
                     <input type="submit" value="Add Category +" className="defaultButton buttonGreen addCategoryButton"/>
                 </form>
 

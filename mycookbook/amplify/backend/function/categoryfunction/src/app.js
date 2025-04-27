@@ -76,12 +76,12 @@ app.get('/category/:userID', async function(req, res) {
   };
 
   try {
-    console.log('QUERYING DATA for userID:', userID);
+    // console.log('QUERYING DATA for userID:', userID);
     const data = await docsClient.query(params).promise();
-    console.log('GOT DATA!!! HELL TO THE YES!!!');
+    // console.log('GOT DATA!!! HELL TO THE YES!!!');
     res.json(data);
   } catch (error) {
-    console.error('UHOH, ERROR!!!', error);
+    // console.error('UHOH, ERROR!!!', error);
     res.status(500).json({ 'error': error.message });
   }
 });
@@ -90,15 +90,38 @@ app.get('/category/:userID', async function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/category', function(req, res) {
+app.post('/category', async function(req, res) {
   // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  // const { userID, recipeID, category } = req.body;
+  const userID = "e1fb35d0-6011-7003-7d2c-7d1c1dc2b3ab";
+  const recipeID = 3;
+  const category = "Fish";
+
+  let params = {
+    TableName: ddb_table_name,
+    Item: {
+      userID: userID,
+      recipeID: recipeID,
+      category: category
+    }
+  };
+
+  try {
+    await docsClient.put(params).promise();
+    res.status(201).json({ message: 'Item added successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+
+  // res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
-app.post('/category/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
+// app.post('/category/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'post call succeed!', url: req.url, body: req.body})
+// });
+
+
 
 /****************************
 * Example put method *
