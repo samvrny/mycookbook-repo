@@ -117,12 +117,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "mycookbookLambdaRolea4b8b7a1",
+            "mycookbookLambdaRole3b6f07cc",
             {
               "Fn::Join": [
                 "",
                 [
-                  "mycookbookLambdaRolea4b8b7a1",
+                  "mycookbookLambdaRole3b6f07cc",
                   "-",
                   {
                     "Ref": "env"

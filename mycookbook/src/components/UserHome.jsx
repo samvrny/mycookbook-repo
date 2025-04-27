@@ -2,11 +2,45 @@ import mockData from '../mockRecipeData/mockRecipes.json'
 
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+
+import { getUsersCategories } from '../helpers/getUsersCategories';
 
 export default function UserHome() {
 
     //Get categories
-    let categories = mockData.categories;
+    const { user } = useAuthenticator(context => [context.user]);
+    // const userID = JSON.stringify(user.userId);
+    const userID = user.userId;
+
+    // console.log(userID);
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        if (!userID) return;
+
+        // console.log(userID)
+        console.log("useEffect Running!")
+
+        const fetchCategories = async () => {
+            // console.log(userID)
+
+            try {
+                const data = await getUsersCategories(userID); // This is where your async call happens
+
+                // console.log(data);
+
+                setCategories(data.Items); // Save the fetched data into state
+            } catch (error) {
+                console.log(error); // Handle any errors
+            }
+        }
+
+        fetchCategories()
+    }, [userID]);
+
+    console.log(categories);
 
     //Get recipes
     let recipes = mockData.recipes;
@@ -33,6 +67,10 @@ export default function UserHome() {
         return () => toggleDropdown?.removeEventListener("click", handleClick);
     }, []);
 
+    if (!categories) {
+        return <main className="mainContentContainer">Loading...</main>; // Show loading state until data is fetched
+    }
+
     return (
         <main className="mainContentContainer userHome">
 
@@ -41,7 +79,7 @@ export default function UserHome() {
 
                 <ul className="categoryList" ref={navRef}>
                     {categories.map((category, index) => (
-                        <li className="defaultButton userHomeCategoryButton" key={index} onClick={() => setCurrentCategory(category)}>{category}</li>
+                        <li className="defaultButton userHomeCategoryButton" key={index} onClick={() => setCurrentCategory(category.category)}>{category.category}</li>
                     ))}
                     <li className="defaultButton userHomeCategoryButton" onClick={() => setCurrentCategory("Misc")}>Misc</li>
                     <li className="defaultButton userHomeCategoryButton buttonGreen"><Link to="/manage-categories">Manage Categories</Link></li>

@@ -1,8 +1,12 @@
 {
   "resourceName": "mycookbookcatdb",
-  "tableName": "category",
+  "tableName": "mycookbookcatdb",
   "partitionKey": {
     "fieldName": "userID",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "categoryID",
     "fieldType": "string"
   },
   "gsi": [],

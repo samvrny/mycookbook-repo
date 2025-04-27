@@ -44,29 +44,46 @@ const docsClient = new AWS.DynamoDB.DocumentClient({region})
  * Example get method *
  **********************/
 
-app.get('/items', async function(req, res) {
-  // Add your code here
-  // res.json({success: 'get call succeed!', url: req.url});
-  let params = {TableName: ddb_table_name}
-  try {
-    console.log('GETTING DATA!!!')
-    const data = await docsClient.scan(params).promise()
-    console.log('GOT DATA!!! HELL TO THE YES!!!')
-    res.json(data);
-  } catch (error) {
-    console.log('UHOH, ERROR!!!', error)
-    res.json({'error, apple!': error})
-  }
-});
-
+/**
+ * Get ALL categories route
+ * NOT USED, because will never need to get all routes.
+ */
 app.get('/category', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
 
-app.get('/category/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+// app.get('/category/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'get call succeed!', url: req.url});
+// });
+
+/**
+ * Get all categories by userID - get all of a users categories.
+ */
+app.get('/category/:userID', async function(req, res) { 
+  const userID = req.params.userID;
+
+  let params = {
+    TableName: ddb_table_name,
+    KeyConditionExpression: "#userID = :userIDVal",
+    ExpressionAttributeNames: {
+      "#userID": "userID"
+    },
+    ExpressionAttributeValues: {
+      ":userIDVal": userID
+    }
+  };
+
+  try {
+    console.log('QUERYING DATA for userID:', userID);
+    const data = await docsClient.query(params).promise();
+    console.log('GOT DATA!!! HELL TO THE YES!!!');
+    res.json(data);
+  } catch (error) {
+    console.error('UHOH, ERROR!!!', error);
+    res.status(500).json({ 'error': error.message });
+  }
 });
 
 /****************************
