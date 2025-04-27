@@ -8,50 +8,55 @@ import { getUsersCategories } from '../helpers/getUsersCategories';
 
 export default function UserHome() {
 
-    //Get categories
-    const { user } = useAuthenticator(context => [context.user]);
-    // const userID = JSON.stringify(user.userId);
-    const userID = user.userId;
+    /**
+     * ==========================
+     * Get the users categories
+     * ==========================
+     */
 
-    // console.log(userID);
+    //Get the user ID
+    const { user } = useAuthenticator(context => [context.user]);
+    const userID = user.userId;
 
     const [categories, setCategories] = useState([]);
 
+    //Call to set the categories once the users ID is fetched
     useEffect(() => {
         if (!userID) return;
 
-        // console.log(userID)
-        console.log("useEffect Running!")
-
         const fetchCategories = async () => {
-            // console.log(userID)
-
             try {
-                const data = await getUsersCategories(userID); // This is where your async call happens
+                const data = await getUsersCategories(userID);
 
-                // console.log(data);
-
-                setCategories(data.Items); // Save the fetched data into state
+                setCategories(data.Items);
             } catch (error) {
-                console.log(error); // Handle any errors
+                console.log(error);
             }
         }
 
         fetchCategories()
     }, [userID]);
 
-    console.log(categories);
 
-    //Get recipes
-    let recipes = mockData.recipes;
+    /**
+     * =======================================================
+     * Get the recipes associated with the selected category
+     * =======================================================
+     */
 
+    //Set the initial category to just be the welcome state
     const [currentCategory, setCurrentCategory] = useState("Welcome");
+
+    //Get the recipes
+    let recipes = mockData.recipes;
 
     const filteredRecipes = recipes.filter(recipe => recipe.category === currentCategory);
 
     /**
-     * This is to toggle the categories navigation open and closed
+     * ===================================================
+     * Toggle the categories navigation open and closed
      * for small screens/mobile devices
+     * ===================================================
      */
     const navRef = useRef(null);
     const modalRef = useRef(null);
@@ -67,10 +72,16 @@ export default function UserHome() {
         return () => toggleDropdown?.removeEventListener("click", handleClick);
     }, []);
 
+    /**
+     * If there are no categories, set the initial state of the page to loading
+     */
     if (!categories) {
         return <main className="mainContentContainer">Loading...</main>; // Show loading state until data is fetched
     }
 
+    /**
+     * Main content of the page
+     */
     return (
         <main className="mainContentContainer userHome">
 
@@ -92,7 +103,6 @@ export default function UserHome() {
                 <Link className="defaultButton buttonGreen createRecipeHomeButton" to="/create-recipe">Create New Recipe +</Link>
 
                 <h2>{currentCategory}</h2>
-
 
                 {
                     currentCategory === "Welcome" ? <p>Welcome. Please choose a category to view your recipes!</p> :
