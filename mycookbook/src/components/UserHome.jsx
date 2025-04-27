@@ -73,6 +73,12 @@ export default function UserHome() {
     }, []);
 
     /**
+     * ==================
+     * Content display
+     * ==================
+     */
+
+    /**
      * If there are no categories, set the initial state of the page to loading
      */
     if (!categories) {
@@ -92,7 +98,7 @@ export default function UserHome() {
                     {categories.map((category, index) => (
                         <li className="defaultButton userHomeCategoryButton" key={index} onClick={() => setCurrentCategory(category.category)}>{category.category}</li>
                     ))}
-                    <li className="defaultButton userHomeCategoryButton" onClick={() => setCurrentCategory("Misc")}>Misc</li>
+                    {/* <li className="defaultButton userHomeCategoryButton" onClick={() => setCurrentCategory("Misc")}>Misc</li> */}
                     <li className="defaultButton userHomeCategoryButton buttonGreen"><Link to="/manage-categories">Manage Categories</Link></li>
                 </ul>
             </aside>

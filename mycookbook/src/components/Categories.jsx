@@ -1,16 +1,53 @@
-import mockCategories from "../mockRecipeData/mockRecipes.json"
+//import mockCategories from "../mockRecipeData/mockRecipes.json"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { getUsersCategories } from '../helpers/getUsersCategories';
 
 import DeleteCategoryModal from "./DeleteCategoryModal";
 
 export default function Categories() {
 
-    const categories = mockCategories.categories;
+    // const categories = mockCategories.categories;
+    // const { user } = useAuthenticator(context => [context.user]);
+    // const userID = JSON.stringify(user.userId);
+
+    /**
+     * ==========================
+     * Get the users categories
+     * ==========================
+     */
+
+    //Get the user ID
     const { user } = useAuthenticator(context => [context.user]);
-    const userID = JSON.stringify(user.userId);
+    const userID = user.userId;
+
+    const [categories, setCategories] = useState([]);
+
+    //Call to set the categories once the users ID is fetched
+    useEffect(() => {
+        if (!userID) return;
+
+        const fetchCategories = async () => {
+            try {
+                const data = await getUsersCategories(userID);
+
+                setCategories(data.Items);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchCategories()
+    }, [userID]);
+
+    /**
+     * =================================
+     * Delete a category functionality
+     * =================================
+     */
 
     /**
      * These state blocks are used for deleting a category
@@ -25,10 +62,14 @@ export default function Categories() {
      */
     const deleteCategory = (event) => {
         const id = event.target.id;
-        const category = document.querySelector(`[name="${id}"]`).textContent;
+        const category = categories.find(category => category.categoryID === id);
 
-        setCategoryToDeleteId(id);
-        setCategoryToDelete(category);
+        // console.log(category)
+        // console.log(id)
+        // console.log(category.category)
+
+        setCategoryToDeleteId(category.categoryID);
+        setCategoryToDelete(category.category);
 
         setIsOpen(true);
     }
@@ -39,6 +80,22 @@ export default function Categories() {
         console.log("Hello, Category");
     }
 
+    /**
+     * ==================
+     * Content display
+     * ==================
+     */
+
+    /**
+     * If there are no categories, set the initial state of the page to loading
+     */
+    if (!categories) {
+        return <main className="mainContentContainer">Loading...</main>; // Show loading state until data is fetched
+    }
+
+    /**
+     * Main content of the page
+     */
     return (
         <main className="mainContentContainer">
 
@@ -55,8 +112,8 @@ export default function Categories() {
                     <ul>
                         {categories.map((category, index )=> {
                             return <li key={index} className="categoryText" name={index}>
-                                        {category} 
-                                        <i id={index} className="bi bi-trash-fill" onClick={deleteCategory}></i>
+                                        {category.category} 
+                                        <i id={category.categoryID} className="bi bi-trash-fill" onClick={deleteCategory}></i>
                                     </li>
                         })}
                     </ul>

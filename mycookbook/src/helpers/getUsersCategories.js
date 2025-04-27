@@ -1,5 +1,8 @@
 import { get } from 'aws-amplify/api'
 
+/**
+ * This function gets categories based on a users ID
+ */
 export const getUsersCategories = async (userID) => {
     
     console.log(userID);
