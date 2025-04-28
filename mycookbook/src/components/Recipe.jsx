@@ -5,7 +5,6 @@ import DeleteRecipeModal from './DeleteRecipeModal';
 import { useParams } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 
-// import { fetchSingleRecipe } from '../helpers/fetchSingleRecipe';
 import { getSingleRecipe } from '../helpers/getSingleRecipe';
 
 export default function Recipe() {

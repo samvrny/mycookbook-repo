@@ -1,38 +1,94 @@
-import mockData from '../mockRecipeData/mockRecipes.json'
-
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 //Import helpers
 import { addIngredientInput, addInstructionInput } from '../helpers/addFormFields';
-import { fetchSingleRecipe } from '../helpers/fetchSingleRecipe';
+import { getSingleRecipe } from '../helpers/getSingleRecipe';
+import { getUsersCategories } from '../helpers/getUsersCategories';
 
 export default function UpdateRecipe() {
 
+    /**
+     * Get the user from the authentication service, and the recipe ID
+     * from the parameters passed in the URL
+     */
     const { user } = useAuthenticator(context => [context.user]);
-    const { recipeIdToUpdate } = useParams();
+    const userID = user.userId;
+    const { recipeID } = useParams();
 
-    const categories = mockData.categories;
+    /**
+     * =======================================
+     * Get the users categories for the form
+     * =======================================
+     */
+
+    const [categories, setCategories] = useState([]);
+
+    //Call to set the categories once the users ID is fetched
+    useEffect(() => {
+        if (!userID) return;
+
+        const fetchCategories = async () => {
+            try {
+                const data = await getUsersCategories(userID);
+
+                setCategories(data.Items);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchCategories()
+    }, [userID]);
+
+    /**
+     * =========================
+     *      Get the recipe
+     * ========================
+     */
 
     const [recipe, setRecipe] = useState(null);
+
+    useEffect(() => {
+
+        const fetchRecipe = async () => {
+
+            console.log(recipeID);
+
+            try {
+                const userID = user.userId;
+                const data = await getSingleRecipe(userID, recipeID);
+    
+                console.log(data);
+    
+                setRecipe(data);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    
+        fetchRecipe();
+
+    }, [user, recipeID]);
 
     /**
      * This useEffect calls to fetch the recipe, and then sets the
      * recipe to be rendered into state.
      */
-    useEffect(() => {
+    // useEffect(() => {
 
-        const getRecipe = async () => {
-            const userID = JSON.stringify(user.userId);
-            let recipe = await fetchSingleRecipe(userID, recipeIdToUpdate);
+    //     const getRecipe = async () => {
+    //         const userID = JSON.stringify(user.userId);
+    //         let recipe = await fetchSingleRecipe(userID, recipeIdToUpdate);
 
-            setRecipe(recipe);
-        }
+    //         setRecipe(recipe);
+    //     }
     
-        getRecipe();
+    //     getRecipe();
 
-    }, [user, recipeIdToUpdate]);
+    // }, [user, recipeIdToUpdate]);
 
     /**
      * Handle the form submission. This is identical to the Create Recipe...
@@ -115,7 +171,7 @@ export default function UpdateRecipe() {
                         categories
                             .filter(category => category !== recipe.category)
                             .map((category, index) => (
-                            <option value={category} key={index}>{category}</option>
+                            <option value={category.category} key={index}>{category.category}</option>
                         ))
                     }
                 </select>
