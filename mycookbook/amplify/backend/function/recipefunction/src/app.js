@@ -44,49 +44,6 @@ const docsClient = new AWS.DynamoDB.DocumentClient({region})
  *     Get recipes *
  **********************/
 
-// app.get('/recipe/single-recipe', async function(req, res) {
-//   // res.json({success: 'get call succeed!', url: req.url});
-
-//   const { userID, recipeID } = req.queryParams;
-
-//   const params = {
-//     TableName: ddb_table_name,
-//     KeyConditionExpression: "userID = :userIDVal and recipeID = :recipeIDVal",
-//     ExpressionAttributeValues: {
-//       ":userIDVal": userID,
-//       ":recipeIDVal": recipeID
-//     }
-//   };
-
-//   // let params = {TableName: ddb_table_name}
-
-//   try {
-//     console.log('GETTING DATA FOR SINGLE RECIPE!');
-//     const data = await docsClient.query(params).promise();
-    
-//     if (data.Items && data.Items.length > 0) {
-//       console.log('RECIPE FOUND!');
-//       res.json(data.Items[0]);  // Assuming the first item is the one we're looking for
-//     } else {
-//       res.status(404).json({ message: 'Recipe not found' });
-//     }
-//   } catch (error) {
-//     console.log('ERROR:', error);
-//     res.status(500).json({ error: error.message });
-//   }
-
-//   // try {
-//   //   console.log('GETTING DATA!!!')
-//   //   const data = await docsClient.scan(params).promise()
-//   //   console.log('GOT DATA!!! HELL TO THE YES!!!')
-//   //   res.json(data);
-//   // } catch (error) {
-//   //   console.log('UHOH, ERROR!!!', error)
-//   //   res.json({'error, apple!': error})
-//   // }
-
-// });
-
 /**
  * Get a single recipe by its userID and its recipeID
  */
@@ -142,13 +99,14 @@ app.get('/recipe/category/:userID/:categoryID', async function(req, res) {
   try {
     //Get the data for all users recipes in a certain category
     const data = await docsClient.query(params).promise();
-    
+    res.json(data);
+
     //If there is data, send it back...
-    if (data.Items && data.Items.length > 0) {
-      res.json(data);
-    } else { //... else, send a message saying no recipes were found
-      res.status(404).json({ message: 'No recipes found' });
-    }
+    // if (data.Items && data.Items.length > 0) {
+    //   res.json(data);
+    // } else { //... else, send a message saying no recipes were found
+    //   res.status(404).json({ message: 'No recipes found' });
+    // }
   } catch (error) {
     console.log('ERROR:', error);
     res.status(500).json({ error: error.message });
@@ -195,11 +153,6 @@ app.post('/recipe', async function(req, res) {
     res.status(500).json({ error: error.message });
   }
 });
-
-// app.post('/recipe/*', function(req, res) {
-//   // Add your code here
-//   res.json({success: 'post call succeed!', url: req.url, body: req.body})
-// });
 
 /****************************
 * Example put method *
