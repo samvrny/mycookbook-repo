@@ -1,33 +1,61 @@
-import mockData from '../mockRecipeData/mockRecipes.json'
+// import mockData from '../mockRecipeData/mockRecipes.json'
 
 //Import Authentication 
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useEffect, useState } from 'react';
 
 //Import Helper functions
 import { addIngredientInput, addInstructionInput } from '../helpers/addFormFields';
+import { getUsersCategories } from '../helpers/getUsersCategories';
+import { addRecipe } from '../helpers/addRecipe';
 
 export default function CreateRecipe() {
 
+    //Get the user ID for use in creating recipes
     const { user } = useAuthenticator(context => [context.user]);
+    const userID = user.userId;
 
-    //Get categories. Will eventually need to be a fetch.
-    let categories = mockData.categories;
+    /**
+     * ==========================
+     * Get the users categories
+     * ==========================
+     */
+
+    const [categories, setCategories] = useState([]);
+
+    //Call to set the categories once the users ID is fetched
+    useEffect(() => {
+        if (!userID) return;
+
+        const fetchCategories = async () => {
+            try {
+                const data = await getUsersCategories(userID);
+
+                setCategories(data.Items);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchCategories()
+    }, [userID]);
 
     /**
      * Handle the form submission 
      */
-    const handleSubmission = (event) => {
+    const handleSubmission = async (event) => {
         event.preventDefault();
 
-        const userID = JSON.stringify(user.userId); //THIS IS THE CODE TO GRAB THE USER ID
-        console.log('UserID:', userID);
-
+        //Grab the user ID
+        const userID = user.userId;
 
         //Grab the category
-        let category = document.getElementById("categorySelection").value;
+        let categoryInput = document.getElementById("categorySelection");
+        let categoryName = categoryInput.value;
+        let categoryID = categoryInput.options[categoryInput.selectedIndex].id;
 
-        //Grab the title
-        let title = document.getElementById("titleSelection").value;
+        //Grab the name
+        let name = document.getElementById("nameSelection").value;
 
         //Grab the description
         let description = document.getElementById("descriptionSelection").value;
@@ -50,11 +78,29 @@ export default function CreateRecipe() {
             return instruction !== "";
         })
 
-        console.log(category);
-        console.log(title);
-        console.log(description);
-        console.log(ingredientsToSave); // IT WORKS BY JOVE!!
-        console.log(instructionsToSave);
+        //Logging the inputs for now
+        // console.log("User ID: " + userID);
+        // console.log("Category Name " + categoryName);
+        // console.log("Category ID " + categoryID);
+        // console.log(name);
+        // console.log(description);
+        // console.log(ingredientsToSave);
+        // console.log(instructionsToSave);
+
+        let newRecipe = await addRecipe(
+            userID,
+            categoryName,
+            categoryID,
+            name,
+            description,
+            ingredientsToSave,
+            instructionsToSave
+        )
+
+        console.log("NEW RECIPE ADDED");
+        console.log(newRecipe);
+
+        console.log(newRecipe.recipeID);
     }
 
     /**
@@ -81,7 +127,20 @@ export default function CreateRecipe() {
     }
 
     /**
-     * The UI display
+     * ==================
+     * Content display
+     * ==================
+     */
+
+    /**
+     * If there are no categories, set the initial state of the page to loading
+     */
+    if (!categories) {
+        return <main className="mainContentContainer">Loading...</main>; // Show loading state until data is fetched
+    }
+
+    /**
+     * Main content of the page
      */
     return (
         <main id="createRecipe">
@@ -92,17 +151,16 @@ export default function CreateRecipe() {
                 {/* Choose Category */}
                 <label htmlFor="categorySelection">Choose a Category</label>
                 <select id="categorySelection" required>
-                    <option value="Misc" defaultValue={"Misc"}>Misc</option>
                     {
                         categories.map((category, index) => (
-                            <option value={category} key={index}>{category}</option>
+                            <option value={category.category} key={index} id={category.categoryID}>{category.category}</option>
                         ))
                     }
                 </select>
 
                 {/* Choose Name */}
-                <label htmlFor="titleSelection">Give Your Recipe a Title</label>
-                <input type="text" id="titleSelection" required/>
+                <label htmlFor="nameSelection">Give Your Recipe a Name</label>
+                <input type="text" id="nameSelection" required/>
 
                 {/* Enter Description */}
                 <label htmlFor="descriptionSelection">Enter A Description</label>
