@@ -5,7 +5,7 @@ import { get } from 'aws-amplify/api'
  */
 export const getUsersCategories = async (userID) => {
     
-    console.log(userID);
+    // console.log(userID);
 
     const request = get({
         apiName: 'mycookbookcategory',

@@ -100,7 +100,8 @@ app.post('/category', async function(req, res) {
 
   try {
     await docsClient.put(params).promise();
-    res.status(201).json({ message: 'Category added successfully' });
+    // res.status(201).json({ message: 'Category added successfully' });
+    res.status(201).json(params.Item);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

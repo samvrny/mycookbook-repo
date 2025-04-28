@@ -9,6 +9,9 @@ import { addIngredientInput, addInstructionInput } from '../helpers/addFormField
 import { getUsersCategories } from '../helpers/getUsersCategories';
 import { addRecipe } from '../helpers/addRecipe';
 
+//Import modals
+import NoCategoriesDetectedModal from './modals/noCategoriesDetectedModal';
+
 export default function CreateRecipe() {
 
     //Get the user ID for use in creating recipes
@@ -21,7 +24,7 @@ export default function CreateRecipe() {
      * ==========================
      */
 
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(null);
 
     //Call to set the categories once the users ID is fetched
     useEffect(() => {
@@ -132,11 +135,22 @@ export default function CreateRecipe() {
      * ==================
      */
 
+    // const [isOpen, setIsOpen] = useState(false);
+
     /**
      * If there are no categories, set the initial state of the page to loading
      */
     if (!categories) {
         return <main className="mainContentContainer">Loading...</main>; // Show loading state until data is fetched
+    }
+
+    if (categories.length === 0) {
+        return (
+            <>
+                <main className="mainContentContainer"></main>
+                {<NoCategoriesDetectedModal />}
+            </>
+        )
     }
 
     /**

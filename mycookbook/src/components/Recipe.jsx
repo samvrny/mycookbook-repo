@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import DeleteRecipeModal from './DeleteRecipeModal';
+import DeleteRecipeModal from './modals/DeleteRecipeModal';
 
 import { useParams } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';

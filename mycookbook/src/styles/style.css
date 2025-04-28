@@ -146,11 +146,16 @@ body {
     margin: 1em auto 0;
 }
 
-/* Modal button additional styles */
+/* Delete modal button additional styles */
 .modalButton {
     margin: 1em auto;
     font-size: 1.25em;
     width: 125px;
+}
+
+/* No category error button modal additional styles */
+.noCategoryButton {
+    width: 200px;
 }
 
 /* Welcome page CTA button additional style */
@@ -537,9 +542,9 @@ i {
 }
 
 /* 
-    ===========================
-    *** DELETE MODAL STYLES ***
-    ===========================
+    ====================
+    *** MODAL STYLES ***
+    ====================
 */
 .modalBackground {
     position: fixed; /* Keeps it fixed while scrolling */
@@ -571,6 +576,21 @@ i {
 .deleteModalButtons {
     display: flex;
     justify-content: space-around;
+}
+
+.spinner {
+    border-bottom: 4px solid #002550;
+    border-top: 4px solid #002550;
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* 

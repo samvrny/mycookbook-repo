@@ -26,7 +26,7 @@
         },
         "categoryfunction": {
           "deploymentBucketName": "amplify-mycookbook-dev-e40fc-deployment",
-          "s3Key": "amplify-builds/categoryfunction-34414276687972343970-build.zip"
+          "s3Key": "amplify-builds/categoryfunction-4a7a3839597574535841-build.zip"
         }
       },
       "api": {

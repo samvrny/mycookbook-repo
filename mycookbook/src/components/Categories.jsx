@@ -7,13 +7,10 @@ import { useState, useEffect } from "react";
 import { getUsersCategories } from '../helpers/getUsersCategories';
 import { addCategory } from '../helpers/addCategory';
 
-import DeleteCategoryModal from "./DeleteCategoryModal";
+import DeleteCategoryModal from "./modals/DeleteCategoryModal";
+import CreateCategoryMessageModal from "./modals/CreateCategoryMessageModal";
 
 export default function Categories() {
-
-    // const categories = mockCategories.categories;
-    // const { user } = useAuthenticator(context => [context.user]);
-    // const userID = JSON.stringify(user.userId);
 
     //Get the user ID for use in creating and deleting categories
     const { user } = useAuthenticator(context => [context.user]);
@@ -81,6 +78,8 @@ export default function Categories() {
      * ============================
      */
 
+    const [createIsOpen, setCreateIsOpen] = useState(false);
+
     /**
      * Handle the button event click for creating a category
      */
@@ -91,17 +90,21 @@ export default function Categories() {
         //Get the category input
         const categoryInput = document.getElementById("categoryInput");
 
-        //Trimp whitespace off the user entry
+        //Trim whitespace off the user entry
         let categoryToAdd = categoryInput.value.trim();
 
         //Add the category
         try {
+            setCreateIsOpen(true);
+
             const response = await addCategory(userID, categoryToAdd);
 
-            console.log(response);
-            // setCategories(data.Items);
+            // console.log(response);
+            setCategories((currentCategories) => [...currentCategories, response]);
         } catch (error) {
             console.log(error);
+        } finally {
+            setCreateIsOpen(false);
         }
 
     }
@@ -148,6 +151,7 @@ export default function Categories() {
             </div>
 
             {isOpen && <DeleteCategoryModal setIsOpen={ setIsOpen } categoryID={categoryToDeleteId} categoryName={categoryToDelete} userID={userID} />}
+            {createIsOpen && <CreateCategoryMessageModal />}
         </main>
     )
 

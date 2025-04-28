@@ -127,7 +127,6 @@ export default function UserHome() {
                     {categories.map((category, index) => (
                         <li className="defaultButton userHomeCategoryButton" key={index} onClick={() => changeCategory(category.category, category.categoryID)}>{category.category}</li>
                     ))}
-                    {/* <li className="defaultButton userHomeCategoryButton" onClick={() => setCurrentCategory("Misc")}>Misc</li> */}
                     <li className="defaultButton userHomeCategoryButton buttonGreen"><Link to="/manage-categories">Manage Categories</Link></li>
                 </ul>
             </aside>
@@ -139,8 +138,13 @@ export default function UserHome() {
 
                 <h2>{currentCategory}</h2>
 
+                {/* Set the welcome or header message that the user sees */}
                 {
-                    currentCategory === "Welcome" ? <p>Welcome. Please choose a category to view your recipes!</p> :
+                    currentCategory === "Welcome" ? ( 
+                        categories === null || categories.length === 0 ?
+                        <p>Welcome to MyCookbook! It looks like you haven't created any categories. In order to create a recipe in MyCookbook, you must have a category created to assign the recipe to. Click the Manage Categories button in the categories navigation, or choose Categories in the main navigation at the top of the site to create a category and start creating recipes</p> :
+                        <p>Welcome. Please choose a category to view your recipes!</p>
+                    ) :
                     recipes.length === 0 ? <p>No recipes found for this category. Choose another category or create a new recipe!</p> :
                     recipes.map((recipe, index) => (
                             <article className="recipeCard" key={index}>

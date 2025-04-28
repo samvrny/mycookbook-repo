@@ -73,22 +73,7 @@ export default function UpdateRecipe() {
 
     }, [user, recipeID]);
 
-    /**
-     * This useEffect calls to fetch the recipe, and then sets the
-     * recipe to be rendered into state.
-     */
-    // useEffect(() => {
-
-    //     const getRecipe = async () => {
-    //         const userID = JSON.stringify(user.userId);
-    //         let recipe = await fetchSingleRecipe(userID, recipeIdToUpdate);
-
-    //         setRecipe(recipe);
-    //     }
-    
-    //     getRecipe();
-
-    // }, [user, recipeIdToUpdate]);
+    //===================================================================
 
     /**
      * Handle the form submission. This is identical to the Create Recipe...
