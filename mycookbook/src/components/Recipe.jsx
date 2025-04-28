@@ -5,13 +5,14 @@ import DeleteRecipeModal from './DeleteRecipeModal';
 import { useParams } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 
-import { fetchSingleRecipe } from '../helpers/fetchSingleRecipe';
+// import { fetchSingleRecipe } from '../helpers/fetchSingleRecipe';
+import { getSingleRecipe } from '../helpers/getSingleRecipe';
 
 export default function Recipe() {
 
     //Get the user
     const { user } = useAuthenticator(context => [context.user]);
-    const { recipeIdToDisplay } = useParams();
+    const { recipeID } = useParams();
 
     //Set the state of the recipe to be rendered
     const [recipe, setRecipe] = useState(null);
@@ -25,16 +26,26 @@ export default function Recipe() {
      */
     useEffect(() => {
 
-        const getRecipe = async () => {
-            const userID = JSON.stringify(user.userId);
-            let recipe = await fetchSingleRecipe(userID, recipeIdToDisplay);
+        const fetchRecipe = async () => {
 
-            setRecipe(recipe);
+            console.log(recipeID);
+
+            try {
+                const userID = user.userId;
+                const data = await getSingleRecipe(userID, recipeID);
+    
+                console.log(data);
+    
+                setRecipe(data);
+
+            } catch (error) {
+                console.log(error);
+            }
         }
     
-        getRecipe();
+        fetchRecipe();
 
-    }, [user, recipeIdToDisplay]);
+    }, [user, recipeID]);
 
     //Prevent rendering until recipe is loaded
     if (!recipe) {

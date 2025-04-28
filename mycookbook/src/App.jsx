@@ -33,7 +33,7 @@ function App() {
               </RequireAuthWrapper>} 
             />
             <Route 
-              path="/recipe/:recipeIdToDisplay" 
+              path="/recipe/:recipeID" 
               element={
               <RequireAuthWrapper>
                 <Recipe />
