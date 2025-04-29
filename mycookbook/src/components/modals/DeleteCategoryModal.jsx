@@ -2,15 +2,21 @@ import { useState } from "react";
 import { deleteCategory } from "../../helpers/deleteCategory";
 import { getUserRecipesByCategory } from "../../helpers/getUserRecipesByCategory"
 
-export default function DeleteCategoryModal({ setIsOpen, categoryName, categoryID, userID }) {
+export default function DeleteCategoryModal({ setIsOpen, setCategories, categoryName, categoryID, userID }) {
 
-    // console.log("TO DELETE RECIPE ID: " + categoryID);
-    // console.log("TO DELETE USER ID:" + userID);
-    // console.log("CATEGORY NAME: " + categoryName);
 
-    const [modalMessage, setModalMessage] = useState(`<strong>WARNING:</strong> You are about to delete your category ${categoryName}. <strong><em>This action can NOT be undone.</em></strong> Once you delete this category, it will be erased forever and you will not be able to to access it again. Click delete if you are sure. Otherwise, click Go Back to head back to safety.`)
+    //Messages to display in the Modal
+    const initialMessage = `<strong>WARNING:</strong> You are about to delete your category ${categoryName}. <strong><em>This action can NOT be undone.</em></strong> Once you delete this category, it will be erased forever and you will not be able to to access it again. Click delete if you are sure. Otherwise, click Go Back to head back to safety.`
+    const errorRecipesMessage = `Your category ${categoryName} cannot be deleted because it still has recipes associated with it. You must either update the recipes in this category to be in another category, or delete them before you can delete this category.`
+
+    const modalSpinner = `<div class="spinner"></div>`;
+
+    //Set the inital state of the modal message
+    const [modalMessage, setModalMessage] = useState(initialMessage);
 
     const handleDelete = async () => {
+
+        setModalMessage(modalSpinner);
 
         try {
 
@@ -21,7 +27,7 @@ export default function DeleteCategoryModal({ setIsOpen, categoryName, categoryI
             if (response.Items.length === 0) {
                 deleteForReal();
             } else if (response.Items.length > 0) {
-                setModalMessage(`Your category ${categoryName} cannot be deleted because it still has recipes associated with it. You must either update the recipes in this category to be in another category, or delete them before you can delete this category.`);
+                setModalMessage(errorRecipesMessage);
             }
 
             console.log("RECIPE FOUND")
@@ -42,6 +48,7 @@ export default function DeleteCategoryModal({ setIsOpen, categoryName, categoryI
             console.log(response);
 
             if (response) {
+                setCategories(currentCategories => currentCategories.filter(category => category.categoryID !== categoryID));
                 setIsOpen(false);
             }
 

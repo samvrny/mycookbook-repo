@@ -11,6 +11,7 @@ import { addRecipe } from '../helpers/addRecipe';
 
 //Import modals
 import NoCategoriesDetectedModal from './modals/noCategoriesDetectedModal';
+import CreateRecipeMessageModal from './modals/CreateRecipeMessageModal';
 
 export default function CreateRecipe() {
 
@@ -20,7 +21,7 @@ export default function CreateRecipe() {
 
     /**
      * ==========================
-     * Get the users categories
+     *  Get the users categories
      * ==========================
      */
 
@@ -42,6 +43,15 @@ export default function CreateRecipe() {
 
         fetchCategories()
     }, [userID]);
+
+     /**
+     * ==========================
+     *       Create Recipe
+     * ==========================
+     */
+
+    //Set the inital state of the creating recipe loading spinner modal
+    const [createIsOpen, setCreateIsOpen] = useState(false);
 
     /**
      * Handle the form submission 
@@ -81,29 +91,30 @@ export default function CreateRecipe() {
             return instruction !== "";
         })
 
-        //Logging the inputs for now
-        // console.log("User ID: " + userID);
-        // console.log("Category Name " + categoryName);
-        // console.log("Category ID " + categoryID);
-        // console.log(name);
-        // console.log(description);
-        // console.log(ingredientsToSave);
-        // console.log(instructionsToSave);
+        //Send to create the recipe
+        try {
+            setCreateIsOpen(true);
 
-        let newRecipe = await addRecipe(
-            userID,
-            categoryName,
-            categoryID,
-            name,
-            description,
-            ingredientsToSave,
-            instructionsToSave
-        )
+            let newRecipe = await addRecipe(
+                userID,
+                categoryName,
+                categoryID,
+                name,
+                description,
+                ingredientsToSave,
+                instructionsToSave
+            )
 
-        console.log("NEW RECIPE ADDED");
-        console.log(newRecipe);
+            console.log("NEW RECIPE ADDED");
+            console.log(newRecipe);
+            console.log(newRecipe.recipeID);
 
-        console.log(newRecipe.recipeID);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setCreateIsOpen(false);
+        }
+
     }
 
     /**
@@ -134,8 +145,6 @@ export default function CreateRecipe() {
      * Content display
      * ==================
      */
-
-    // const [isOpen, setIsOpen] = useState(false);
 
     /**
      * If there are no categories, set the initial state of the page to loading
@@ -201,6 +210,8 @@ export default function CreateRecipe() {
                     <input type="submit" value="Create New Recipe" className="defaultButton buttonGreen updateCreateRecipeButton"/>
                 </div>
             </form>
+
+            {createIsOpen && <CreateRecipeMessageModal />}
         </main>
     )
 

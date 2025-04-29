@@ -62,10 +62,6 @@ export default function Categories() {
         const id = event.target.id;
         const category = categories.find(category => category.categoryID === id);
 
-        // console.log(category)
-        // console.log(id)
-        // console.log(category.category)
-
         setCategoryToDeleteId(category.categoryID);
         setCategoryToDelete(category.category);
 
@@ -99,13 +95,15 @@ export default function Categories() {
 
             const response = await addCategory(userID, categoryToAdd);
 
-            // console.log(response);
             setCategories((currentCategories) => [...currentCategories, response]);
         } catch (error) {
             console.log(error);
         } finally {
             setCreateIsOpen(false);
         }
+
+        const newCategoryForm = document.getElementById("newCategoryForm");
+        newCategoryForm.reset();
 
     }
 
@@ -130,7 +128,7 @@ export default function Categories() {
 
             <div className="categoriesMainElement">
 
-                <form onSubmit={handleSubmit} className="categoryForm">
+                <form onSubmit={handleSubmit} className="categoryForm" id="newCategoryForm">
                     <label htmlFor="categoryInput">Add New Category</label>
                     <input type="text" id="categoryInput" required/>
                     <input type="submit" value="Add Category +" className="defaultButton buttonGreen addCategoryButton"/>
@@ -150,7 +148,13 @@ export default function Categories() {
                 </section>
             </div>
 
-            {isOpen && <DeleteCategoryModal setIsOpen={ setIsOpen } categoryID={categoryToDeleteId} categoryName={categoryToDelete} userID={userID} />}
+            {isOpen && <DeleteCategoryModal 
+                    setIsOpen={ setIsOpen } 
+                    setCategories={setCategories} 
+                    categoryID={categoryToDeleteId} 
+                    categoryName={categoryToDelete} 
+                    userID={userID} />}
+
             {createIsOpen && <CreateCategoryMessageModal />}
         </main>
     )
