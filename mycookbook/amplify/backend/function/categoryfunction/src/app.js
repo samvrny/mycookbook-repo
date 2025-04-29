@@ -41,17 +41,8 @@ const ddb_table_name = process.env.STORAGE_MYCOOKBOOKCATDB_NAME;
 const docsClient = new AWS.DynamoDB.DocumentClient({region})
 
 /**********************
- * Example get method *
+    * GET Routes *
  **********************/
-
-/**
- * Get ALL categories route
- * NOT USED, because will never need to get all routes.
- */
-// app.get('/category', function(req, res) {
-//   // Add your code here
-//   res.json({success: 'get call succeed!', url: req.url});
-// });
 
 /**
  * Get all categories by userID - get all of a users categories.
@@ -82,7 +73,7 @@ app.get('/category/:userID', async function(req, res) {
 });
 
 /****************************
-* Example post method *
+      * POST Routes *
 ****************************/
 
 app.post('/category', async function(req, res) {
@@ -107,15 +98,9 @@ app.post('/category', async function(req, res) {
   }
 });
 
-// app.post('/category/*', function(req, res) {
-//   // Add your code here
-//   res.json({success: 'post call succeed!', url: req.url, body: req.body})
-// });
-
-
 
 /****************************
-* Example put method *
+       * PUT Routes *
 ****************************/
 
 app.put('/category', function(req, res) {
@@ -129,17 +114,29 @@ app.put('/category/*', function(req, res) {
 });
 
 /****************************
-* Example delete method *
+    * DELETE Routes *
 ****************************/
 
-app.delete('/category', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
+app.delete('/category/:userID/:categoryID', async function(req, res) {
 
-app.delete('/category/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
+  const { userID, categoryID } = req.params;
+
+  const params = {
+    TableName: ddb_table_name,
+    Key: {
+      userID: userID,
+      categoryID: categoryID
+    }
+  };
+
+  try {
+    await docsClient.delete(params).promise();
+    res.json({ success: true, message: 'Category deleted successfully', deletedKey: params.Key });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+
+  // res.json({success: 'delete call succeed!', url: req.url});
 });
 
 app.listen(3000, function() {
