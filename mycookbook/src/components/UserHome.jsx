@@ -1,11 +1,12 @@
-// import mockData from '../mockRecipeData/mockRecipes.json'
-
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 
 import { getUsersCategories } from '../helpers/getUsersCategories';
 import { getUserRecipesByCategory } from '../helpers/getUserRecipesByCategory';
+
+//Import loading modal
+import GenericLoadingModal from "./modals/GenericLoadingModal"
 
 export default function UserHome() {
 
@@ -111,7 +112,7 @@ export default function UserHome() {
      * If there are no categories, set the initial state of the page to loading
      */
     if (!categories) {
-        return <main className="mainContentContainer">Loading...</main>; // Show loading state until data is fetched
+        return <main className="mainContentContainer"><GenericLoadingModal /></main>;
     }
 
     /**

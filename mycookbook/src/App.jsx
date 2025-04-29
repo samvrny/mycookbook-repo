@@ -1,7 +1,7 @@
-//Import the needed things from React Router DOM
+//Import react-router-dom imports for routing
 import { Routes, Route, Navigate } from 'react-router-dom'
 
-//Import Components (for tesing. BrowserRouter will eventually route to pages... I think)
+//Import Components
 import Header from './components/Header'
 import Footer from './components/Footer'
 import CreateRecipe from './components/CreateRecipe'
@@ -13,7 +13,6 @@ import Categories from './components/Categories'
 
 //Authorization wrapper
 import RequireAuthWrapper from './components/RequireAuthWrapper'
-import Ax from './components/Ax'
 
 function App() {
 
@@ -56,16 +55,9 @@ function App() {
               }
             />
 
-            <Route 
-              path="/ax"
-              element={
-                  <Ax />
-              }
-            />
-
             <Route path="/sign-up" element={<SignUp />} />
 
-            {/* 👇 This catches all undefined routes and redirects to home */}
+            {/* This catches all undefined routes and redirects to home */}
             <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

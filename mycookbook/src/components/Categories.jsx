@@ -7,8 +7,10 @@ import { useState, useEffect } from "react";
 import { getUsersCategories } from '../helpers/getUsersCategories';
 import { addCategory } from '../helpers/addCategory';
 
+//Import modals
 import DeleteCategoryModal from "./modals/DeleteCategoryModal";
 import CreateCategoryMessageModal from "./modals/CreateCategoryMessageModal";
+import GenericLoadingModal from "./modals/GenericLoadingModal"
 
 export default function Categories() {
 
@@ -117,7 +119,7 @@ export default function Categories() {
      * If there are no categories, set the initial state of the page to loading
      */
     if (!categories) {
-        return <main className="mainContentContainer">Loading...</main>; // Show loading state until data is fetched
+        return <main className="mainContentContainer"><GenericLoadingModal /></main>;
     }
 
     /**

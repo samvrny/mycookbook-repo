@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import DeleteRecipeModal from './modals/DeleteRecipeModal';
 
 import { useParams } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 
 import { getSingleRecipe } from '../helpers/getSingleRecipe';
+
+//Import modals
+import DeleteRecipeModal from './modals/DeleteRecipeModal';
+import GenericLoadingModal from './modals/GenericLoadingModal';
 
 export default function Recipe() {
 
@@ -48,7 +51,7 @@ export default function Recipe() {
 
     //Prevent rendering until recipe is loaded
     if (!recipe) {
-        return <p>Loading recipe...</p>;
+        return <main className="mainContentContainer"><GenericLoadingModal /></main>;
     }
 
     //Main display UI

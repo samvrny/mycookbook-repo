@@ -1,8 +1,9 @@
-// import mockData from '../mockRecipeData/mockRecipes.json'
-
 //Import Authentication 
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useEffect, useState } from 'react';
+
+//Import navigation
+import { useNavigate } from 'react-router-dom';
 
 //Import Helper functions
 import { addIngredientInput, addInstructionInput } from '../helpers/addFormFields';
@@ -12,12 +13,16 @@ import { addRecipe } from '../helpers/addRecipe';
 //Import modals
 import NoCategoriesDetectedModal from './modals/noCategoriesDetectedModal';
 import CreateRecipeMessageModal from './modals/CreateRecipeMessageModal';
+import GenericLoadingModal from "./modals/GenericLoadingModal"
 
 export default function CreateRecipe() {
 
     //Get the user ID for use in creating recipes
     const { user } = useAuthenticator(context => [context.user]);
     const userID = user.userId;
+
+    //Allow navigation when the user creates a recipe
+    const navigate = useNavigate();
 
     /**
      * ==========================
@@ -44,7 +49,7 @@ export default function CreateRecipe() {
         fetchCategories()
     }, [userID]);
 
-     /**
+    /**
      * ==========================
      *       Create Recipe
      * ==========================
@@ -105,14 +110,14 @@ export default function CreateRecipe() {
                 instructionsToSave
             )
 
-            console.log("NEW RECIPE ADDED");
-            console.log(newRecipe);
-            console.log(newRecipe.recipeID);
+            // console.log("NEW RECIPE ADDED");
+            // console.log(newRecipe);
+            // console.log(newRecipe.recipeID);
+
+            navigate(`/recipe/${newRecipe.recipeID}`);
 
         } catch (error) {
             console.log(error);
-        } finally {
-            setCreateIsOpen(false);
         }
 
     }
@@ -142,7 +147,7 @@ export default function CreateRecipe() {
 
     /**
      * ==================
-     * Content display
+     *   Content display
      * ==================
      */
 
@@ -150,9 +155,14 @@ export default function CreateRecipe() {
      * If there are no categories, set the initial state of the page to loading
      */
     if (!categories) {
-        return <main className="mainContentContainer">Loading...</main>; // Show loading state until data is fetched
+        return <main className="mainContentContainer"><GenericLoadingModal /></main>;
     }
 
+    /**
+     * If there are no categories (it's probably a new user, or a user has 
+     * deleted them all), open a modal that shows them an error message and 
+     * gives them a link to the categories management page
+     */
     if (categories.length === 0) {
         return (
             <>
