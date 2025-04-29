@@ -22,7 +22,7 @@ export default function Categories() {
      * ==========================
      */
 
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(null);
 
     //Call to set the categories once the users ID is fetched
     useEffect(() => {

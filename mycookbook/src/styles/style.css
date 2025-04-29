@@ -213,6 +213,11 @@ input:focus, textarea:focus, select:focus {
     box-sizing: border-box;
 }
 
+input[type="submit"]:focus {
+    box-shadow: none;
+    box-shadow: 4px 4px 0 #000000;
+}
+
 textarea {
     resize: none;
     height: 100px;
