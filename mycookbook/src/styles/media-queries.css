@@ -73,6 +73,31 @@
 @media screen and (max-width: 664px) {
 
 /* 
+    =============================
+    *** HEADER AND NAV STYLES ***
+    =============================
+*/
+
+    header img {
+        margin: 0 auto;
+        height: 125px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        width: 225px;
+        margin: 0.3em auto;
+    }
+
+    .navButton {
+        display: block;
+        width: 100%;
+    }
+
+/* 
     ========================
     *** USER HOME STYLES ***
     ========================
