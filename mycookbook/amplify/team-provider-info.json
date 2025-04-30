@@ -22,7 +22,7 @@
       "function": {
         "recipefunction": {
           "deploymentBucketName": "amplify-mycookbook-dev-e40fc-deployment",
-          "s3Key": "amplify-builds/recipefunction-344676704e333163306f-build.zip"
+          "s3Key": "amplify-builds/recipefunction-6356615659483768766b-build.zip"
         },
         "categoryfunction": {
           "deploymentBucketName": "amplify-mycookbook-dev-e40fc-deployment",

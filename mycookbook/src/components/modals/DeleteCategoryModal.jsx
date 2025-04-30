@@ -8,7 +8,6 @@ export default function DeleteCategoryModal({ setIsOpen, setCategories, category
     //Messages to display in the Modal
     const initialMessage = `<strong>WARNING:</strong> You are about to delete your category ${categoryName}. <strong><em>This action can NOT be undone.</em></strong> Once you delete this category, it will be erased forever and you will not be able to to access it again. Click delete if you are sure. Otherwise, click Go Back to head back to safety.`
     const errorRecipesMessage = `Your category ${categoryName} cannot be deleted because it still has recipes associated with it. You must either update the recipes in this category to be in another category, or delete them before you can delete this category.`
-
     const modalSpinner = `<div class="spinner"></div>`;
 
     //Set the inital state of the modal message

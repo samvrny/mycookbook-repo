@@ -150,9 +150,40 @@ app.post('/recipe', async function(req, res) {
         PUT Routes
 ****************************/
 
-app.put('/recipe', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+app.put('/recipe', async function(req, res) {
+  
+  const { 
+    userID, 
+    recipeID, 
+    category, 
+    categoryID, 
+    name, 
+    description,
+    ingredients,
+    instructions 
+  } = req.body;
+
+let params = {
+  TableName: ddb_table_name,
+  Item: {
+    userID: userID,
+    recipeID: recipeID,
+    category: category,
+    categoryID: categoryID,
+    name: name, 
+    description: description,
+    ingredients: ingredients,
+    instructions: instructions
+  }
+};
+
+try {
+  await docsClient.put(params).promise();
+  res.status(201).json(params.Item);
+} catch (error) {
+  console.log(error);
+  res.status(500).json({ error: error.message });
+}
 });
 
 app.put('/recipe/*', function(req, res) {

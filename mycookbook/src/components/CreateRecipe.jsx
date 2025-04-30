@@ -110,10 +110,6 @@ export default function CreateRecipe() {
                 instructionsToSave
             )
 
-            // console.log("NEW RECIPE ADDED");
-            // console.log(newRecipe);
-            // console.log(newRecipe.recipeID);
-
             navigate(`/recipe/${newRecipe.recipeID}`);
 
         } catch (error) {

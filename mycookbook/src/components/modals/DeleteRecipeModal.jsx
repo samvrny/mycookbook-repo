@@ -30,10 +30,16 @@ export default function DeleteRecipeModal({ setIsOpen, recipeID, recipeName, use
 
             const response = await deleteRecipe(userID, recipeID);
 
-            console.log("DELETE ACHIEVED")
-            console.log(response);
+            // console.log("DELETE ACHIEVED")
+            // console.log(response);
 
-            navigate("/");
+            if (response) {
+                navigate("/");
+            }
+
+            /**
+             * Could add else logic here to display an error message in the modal
+             */
 
         } catch (error) {
             console.log(error);
