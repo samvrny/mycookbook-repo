@@ -121,6 +121,15 @@
         width: 100%;
     }
 
+/*
+    ===================
+    *** FORM STYLES ***
+    ===================
+*/
+    input {
+        width: 275px;
+    }
+
 /* 
     ========================
     *** USER HOME STYLES ***
@@ -250,5 +259,45 @@
     .singleRecipePage li, .singleRecipePage p {
         font-size: 1em;
     }
+
+/*
+    =======================================
+    *** CATEGORY MAINTENANCE PAGE STYLE ***
+    =======================================
+*/
+    .categoriesMainElement {
+        width: 325px;
+        padding: 2em 0.5em;
+    }
+
+    .categoryForm {
+        width: 300px;
+        padding: 2em 0.5em;
+    }
+
+    .categoryForm label {
+        width: 290px;
+    }
+
+    .addCategoryButton {
+        width: 250px;
+    }
+
+/*
+    ====================
+    *** MODAL STYLES ***
+    ====================
+*/
+
+    .deleteModalContent {
+        width: 300px;
+    }
+
+    .deleteModalButtons {
+        flex-direction: column;
+    }
+
+
+
 
 }
