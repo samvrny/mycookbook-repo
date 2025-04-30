@@ -136,7 +136,6 @@ app.delete('/category/:userID/:categoryID', async function(req, res) {
     res.status(500).json({ success: false, error: error.message });
   }
 
-  // res.json({success: 'delete call succeed!', url: req.url});
 });
 
 app.listen(3000, function() {

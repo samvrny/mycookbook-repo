@@ -12,8 +12,9 @@ import GenericLoadingModal from './modals/GenericLoadingModal';
 
 export default function Recipe() {
 
-    //Get the user
+    //Get the user and recipeID
     const { user } = useAuthenticator(context => [context.user]);
+    const userID = user.userId;
     const { recipeID } = useParams();
 
     //Set the state of the recipe to be rendered
@@ -30,13 +31,11 @@ export default function Recipe() {
 
         const fetchRecipe = async () => {
 
-            console.log(recipeID);
+            // console.log(recipeID);
 
             try {
                 const userID = user.userId;
                 const data = await getSingleRecipe(userID, recipeID);
-    
-                console.log(data);
     
                 setRecipe(data);
 
@@ -86,7 +85,7 @@ export default function Recipe() {
                 <button className="defaultButton buttonRed singleRecipeButton" onClick={() => setIsOpen(true)}>Delete Recipe</button>
             </div>
 
-            {isOpen && <DeleteRecipeModal setIsOpen={ setIsOpen } recipeID={recipe.recipeID} recipeName={recipe.name} />}
+            {isOpen && <DeleteRecipeModal setIsOpen={ setIsOpen } recipeID={recipe.recipeID} recipeName={recipe.name} userID={userID}/>}
         </main>
     )
 

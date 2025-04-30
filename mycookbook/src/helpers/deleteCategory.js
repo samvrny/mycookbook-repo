@@ -1,8 +1,8 @@
 import { del } from 'aws-amplify/api'
 
 /**
- * This function gets a single recipe based on a user ID
- * and a recipe ID
+ * This function deletes a category based on the userID and 
+ * a categoryID
  */
 export const deleteCategory = async (userID, categoryID) => {
     

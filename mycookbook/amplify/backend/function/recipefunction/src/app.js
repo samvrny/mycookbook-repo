@@ -41,7 +41,7 @@ const ddb_table_name = process.env.STORAGE_MYCOOKBOOKDB_NAME;
 const docsClient = new AWS.DynamoDB.DocumentClient({region})
 
 /**********************
- *     Get recipes *
+       GET Routes
  **********************/
 
 /**
@@ -61,11 +61,9 @@ app.get('/recipe/single/:userID/:recipeID', async function(req, res) {
   };
 
   try {
-    // console.log('GETTING DATA FOR SINGLE RECIPE!');
     const data = await docsClient.query(params).promise();
     
     if (data.Items && data.Items.length > 0) {
-      console.log('RECIPE FOUND!');
       res.json(data.Items[0]);
     } else {
       res.status(404).json({ message: 'Recipe not found' });
@@ -78,7 +76,7 @@ app.get('/recipe/single/:userID/:recipeID', async function(req, res) {
 });
 
 /**
- * Get a users recipes for a specified category
+ * Get a users recipes for a specified category (by categoryID)
  */
 app.get('/recipe/category/:userID/:categoryID', async function(req, res) {
 
@@ -101,12 +99,6 @@ app.get('/recipe/category/:userID/:categoryID', async function(req, res) {
     const data = await docsClient.query(params).promise();
     res.json(data);
 
-    //If there is data, send it back...
-    // if (data.Items && data.Items.length > 0) {
-    //   res.json(data);
-    // } else { //... else, send a message saying no recipes were found
-    //   res.status(404).json({ message: 'No recipes found' });
-    // }
   } catch (error) {
     console.log('ERROR:', error);
     res.status(500).json({ error: error.message });
@@ -115,7 +107,7 @@ app.get('/recipe/category/:userID/:categoryID', async function(req, res) {
 });
 
 /****************************
-* Create a new recipe routes*
+        POST Routes
 ****************************/
 
 app.post('/recipe', async function(req, res) {
@@ -155,7 +147,7 @@ app.post('/recipe', async function(req, res) {
 });
 
 /****************************
-* Example put method *
+        PUT Routes
 ****************************/
 
 app.put('/recipe', function(req, res) {
@@ -169,18 +161,35 @@ app.put('/recipe/*', function(req, res) {
 });
 
 /****************************
-* Example delete method *
+        DELETE Routes
 ****************************/
 
-app.delete('/recipe', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
+app.delete('/recipe/:userID/:recipeID', async function(req, res) {
+  
+  const { userID, recipeID } = req.params;
+
+  const params = {
+    TableName: ddb_table_name,
+    Key: {
+      userID: userID,
+      recipeID: recipeID
+    }
+  };
+
+  try {
+    await docsClient.delete(params).promise();
+    res.json({ success: true, message: 'Recipe deleted successfully', deletedKey: params.Key });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+
 });
 
-app.delete('/recipe/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
+// app.delete('/recipe/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'delete call succeed!', url: req.url});
+// });
+
 
 app.listen(3000, function() {
     console.log("App started")
