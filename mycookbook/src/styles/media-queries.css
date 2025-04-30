@@ -1,3 +1,11 @@
+/* 
+    ======================================================
+    ******************************************************
+                    BREAKPOINT A: 900px
+    ******************************************************
+    ======================================================
+*/
+
 @media screen and (max-width: 900px) {
 
 /* 
@@ -24,9 +32,42 @@
         margin: 0 0 2em;
     }
 
+/* 
+    ========================
+    *** USER HOME STYLES ***
+    ========================
+*/
+
+    .recipeCard {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .recipeCard h3 {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .recipeCardButton {
+        width: 175px;
+        position: relative;
+        display: block;
+        top: 0;
+        right: 0;
+        font-size: 1.25em;
+        margin: 0 auto 1em;
+    }
+
 }
 
-
+/* 
+    ======================================================
+    ******************************************************
+                    BREAKPOINT B: 664px
+    ******************************************************
+    ======================================================
+*/
 
 
 @media screen and (max-width: 664px) {
@@ -40,6 +81,15 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    #userHomeMainContent {
+        margin: 0 auto;
+    }
+
+    #userHomeMainContent h2 {
+        margin: 0 auto 1em;
+        text-align: center;
     }
 
     .categoryNavigation {
@@ -114,5 +164,12 @@
         padding: 10px 0;
         cursor: pointer;
         height: 70px;
+    }
+
+    .createRecipeHomeButton {
+        display: block;
+        margin: 1.25em auto 1.75em ;
+        width: 275px;
+        font-size: 1.5em;
     }
 }
