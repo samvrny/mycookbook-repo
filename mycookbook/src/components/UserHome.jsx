@@ -92,15 +92,22 @@ export default function UserHome() {
     const modalRef = useRef(null);
 
     useEffect(() => {
+
+        if (!categories) return;
+
+        console.log("Running")
+
         const handleClick = () => {
             navRef.current?.classList.toggle("open");
             modalRef.current?.classList.toggle("open");
+
+            console.log("Click")
         };
 
         const toggleDropdown = document.querySelector(".dropdownToggle");
         toggleDropdown?.addEventListener("click", handleClick);
         return () => toggleDropdown?.removeEventListener("click", handleClick);
-    }, []);
+    }, [categories]);
 
     /**
      * ==================

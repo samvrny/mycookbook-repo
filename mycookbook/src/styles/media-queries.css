@@ -1,9 +1,42 @@
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 900px) {
 
-    /* 
-        USER HOMEPAGE STYLES
-    */
-    #userHome {
+/* 
+    =============================
+    *** HEADER AND NAV STYLES ***
+    =============================
+*/
+
+    header {
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    header img {
+        margin: 0 auto;
+        height: 140px;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    nav {
+        margin: 0 0 2em;
+    }
+
+}
+
+
+
+
+@media screen and (max-width: 664px) {
+
+/* 
+    ========================
+    *** USER HOME STYLES ***
+    ========================
+*/
+    .userHome {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -20,7 +53,6 @@
         position: relative;
         border-radius: 3px;
     }
-
 
     .dropdownToggle {
         display: block;
@@ -43,7 +75,7 @@
         z-index: 9;
         background: #0550AB;
         border: 1px solid #ccc;
-        width: 100%; /* or whatever width you want */
+        width: 100%;
         display: none;
     }
 
@@ -66,7 +98,7 @@
         display: block;
     }
 
-    .categoryButton {
+    .userHomeCategoryButton {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,7 +113,6 @@
         margin: 0 auto;
         padding: 10px 0;
         cursor: pointer;
-        background-color: #FDF8E7;
         height: 70px;
     }
 }
