@@ -61,8 +61,28 @@ export default function CreateRecipe() {
     /**
      * Handle the form submission 
      */
-    const handleSubmission = async (event) => {
+    const handleSubmission = (event) => {
         event.preventDefault();
+
+        //Get the form element
+        const form = document.getElementById('createRecipeForm');
+
+        //Add 'was-validated' class to trigger Bootstrap validation styles
+        form.classList.add('was-validated');
+
+        // Check if the form is valid
+        if (!form.checkValidity()) {
+            //If not valid, prevent submission and show error messages
+            return;
+        }
+
+        callToCreateRecipe()
+    }
+
+    /**
+     * If user is valid, create the recipe
+     */
+    const callToCreateRecipe = async () => {
 
         //Grab the user ID
         const userID = user.userId;
@@ -95,6 +115,11 @@ export default function CreateRecipe() {
         let instructionsToSave = instructionRawText.filter(instruction => {
             return instruction !== "";
         })
+
+        /**
+         * Validate the user inputs. If anything is missing, display errors 
+         * to the user. 
+         */
 
         //Send to create the recipe
         try {
@@ -174,7 +199,7 @@ export default function CreateRecipe() {
     return (
         <main id="createRecipe">
 
-            <form onSubmit={handleSubmission} id="createRecipeForm">
+            <form onSubmit={handleSubmission} id="createRecipeForm" className="needs-validation" noValidate>
                 <h2>Create New Recipe</h2>
 
                 {/* Choose Category */}
@@ -189,7 +214,10 @@ export default function CreateRecipe() {
 
                 {/* Choose Name */}
                 <label htmlFor="nameSelection">Give Your Recipe a Name</label>
-                <input type="text" id="nameSelection" required/>
+                <input type="text" id="nameSelection" required pattern="^(?!\s*$).+"/>
+                <div className="invalid-feedback">
+                    You must enter a name that isn't just blank space.
+                </div>
 
                 {/* Enter Description */}
                 <label htmlFor="descriptionSelection">Enter A Description</label>
@@ -198,7 +226,10 @@ export default function CreateRecipe() {
                 {/* Enter Ingredients */}
                 <label htmlFor="ingredients">Add Ingredients</label>
                 <div id="ingredients">
-                    <input type="text" name="ingredient" required/>
+                    <input type="text" name="ingredient" required pattern="^(?!\s*$).+"/>
+                    <div className="invalid-feedback mb-2">
+                        You must enter at least 1 ingredient here
+                    </div>
                 </div>
                 <button onClick={addIngredientInput} className="defaultButton buttonBlue">Add Another Ingredient +</button>
 
