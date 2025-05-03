@@ -32,6 +32,12 @@
       "api": {
         "mycookbookrecipe": {},
         "mycookbookcategory": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d29d8b3k30r7lb",
+          "type": "manual"
+        }
       }
     }
   }

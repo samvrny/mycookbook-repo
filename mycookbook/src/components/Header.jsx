@@ -12,7 +12,7 @@ export default function Header() {
     return(
         <header>
             <h1>
-                <img src="../../public/logo400x400.png" alt="MyCookBook"/>
+                <img src="../../logo400x400.png" alt="MyCookBook"/>
             </h1>
 
             <nav>

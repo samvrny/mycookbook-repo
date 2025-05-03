@@ -150,10 +150,10 @@ export default function UserHome() {
                 {
                     currentCategory === "Welcome" ? ( 
                         categories === null || categories.length === 0 ?
-                        <p>Welcome to MyCookbook! It looks like you haven't created any categories. In order to create a recipe in MyCookbook, you must have a category created to assign the recipe to. Click the Manage Categories button in the categories navigation, or choose Categories in the main navigation at the top of the site to create a category and start creating recipes</p> :
-                        <p>Welcome. Please choose a category to view your recipes!</p>
+                        <p className="userHomeGreeting">Welcome to MyCookbook! It looks like you haven't created any categories. In order to create a recipe in MyCookbook, you must have a category created to assign the recipe to. Click the Manage Categories button in the categories navigation, or choose Categories in the main navigation at the top of the site to create a category and start creating recipes</p> :
+                        <p className="userHomeGreeting">Welcome. Please choose a category to view your recipes!</p>
                     ) :
-                    recipes.length === 0 ? <p>No recipes found for this category. Choose another category or create a new recipe!</p> :
+                    recipes.length === 0 ? <p className="userHomeGreeting">No recipes found for this category. Choose another category or create a new recipe!</p> :
                     recipes.map((recipe, index) => (
                             <article className="recipeCard" key={index}>
                                 <h3>{recipe.name}</h3>

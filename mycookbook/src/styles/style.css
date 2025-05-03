@@ -393,7 +393,7 @@ footer {
 }
 
 .categoryNavigation::-webkit-scrollbar {
-    width: 8px; /* width for vertical scrollbars */
+    width: 8px;
     background: #002550;
 }
 
@@ -408,13 +408,17 @@ footer {
     cursor: pointer;
 }
 
+.userHomeGreeting {
+    font-size: 1.25em;
+}
+
 .categoryList {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.recipeCard {
+.recipeCard, .userHomeGreeting {
     background-color: #FFFFFF;
     width: 575px;
     padding: 0.5em 1.5em;
