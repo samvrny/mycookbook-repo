@@ -167,10 +167,16 @@ body {
 }
 
 /*  
-    ===================
-    *** FORM STYLES ***
-    ===================
+    ==========================================
+    *** FORM STYLES - CREATE/UPDATE RECIPE ***
+    ==========================================
 */
+
+.backToRecipe {
+    display: block;
+    width: 180px;
+    margin: 0 auto 0.75em
+}
 
 #createRecipeForm, #updateRecipeForm {
     background-color: #FFFFFF;
@@ -470,6 +476,7 @@ footer {
     font-weight: bold;
     font-style: italic;
     font-size: 1.45em;
+    margin-top: 1em;
 }
 
 .singleRecipePage li, .singleRecipePage p {
@@ -523,11 +530,12 @@ footer {
 }
 
 .categoryDisplay h2 {
+    font-weight: bold;
     text-align: center;
     color: #0550AB;
     font-style: italic;
     font-size: 2.25em;
-    margin-bottom: 0;
+    margin: 1em auto 0.25em;
 }
 
 .categoryDisplay ul {

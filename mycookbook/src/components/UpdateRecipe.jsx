@@ -7,6 +7,7 @@ import { addIngredientInput, addInstructionInput } from '../helpers/addFormField
 import { getSingleRecipe } from '../helpers/getSingleRecipe';
 import { getUsersCategories } from '../helpers/getUsersCategories';
 import { updateRecipe } from '../helpers/updateRecipe'
+
 //Import modals
 import GenericLoadingModal from "./modals/GenericLoadingModal";
 import UpdateRecipeMessageModal from "./modals/UpdateRecipeMessageModal";
@@ -130,13 +131,6 @@ export default function UpdateRecipe() {
             return instruction !== "";
         })
 
-        console.log(categoryName);
-        console.log(categoryID);
-        console.log(name);
-        console.log(description);
-        console.log(ingredientsToSave);
-        console.log(instructionsToSave);
-
         //Send to update the recipe
         try {
             setCreateIsOpen(true);
@@ -183,7 +177,7 @@ export default function UpdateRecipe() {
         <main id="updateRecipe">
 
             <form onSubmit={handleSubmission} id="updateRecipeForm">
-                <Link to={`/recipe/${recipe.recipeID}`}>Back To Recipe</Link>
+                <Link to={`/recipe/${recipe.recipeID}`} className="backToRecipe defaultButton">&lt;-- Back To Recipe</Link>
 
                 <h2>Update {recipe.name}</h2>
 
@@ -231,8 +225,9 @@ export default function UpdateRecipe() {
                 {/* Submit */}
 
                 <div id="updateCreateFormButtonContainer">
-                    <button onClick={startOver} className="defaultButton buttonGreen updateCreateRecipeButton">Start Over</button>
                     <input type="submit" value="Update Recipe" className="defaultButton buttonGreen updateCreateRecipeButton"/>
+                    <button onClick={startOver} className="defaultButton buttonRed updateCreateRecipeButton">Start Over</button>
+
                 </div>
             </form>
 
