@@ -157,7 +157,7 @@ export default function UserHome() {
                     recipes.map((recipe, index) => (
                             <article className="recipeCard" key={index}>
                                 <h3>{recipe.name}</h3>
-                                <p>{recipe.description}</p>
+                                <p className="recipeCardDescription">{recipe.description}</p>
 
                                 <Link className="defaultButton buttonBlue recipeCardButton" to={`/recipe/${recipe.recipeID}`}>View Recipe</Link>
                             </article>
