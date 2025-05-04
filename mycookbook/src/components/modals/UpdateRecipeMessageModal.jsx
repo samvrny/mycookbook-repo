@@ -1,4 +1,8 @@
-export default function CreateRecipeMessageModal() {
+/**
+ * This modal appears in the UpdateRecipe.jsx component when a 
+ * recipe is in the process of being updated
+ */
+export default function UpdateRecipeMessageModal() {
 
     return (
         <section id="updateModal" className="modalBackground">

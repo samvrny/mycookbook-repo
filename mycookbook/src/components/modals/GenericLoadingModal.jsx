@@ -1,4 +1,15 @@
-export default function CreateRecipeMessageModal() {
+/**
+ * This modal is used by many components to display a
+ * generic loading spinner:
+ * 
+ * UserHome.jsx
+ * Categories.jsx
+ * CreateRecipe.jsx
+ * Recipe.jsx
+ * UpdateRecipe.jsx
+ * 
+ */
+export default function GenericLoadingModal() {
 
     return (
         <section id="genericModal" className="modalBackgroundLight">
