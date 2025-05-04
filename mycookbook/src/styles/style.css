@@ -138,7 +138,6 @@ body {
 .updateCreateRecipeButton {
     width: 250px;
     font-size: 1.5em;
-    margin-top: 0.75em;
 }
 
 /* Add category page button additional styles */
@@ -184,8 +183,10 @@ body {
 }
 
 #createRecipeForm h2, #updateRecipeForm h2 {
+    all: unset;
     font-size: 2.5em;
     font-style: italic;
+    font-weight: bold;
     color: #0550AB;
 }
 
@@ -373,8 +374,9 @@ footer {
 #userHomeMainContent h2 {
     color: #0550AB;
     font-size: 2.5em;
-    margin-left: 2em;
+    margin: 1em 0 1em 2em;
     font-style: italic;
+    font-weight: bold;
 }
 
 .dropdownToggle {
@@ -428,6 +430,10 @@ footer {
     border: 1px solid #0550AB;
 }
 
+.recipeCard {
+    min-height: 90px;
+}
+
 .recipeCard h3 {
     color: #0550AB;
     font-size: 1.5em;
@@ -456,10 +462,12 @@ footer {
     text-align: center;
     font-style: italic;
     font-size: 2.25em;
-    margin-top: 0.5em;
+    margin: 0.5em auto 1em;
+    font-weight: bold;
 }
 
 .singleRecipePage h3 {
+    font-weight: bold;
     font-style: italic;
     font-size: 1.45em;
 }

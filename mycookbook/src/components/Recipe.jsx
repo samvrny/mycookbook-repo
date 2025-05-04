@@ -31,8 +31,6 @@ export default function Recipe() {
 
         const fetchRecipe = async () => {
 
-            // console.log(recipeID);
-
             try {
                 const userID = user.userId;
                 const data = await getSingleRecipe(userID, recipeID);
@@ -73,12 +71,17 @@ export default function Recipe() {
                 })}
             </ul>
 
-            <h3>Instructions</h3>
-            <ul>
-                {recipe.instructions.map((instruction, index) => {
-                    return <li key={index}>{instruction}</li>
-                })}
-            </ul>
+            {recipe.instructions.length > 0 ? (
+                <>
+                    <h3>Instructions</h3>
+                    <ul>
+                        { recipe.instructions.map((instruction, index) => {
+                            return <li key={index}>{instruction}</li>
+                        })}
+                    </ul>
+                </>
+            ) : null
+            }   
 
             <div className="recipeButtonsContainer">
                 <Link to={`/update-recipe/${recipe.recipeID}`} className="defaultButton buttonGreen singleRecipeButton">Update Recipe</Link>

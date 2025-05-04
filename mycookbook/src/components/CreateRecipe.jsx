@@ -243,8 +243,8 @@ export default function CreateRecipe() {
                 {/* Submit */}
 
                 <div id="updateCreateFormButtonContainer">
-                    <button onClick={resetFormFields} className="defaultButton buttonGreen updateCreateRecipeButton">Start Over</button>
-                    <input type="submit" value="Create New Recipe" className="defaultButton buttonGreen updateCreateRecipeButton"/>
+                    <input type="submit" value="Save Recipe" className="defaultButton buttonGreen updateCreateRecipeButton"/>
+                    <button onClick={resetFormFields} className="defaultButton buttonRed updateCreateRecipeButton">Clear Form</button>
                 </div>
             </form>
 
