@@ -441,8 +441,10 @@ footer {
 }
 
 .recipeCard h3 {
+    margin-top: 0.5em;
     color: #0550AB;
     font-size: 1.5em;
+    font-weight: bold;
 }
 
 .navigationBackground {

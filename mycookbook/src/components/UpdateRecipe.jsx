@@ -99,9 +99,25 @@ export default function UpdateRecipe() {
      * add ingredient button functionality AND the add instruction function
      * functionality. (maybe those two could be in a file together)
      */
-    const handleSubmission = async (event) => {
+    const handleSubmission = (event) => {
         event.preventDefault();
 
+        //Get the form element
+        const form = document.getElementById("updateRecipeForm");
+
+        //Add "was-validated" class to trigger Bootstrap validation styles
+        form.classList.add("was-validated");
+
+        // Check if the form is valid
+        if (!form.checkValidity()) {
+            //If not valid, prevent submission and show error messages
+            return;
+        }
+
+        callToUpdateRecipe()
+    }
+
+    const callToUpdateRecipe = async () => {
         //Grab the category
         let categoryInput = document.getElementById("categorySelection");
         let categoryName = categoryInput.value;
@@ -176,7 +192,7 @@ export default function UpdateRecipe() {
     return (
         <main id="updateRecipe">
 
-            <form onSubmit={handleSubmission} id="updateRecipeForm">
+            <form onSubmit={handleSubmission} id="updateRecipeForm" className="needs-validation" noValidate>
                 <Link to={`/recipe/${recipe.recipeID}`} className="backToRecipe defaultButton">&lt;-- Back To Recipe</Link>
 
                 <h2>Update {recipe.name}</h2>
@@ -198,7 +214,10 @@ export default function UpdateRecipe() {
 
                 {/* Choose Name */}
                 <label htmlFor="nameSelection">Give Your Recipe a Name</label>
-                <input type="text" id="nameSelection" required defaultValue={recipe.name}/>
+                <input type="text" id="nameSelection" required pattern="^(?!\s*$).+" defaultValue={recipe.name}/>
+                <div className="invalid-feedback">
+                    You must enter a name that isn't just blank space.
+                </div>
 
                 {/* Enter Description */}
                 <label htmlFor="descriptionSelection">Enter A Description</label>
@@ -208,7 +227,18 @@ export default function UpdateRecipe() {
                 <label htmlFor="ingredients">Add Ingredients</label>
                 <div id="ingredients">
                     {recipe.ingredients.map((ingredient, index) => {
-                        return <input type="text" name="ingredient" defaultValue={ingredient} key={index}/>
+                        if (index === 0) {
+                            return (
+                                <>
+                                    <input type="text" name="firstIngredient" defaultValue={ingredient} required pattern="^(?!\s*$).+"/>
+                                    <div className="invalid-feedback mb-3">
+                                        You must enter at least 1 ingredient here
+                                    </div>
+                                </>
+                            )
+                        } else {
+                            return (<input type="text" name="ingredient" defaultValue={ingredient} key={index} />);
+                        }
                     })}
                 </div>
                 <button onClick={addIngredientInput} className="defaultButton buttonBlue">Add Another Ingredient +</button>
