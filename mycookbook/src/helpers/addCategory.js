@@ -25,7 +25,7 @@ export const addCategory = async (userID, category) => {
         }
     });
 
-    //Make the request and get the responst
+    //Make the request and get the response
     const response = await request.response;
     const data = await response.body.json();
 

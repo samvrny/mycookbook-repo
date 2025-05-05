@@ -6,13 +6,16 @@ import { del } from 'aws-amplify/api'
  */
 export const deleteRecipe = async (userID, recipeID) => {
     
+    //Set the request parameters
     const request = del({
         apiName: 'mycookbookrecipe',
         path: `/recipe/${userID}/${recipeID}`
     })
 
+    //Make the request and get the response
     const response = await request.response
     const data = await response.body.json();
     
+    //Return the response
     return data;
 }
