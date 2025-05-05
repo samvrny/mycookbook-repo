@@ -42,6 +42,15 @@
     }
 
 /* 
+    ===========================
+    *** WELCOME PAGE STYLES ***
+    ===========================
+*/
+    .welcomePageCta h1 {
+        margin-bottom: 0.75em;
+    }
+
+/* 
     ========================
     *** USER HOME STYLES ***
     ========================
@@ -128,6 +137,20 @@
     #createRecipeForm, #updateRecipeForm {
         width: 325px;
         padding: 2em 1em;
+    }
+
+/* 
+    ===========================
+    *** WELCOME PAGE STYLES ***
+    ===========================
+*/
+
+    .welcomePageCta {
+        padding: 1em 1em 3em;
+    }
+
+    .welcomePageCta h1 {
+        text-align: center;
     }
 
 /* 
