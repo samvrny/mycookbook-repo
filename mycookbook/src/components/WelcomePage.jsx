@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom"
 
+/**
+ * This is the welcome page component. This component displays 
+ * to a user who is not logged in as the home page.
+ */
 export default function WelcomePage() {
 
     return (

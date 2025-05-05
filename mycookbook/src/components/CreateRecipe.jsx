@@ -15,13 +15,19 @@ import NoCategoriesDetectedModal from './modals/noCategoriesDetectedModal';
 import CreateRecipeMessageModal from './modals/CreateRecipeMessageModal';
 import GenericLoadingModal from "./modals/GenericLoadingModal"
 
+/**
+ * This component manages the creation of new recipes 
+ */
 export default function CreateRecipe() {
 
     //Get the user ID for use in creating recipes
     const { user } = useAuthenticator(context => [context.user]);
     const userID = user.userId;
 
-    //Allow navigation when the user creates a recipe
+    /**
+     * Get the react-router-dom navigate functionality to 
+     * allow navigation when the user creates a recipe
+     */
     const navigate = useNavigate();
 
     /**
@@ -30,16 +36,21 @@ export default function CreateRecipe() {
      * ==========================
      */
 
+    //State to hold the categories list for use in the create category form
     const [categories, setCategories] = useState(null);
 
     //Call to set the categories once the users ID is fetched
     useEffect(() => {
+        
+        //If there is no user, stop the process
         if (!userID) return;
 
+        //Fetch the categories
         const fetchCategories = async () => {
             try {
                 const data = await getUsersCategories(userID);
 
+                //Set the state of the categories list
                 setCategories(data.Items);
             } catch (error) {
                 console.log(error);
@@ -55,11 +66,13 @@ export default function CreateRecipe() {
      * ==========================
      */
 
-    //Set the inital state of the creating recipe loading spinner modal
+    //State for the create recipe modal spinner
     const [createIsOpen, setCreateIsOpen] = useState(false);
 
     /**
-     * Handle the form submission 
+     * Handle the initial form submission. This function adds in the
+     * Bootstrap validate form functionality to check the user inputs
+     * before calling to create the recipe
      */
     const handleSubmission = (event) => {
         event.preventDefault();
@@ -67,25 +80,23 @@ export default function CreateRecipe() {
         //Get the form element
         const form = document.getElementById('createRecipeForm');
 
-        //Add 'was-validated' class to trigger Bootstrap validation styles
+        //Add was-validated class to trigger Bootstrap validation styles
         form.classList.add('was-validated');
 
-        // Check if the form is valid
+        //Check if the form is valid
         if (!form.checkValidity()) {
             //If not valid, prevent submission and show error messages
             return;
         }
 
+        //If everything looks good, call to create the recipe
         callToCreateRecipe()
     }
 
     /**
-     * If user is valid, create the recipe
+     * This function gathers the form data and calls to create the new recipe
      */
     const callToCreateRecipe = async () => {
-
-        //Grab the user ID
-        const userID = user.userId;
 
         //Grab the category
         let categoryInput = document.getElementById("categorySelection");
@@ -101,30 +112,28 @@ export default function CreateRecipe() {
         //Handle the ingredients
         let ingredientInputs = [...document.querySelectorAll("[name=\"ingredient\"]")];
         let ingredientRawText = ingredientInputs.map(ingredient => {
-            return ingredient.value.trim();
+            return ingredient.value.trim(); //Trim whitespace off the user entries
         })
         let ingredientsToSave = ingredientRawText.filter(ingredient => {
-            return ingredient !== "";
+            return ingredient !== ""; //Remove blank entries
         })
 
         //Handle the instructions
         let instructionInputs = [...document.querySelectorAll("[name=\"instruction\"]")];
         let instructionRawText = instructionInputs.map(instruction => {
-            return instruction.value.trim();
+            return instruction.value.trim(); //Trim whitespace off the user entries
         })
         let instructionsToSave = instructionRawText.filter(instruction => {
-            return instruction !== "";
+            return instruction !== ""; //Remove blank entries
         })
-
-        /**
-         * Validate the user inputs. If anything is missing, display errors 
-         * to the user. 
-         */
 
         //Send to create the recipe
         try {
+
+            //Open the create recipe modal
             setCreateIsOpen(true);
 
+            //Call to create the recipe
             let newRecipe = await addRecipe(
                 userID,
                 categoryName,
@@ -135,6 +144,7 @@ export default function CreateRecipe() {
                 instructionsToSave
             )
 
+            //Once the recipe is created, send the user to it's display page
             navigate(`/recipe/${newRecipe.recipeID}`);
 
         } catch (error) {
@@ -144,25 +154,29 @@ export default function CreateRecipe() {
     }
 
     /**
-     * Reset the form 
+     * This function resets the form
      */
     const resetFormFields = (event) => {
         event.preventDefault();
 
+        //Get the ingredients and instructions inputs
         const ingredientList = document.getElementById("ingredients");
         const instructionList = document.getElementById("instructions");
 
         let ingredientChildren = ingredientList.children;
         let instructionChildren = instructionList.children;
 
+        //Remove all but one of the ingredient inputs
         while (ingredientChildren.length > 1) {
             ingredientList.removeChild(ingredientList.lastElementChild);
         }
 
+        //Remove all but one of the instruction inputs
         while (instructionChildren.length > 1) {
             instructionList.removeChild(instructionList.lastElementChild);
         }
 
+        //Reset the form
         document.getElementById("createRecipeForm").reset();
     }
 
@@ -173,7 +187,8 @@ export default function CreateRecipe() {
      */
 
     /**
-     * If there are no categories, set the initial state of the page to loading
+     * Set the initial state of the page to be the loading modal while the 
+     * categories are being fetched for the form
      */
     if (!categories) {
         return <main className="mainContentContainer"><GenericLoadingModal /></main>;
@@ -241,14 +256,15 @@ export default function CreateRecipe() {
                 <button onClick={addInstructionInput} className="defaultButton buttonBlue">Add Another Instruction +</button>
 
                 {/* Submit */}
-
                 <div id="updateCreateFormButtonContainer">
                     <input type="submit" value="Save Recipe" className="defaultButton buttonGreen updateCreateRecipeButton"/>
                     <button onClick={resetFormFields} className="defaultButton buttonRed updateCreateRecipeButton">Clear Form</button>
                 </div>
             </form>
 
+            {/* Create recipe modal */}
             {createIsOpen && <CreateRecipeMessageModal />}
+            
         </main>
     )
 

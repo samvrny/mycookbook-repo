@@ -1,40 +1,45 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 
+//Import helpers
 import { getSingleRecipe } from '../helpers/getSingleRecipe';
 
 //Import modals
 import DeleteRecipeModal from './modals/DeleteRecipeModal';
 import GenericLoadingModal from './modals/GenericLoadingModal';
 
+/**
+ * This component is the main singular recipe display page
+ */
 export default function Recipe() {
 
-    //Get the user and recipeID
+    //Get the userID
     const { user } = useAuthenticator(context => [context.user]);
     const userID = user.userId;
+
+    //Get the recipeID from the URL parameters
     const { recipeID } = useParams();
 
-    //Set the state of the recipe to be rendered
+    //State that will hold the recipe to be rendered on the page
     const [recipe, setRecipe] = useState(null);
 
-    //Set the initial state of the delete modal
+    //State for the delete recipe modal
     const [isOpen, setIsOpen] = useState(false);
 
     /**
-     * This useEffect calls to fetch the recipe, and then sets the
+     * Call to fetch the recipe, and then sets the
      * recipe to be rendered into state.
      */
     useEffect(() => {
 
         const fetchRecipe = async () => {
 
+            //Get the recipe
             try {
-                const userID = user.userId;
                 const data = await getSingleRecipe(userID, recipeID);
     
+                //Set the recipe into state
                 setRecipe(data);
 
             } catch (error) {
@@ -44,14 +49,16 @@ export default function Recipe() {
     
         fetchRecipe();
 
-    }, [user, recipeID]);
+    }, [userID, recipeID]);
 
-    //Prevent rendering until recipe is loaded
+    //Show a generic loading modal until the recipe is loaded
     if (!recipe) {
         return <main className="mainContentContainer"><GenericLoadingModal /></main>;
     }
 
-    //Main display UI
+    /**
+     * Main content of the page
+     */
     return (
         <main className="mainContentContainer singleRecipePage">
             
@@ -88,6 +95,7 @@ export default function Recipe() {
                 <button className="defaultButton buttonRed singleRecipeButton" onClick={() => setIsOpen(true)}>Delete Recipe</button>
             </div>
 
+            {/* Delete recipe modal */}
             {isOpen && <DeleteRecipeModal setIsOpen={ setIsOpen } recipeID={recipe.recipeID} recipeName={recipe.name} userID={userID}/>}
         </main>
     )

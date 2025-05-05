@@ -1,9 +1,10 @@
-//import mockCategories from "../mockRecipeData/mockRecipes.json"
+//Import bootstrap icons
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { useAuthenticator } from "@aws-amplify/ui-react";
 import { useState, useEffect } from "react";
 
+//Import helper functions
 import { getUsersCategories } from '../helpers/getUsersCategories';
 import { addCategory } from '../helpers/addCategory';
 
@@ -12,6 +13,9 @@ import DeleteCategoryModal from "./modals/DeleteCategoryModal";
 import CreateCategoryMessageModal from "./modals/CreateCategoryMessageModal";
 import GenericLoadingModal from "./modals/GenericLoadingModal"
 
+/**
+ * This component is the central categories maintenance page 
+ */
 export default function Categories() {
 
     //Get the user ID for use in creating and deleting categories
@@ -24,16 +28,23 @@ export default function Categories() {
      * ==========================
      */
 
+    //State for the users categories
     const [categories, setCategories] = useState(null);
 
     //Call to set the categories once the users ID is fetched
     useEffect(() => {
+
+        //If there is no useID yet, exit the useEffect
         if (!userID) return;
 
+        //Fetch the users categories
         const fetchCategories = async () => {
             try {
                 const data = await getUsersCategories(userID);
 
+                /**
+                 * Set the users categories state to the results.
+                 */
                 setCategories(data.Items);
             } catch (error) {
                 console.log(error);
@@ -50,7 +61,11 @@ export default function Categories() {
      */
 
     /**
-     * These state blocks are used for deleting a category
+     * These state blocks are used for the delete category modal
+     * 
+     * - isOpen: modal state for the delete category modal
+     * - categoryToDeleteId: ID of the category to be deleted
+     * - categoryToDelete: Name of the category to be deleted
      */
     const [isOpen, setIsOpen] = useState(false);
     const [categoryToDeleteId, setCategoryToDeleteId] = useState(null);
@@ -61,12 +76,18 @@ export default function Categories() {
      * delete category modal
      */
     const deleteCategory = (event) => {
+
+        //Capture the ID of the delete button that's been clicked
         const id = event.target.id;
+
+        //Use the ID to grab the other category data from the categories state
         const category = categories.find(category => category.categoryID === id);
 
+        //Set the state variables for the delete modal
         setCategoryToDeleteId(category.categoryID);
         setCategoryToDelete(category.category);
 
+        //Open the delete modal
         setIsOpen(true);
     }
 
@@ -76,37 +97,42 @@ export default function Categories() {
      * ============================
      */
 
+    //State for the create category spinner modal
     const [createIsOpen, setCreateIsOpen] = useState(false);
 
     /**
      * Handle the button event click for creating a category
      */
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        //Get the category input
+        //Get the category input element
         const categoryInput = document.getElementById("categoryInput");
 
-        //Trim whitespace off the user entry
+        //Trim whitespace off the user entry (the category inputs value)
         let categoryToAdd = categoryInput.value.trim();
 
         //Add the category
         try {
+
+            //Open the create category modal
             setCreateIsOpen(true);
 
+            //Call to add the category
             const response = await addCategory(userID, categoryToAdd);
 
+            //Add the new category to the categories display list
             setCategories((currentCategories) => [...currentCategories, response]);
         } catch (error) {
             console.log(error);
         } finally {
+            //Close the create category modal
             setCreateIsOpen(false);
         }
 
+        //Reset the category form
         const newCategoryForm = document.getElementById("newCategoryForm");
         newCategoryForm.reset();
-
     }
 
     /**
@@ -116,7 +142,8 @@ export default function Categories() {
      */
 
     /**
-     * If there are no categories, set the initial state of the page to loading
+     * If there are no categories, show the generic loading modal while
+     * the categories load
      */
     if (!categories) {
         return <main className="mainContentContainer"><GenericLoadingModal /></main>;
@@ -140,7 +167,7 @@ export default function Categories() {
                     <h2>Your Categories</h2>
 
                     <ul>
-                        {categories.map((category, index )=> {
+                        {categories.map((category, index ) => {
                             return <li key={index} className="categoryText" name={index}>
                                         {category.category} 
                                         <i id={category.categoryID} className="bi bi-trash-fill" onClick={deleteCategory}></i>
@@ -150,6 +177,7 @@ export default function Categories() {
                 </section>
             </div>
 
+            {/* Delete category modal */}
             {isOpen && <DeleteCategoryModal 
                     setIsOpen={ setIsOpen } 
                     setCategories={setCategories} 
@@ -157,6 +185,7 @@ export default function Categories() {
                     categoryName={categoryToDelete} 
                     userID={userID} />}
 
+            {/* Create categories modal */}
             {createIsOpen && <CreateCategoryMessageModal />}
         </main>
     )

@@ -1,6 +1,6 @@
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 
 //Import helpers
 import { addIngredientInput, addInstructionInput } from '../helpers/addFormFields';
@@ -12,14 +12,16 @@ import { updateRecipe } from '../helpers/updateRecipe'
 import GenericLoadingModal from "./modals/GenericLoadingModal";
 import UpdateRecipeMessageModal from "./modals/UpdateRecipeMessageModal";
 
+/**
+ * This component managed the updating of a recipe
+ */
 export default function UpdateRecipe() {
 
-    /**
-     * Get the user from the authentication service, and the recipe ID
-     * from the parameters passed in the URL
-     */
+    //Get the user and userID from the authentication service
     const { user } = useAuthenticator(context => [context.user]);
     const userID = user.userId;
+
+    //Getthe recipe ID from the parameters passed in the URL
     const { recipeID } = useParams();
 
     /**
@@ -28,16 +30,21 @@ export default function UpdateRecipe() {
      * =======================================
      */
 
+    //State variable to hold the users categories
     const [categories, setCategories] = useState([]);
 
-    //Call to set the categories once the users ID is fetched
+    //Call to set the categories
     useEffect(() => {
+
+        //If there is no user/userID, stop the process
         if (!userID) return;
 
+        //Call to fetch the categories
         const fetchCategories = async () => {
             try {
                 const data = await getUsersCategories(userID);
 
+                //Set the categories to the categories state variable
                 setCategories(data.Items);
 
             } catch (error) {
@@ -54,20 +61,19 @@ export default function UpdateRecipe() {
      * ========================
      */
 
+    //State variable to hold the recipe to be updated
     const [recipe, setRecipe] = useState(null);
 
+    //Fetch the recipe to be updated
     useEffect(() => {
 
+        //Call to fetch the recipe
         const fetchRecipe = async () => {
 
-            console.log(recipeID);
-
             try {
-                const userID = user.userId;
                 const data = await getSingleRecipe(userID, recipeID);
     
-                // console.log(data);
-    
+                //Set the state of the recipe state variable
                 setRecipe(data);
 
             } catch (error) {
@@ -77,7 +83,7 @@ export default function UpdateRecipe() {
     
         fetchRecipe();
 
-    }, [user, recipeID]);
+    }, [userID, recipeID]);
 
     //===================================================================
 
@@ -87,17 +93,16 @@ export default function UpdateRecipe() {
      * =========================
      */
 
-    //Set the inital state of the creating recipe loading spinner modal
-    const [createIsOpen, setCreateIsOpen] = useState(false);
+    //Set the inital state of the updating recipe loading spinner modal
+    const [updateIsOpen, setUpdateIsOpen] = useState(false);
 
     //Get the navigate method to send the user back home when update is complete
     const navigate = useNavigate();
 
     /**
-     * Handle the form submission. This is identical to the Create Recipe...
-     * so could probably be refactored into a helper function. Same with the
-     * add ingredient button functionality AND the add instruction function
-     * functionality. (maybe those two could be in a file together)
+     * Handle the initial form submission. This function adds in the
+     * Bootstrap validate form functionality to check the user inputs
+     * before calling to create the recipe
      */
     const handleSubmission = (event) => {
         event.preventDefault();
@@ -105,19 +110,24 @@ export default function UpdateRecipe() {
         //Get the form element
         const form = document.getElementById("updateRecipeForm");
 
-        //Add "was-validated" class to trigger Bootstrap validation styles
+        //Add was-validated" class to trigger Bootstrap validation styles
         form.classList.add("was-validated");
 
-        // Check if the form is valid
+        //Check if the form is valid
         if (!form.checkValidity()) {
             //If not valid, prevent submission and show error messages
             return;
         }
 
+        //If the form is valid, call to update the recipe
         callToUpdateRecipe()
     }
 
+    /**
+     * This function gathers the form data and calls to update the recipe
+     */
     const callToUpdateRecipe = async () => {
+
         //Grab the category
         let categoryInput = document.getElementById("categorySelection");
         let categoryName = categoryInput.value;
@@ -132,25 +142,28 @@ export default function UpdateRecipe() {
         //Handle the ingredients
         let ingredientInputs = [...document.querySelectorAll("[name=\"ingredient\"]")];
         let ingredientRawText = ingredientInputs.map(ingredient => {
-            return ingredient.value.trim();
+            return ingredient.value.trim(); //Trim whitespace off user entries
         })
         let ingredientsToSave = ingredientRawText.filter(ingredient => {
-            return ingredient !== "";
+            return ingredient !== ""; //Remove blank user entries
         })
 
         //Handle the ingredients
         let instructionInputs = [...document.querySelectorAll("[name=\"instruction\"]")];
         let instructionRawText = instructionInputs.map(instruction => {
-            return instruction.value.trim();
+            return instruction.value.trim(); //Trim whitespace off user entries
         })
         let instructionsToSave = instructionRawText.filter(instruction => {
-            return instruction !== "";
+            return instruction !== ""; //Remove blank user entries
         })
 
         //Send to update the recipe
         try {
-            setCreateIsOpen(true);
 
+            //Open the update recipe modal
+            setUpdateIsOpen(true);
+
+            //Call to update the recipe
             let updatedRecipe = await updateRecipe(
                 userID,
                 recipeID,
@@ -162,6 +175,7 @@ export default function UpdateRecipe() {
                 instructionsToSave
             )
 
+            //Once the recipe is updated, send the user back to the recipes display page
             navigate(`/recipe/${updatedRecipe.recipeID}`);
 
         } catch (error) {
@@ -175,11 +189,14 @@ export default function UpdateRecipe() {
     const startOver = (event) => {
         event.preventDefault();
 
-        //NOT as elegant as I'd like.... more complicated logic to follow.
+        /**
+         * This just reloads the page... more complicated
+         * logic could and should be inserted here at some point.
+         */
         location.reload();
     }
 
-    //Prevent rendering until recipe is loaded
+    //Show the user a loading modal while the recipe is still being fetched
     if (!recipe) {
         return (
             <main className="mainContentContainer">
@@ -188,7 +205,9 @@ export default function UpdateRecipe() {
         )
     }
 
-    //Main UI display
+    /**
+     * Main content display section
+     */
     return (
         <main id="updateRecipe">
 
@@ -201,12 +220,13 @@ export default function UpdateRecipe() {
                 <label htmlFor="categorySelection">Choose a Category</label>
                 <select id="categorySelection" required>
 
+                    {/* Set the first option to be the recipes current category */}
                     <option value={recipe.category} id={recipe.categoryID}>{recipe.category}</option>
 
                     {
                         categories
-                            .filter(category => category.category !== recipe.category)
-                            .map((category, index) => (
+                            .filter(category => category.category !== recipe.category) //Filter the recipes current category out of the categories list
+                            .map((category, index) => ( //Render the remaining categories in the list
                             <option value={category.category} key={index} id={category.categoryID}>{category.category}</option>
                         ))
                     }
@@ -227,14 +247,14 @@ export default function UpdateRecipe() {
                 <label htmlFor="ingredients">Add Ingredients</label>
                 <div id="ingredients">
                     {recipe.ingredients.map((ingredient, index) => {
-                        if (index === 0) {
+                        if (index === 0) { //Make sure the user has to enter at least one ingredient
                             return (
-                                <>
-                                    <input type="text" name="firstIngredient" defaultValue={ingredient} required pattern="^(?!\s*$).+"/>
+                                <Fragment key={index}>
+                                    <input type="text" name="ingredient" defaultValue={ingredient} required pattern="^(?!\s*$).+"/>
                                     <div className="invalid-feedback mb-3">
                                         You must enter at least 1 ingredient here
                                     </div>
-                                </>
+                                </Fragment>
                             )
                         } else {
                             return (<input type="text" name="ingredient" defaultValue={ingredient} key={index} />);
@@ -253,7 +273,6 @@ export default function UpdateRecipe() {
                 <button onClick={addInstructionInput} className="defaultButton buttonBlue">Add Another Instruction +</button>
 
                 {/* Submit */}
-
                 <div id="updateCreateFormButtonContainer">
                     <input type="submit" value="Update Recipe" className="defaultButton buttonGreen updateCreateRecipeButton"/>
                     <button onClick={startOver} className="defaultButton buttonRed updateCreateRecipeButton">Start Over</button>
@@ -261,7 +280,8 @@ export default function UpdateRecipe() {
                 </div>
             </form>
 
-            {createIsOpen && <UpdateRecipeMessageModal />}
+            {/* Update recipe modal */}
+            {updateIsOpen && <UpdateRecipeMessageModal />}
         </main>
     )
 

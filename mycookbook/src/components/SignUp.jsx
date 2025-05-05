@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 
+/**
+ * This function contains the sign up and log in modal
+ * provided by the Cognito service
+ */
 export default function SignUp() {
 
     /**
@@ -11,16 +15,16 @@ export default function SignUp() {
     const navigate = useNavigate();
     const { route } = useAuthenticator((context) => [context.route]);
     
-    // console.log(route);
-
     useEffect(() => {
         if (route === 'authenticated') {
-        navigate('/');
+            navigate('/');
         }
     }, [route, navigate]);
 
-
-
+    /**
+     * Main content of the page. The Authenticator component is a 
+     * native component provided by AWS Cognito.
+     */
     return (
         <main className="mainContentContainer">
             <Authenticator></Authenticator>
